@@ -30,6 +30,18 @@ from groq import Groq
 from dotenv import load_dotenv
 from gradio_client import Client
 import sys
+import logging
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),  # Log to console (PythonAnywhere error log)
+        logging.FileHandler(os.path.join(os.path.dirname(__file__), '..', 'app.log'))  # Also log to file
+    ]
+)
+logger = logging.getLogger(__name__)
 
 # Add the current directory (backend) to sys.path to allow imports like 'import models'
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))

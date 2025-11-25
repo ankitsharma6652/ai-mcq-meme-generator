@@ -12,6 +12,11 @@ from auth import oauth_handlers
 from auth import core as auth
 import schemas, models
 from database import get_db
+import os
+import logging
+
+# Configure logging
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api/auth", tags=["OAuth Authentication"])
 
@@ -23,9 +28,12 @@ async def oauth_login(provider: str):
     Returns redirect URL to provider's authorization page
     """
     try:
+        logger.info(f"Initiating OAuth login for provider: {provider}")
         auth_url = oauth_handlers.generate_oauth_url(provider)
+        logger.info(f"Generated auth URL: {auth_url}")
         return {"authorization_url": auth_url}
     except Exception as e:
+        logger.error(f"Error generating OAuth URL: {str(e)}")
         raise HTTPException(status_code=400, detail=str(e))
 
 
@@ -41,22 +49,28 @@ async def oauth_callback(
     OAuth callback endpoint
     Handles the redirect from OAuth provider after user authorizes
     """
+    logger.info(f"Received OAuth callback for provider: {provider}")
+    
     # Verify state to prevent CSRF
     verified_provider = oauth_handlers.verify_state(state)
     if not verified_provider or verified_provider != provider:
+        logger.error(f"Invalid state parameter. Received: {state}")
         raise HTTPException(status_code=400, detail="Invalid state parameter")
     
     try:
         # Exchange code for access token
+        logger.info("Exchanging code for access token...")
         access_token = await oauth_handlers.exchange_code_for_token(provider, code)
+        logger.info("Successfully obtained access token")
         
         # Get user info from provider
+        logger.info("Fetching user info from provider...")
         user_info = await oauth_handlers.get_user_info(provider, access_token)
-        print(f"DEBUG: Got user info from {provider}: {user_info}")
+        logger.info(f"Got user info: {user_info}")
         
         # Find or create user in database
         user = get_or_create_oauth_user(db, user_info)
-        print(f"DEBUG: User created/found: {user.email}, ID: {user.id}")
+        logger.info(f"User created/found: {user.email}, ID: {user.id}")
         
         # Generate JWT token for our application
         app_access_token = auth.create_access_token(
@@ -84,13 +98,18 @@ async def oauth_callback(
         db.commit()
         
         # Redirect to frontend with token
-        frontend_url = f"http://localhost:8000/?token={app_access_token}&provider={provider}"
+        # Use APP_BASE_URL from environment, default to localhost if not set (but prefer env)
+        app_base_url = os.environ.get("APP_BASE_URL", "http://localhost:8000")
+        # Remove trailing slash if present to avoid double slashes
+        if app_base_url.endswith('/'):
+            app_base_url = app_base_url[:-1]
+            
+        frontend_url = f"{app_base_url}/?token={app_access_token}&provider={provider}"
+        logger.info(f"Redirecting to frontend: {frontend_url}")
         return RedirectResponse(url=frontend_url)
         
     except Exception as e:
-        print(f"ERROR in OAuth callback: {str(e)}")
-        import traceback
-        traceback.print_exc()
+        logger.error(f"ERROR in OAuth callback: {str(e)}", exc_info=True)
         raise HTTPException(status_code=400, detail=f"OAuth authentication failed: {str(e)}")
 
 
