@@ -1,0 +1,1462 @@
+INFO:     Will watch for changes in these directories: ['/Users/ankit-sharma/Downloads/ai-mcq-meme-generator']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [51007] using StatReload
+/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/pypdf/_crypt_providers/_cryptography.py:32: CryptographyDeprecationWarning: ARC4 has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.ARC4 and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  from cryptography.hazmat.primitives.ciphers.algorithms import AES, ARC4
+/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [51041]
+INFO:     Waiting for application startup.
+--> STARTUP: Listing all registered routes:
+   Route: /openapi.json [GET,HEAD]
+   Route: /docs [GET,HEAD]
+   Route: /docs/oauth2-redirect [GET,HEAD]
+   Route: /redoc [GET,HEAD]
+   Route: /api/categories [GET]
+   Route: /api/content/view [POST]
+   Route: /api/content/share [POST]
+   Route: /api/trending [GET]
+   Route: /api/content/by-category [GET]
+   Route: /health [GET]
+   Route: /api/auth/login/{provider} [GET]
+   Route: /api/auth/callback/{provider} [GET]
+   Route: /api/signup [POST]
+   Route: /api/token [POST]
+   Route: /api/profile [GET]
+   Route: /api/is-superuser [GET]
+   Route: /api/profile [PUT]
+   Route: /api/generate-meme-prompt [POST]
+   Route: /api/generate-ai-video [POST]
+   Route: /api/generate-gif-video [POST]
+   Route: /api/generate-meme [POST]
+   Route: /api/extract-url [POST]
+   Route: /api/extract-file [POST]
+   Route: /api/generate-mcqs [POST]
+   Route: /api/quiz-session [POST]
+   Route: /api/meme-generation [POST]
+   Route: /api/logout [POST]
+   Route: /api/track-event [POST]
+   Route: /api/track-session [POST]
+   Route: /api/upload-image [POST]
+   Route: /api/social/like [POST]
+   Route: /api/social/comment [POST]
+   Route: /api/social/comments [GET]
+   Route: /api/social/feed [GET]
+   Route: /api/bookmarks/toggle [POST]
+   Route: /api/bookmarks [GET]
+   Route: /api/bookmarks/check [GET]
+   Route: /api/analytics/dashboard [GET]
+   Route: /api/analytics/users [GET]
+   Route: /api/admin/tables [GET]
+   Route: /api/admin/table/{table_name} [GET]
+   Route: /api/admin/query [POST]
+   Route: /admin [GET]
+   Route:  (Mount)
+INFO:     Application startup complete.
+INFO:     127.0.0.1:62096 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62098 - "GET /api/mcq-generations/6 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62098 - "GET /api/mcq-generations/2 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62156 - "GET /api/bookmarks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62156 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62201 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62201 - "GET /api/mcq-generations/2 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62238 - "GET /api/social/feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62238 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62332 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62392 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:62394 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62394 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:62394 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62392 - "GET /app_new.js?v=3.6 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62394 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62402 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62404 - "GET /api/trending?limit=6 HTTP/1.1" 200 OK
+DEBUG: Checking superuser for 'ankitcoolji@gmail.com'
+INFO:     127.0.0.1:62394 - "GET /api/profile HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62392 - "GET /api/is-superuser HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62392 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62392 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62392 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62392 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62392 - "POST /api/generate-mcqs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62453 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62453 - "POST /api/content/view HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62453 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62453 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62453 - "POST /api/bookmarks/toggle HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62453 - "GET /api/bookmarks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62453 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62453 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62558 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62729 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62798 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 1). Retrying in 1.68s...
+INFO:     127.0.0.1:62832 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62832 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62832 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62832 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 2). Retrying in 2.18s...
+Rate limit on llama-3.3-70b-versatile (Attempt 3). Retrying in 4.19s...
+Switching from llama-3.3-70b-versatile to next model...
+Error on mixtral-8x7b-32768: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from mixtral-8x7b-32768 to next model...
+Error on gemma2-9b-it: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from gemma2-9b-it to next model...
+INFO:     127.0.0.1:62888 - "POST /api/track-event HTTP/1.1" 200 OK
+Raw Groq Response: {
+  "prompts": [
+      "A high-quality webcomic meme. A person is stuck in a never-ending circle of PowerPoint slides. A large, white speech bubble with the text 'Just another meeting' written clearly in a bold, black font.",
+      "A high-quality webcomic meme. An office worker is trapped in a phone call with a 'help desk' while their computer screen displays a 'spinning wheel'. A large, white speech bubble with the text 'BSing my way through' written clearly in a bold, black font.",
+      "A high-quality webcomic meme. A person is trying to have a conversation but keeps getting interrupted by a coworker talking about their weekend. A large, white speech bubble with the text 'Tall tales' written clearly in a bold, black font.",
+      "A high-quality webcomic meme. A person is shown with a spreadsheet and calculator, looking very serious, while a colleague is shown with a 'to-do list' that consists of 'BSing my way through'. A large, white speech bubble with the text 'Creative accounting' written clearly in a bold, black font.",
+      "A high-quality webcomic meme. A person is talking on the phone with a 'customer service' rep while rolling their eyes behind the phone. A large, white speech bubble with the text 'Sales pitch' written clearly in a bold, black font.",
+      "A high-quality webcomic meme. A person is trying to explain a complicated technical concept to a colleague, but they just nod and smile. A large, white speech bubble with the text 'Lost in translation' written clearly in a bold, black font.",
+      "A high-quality webcomic meme. A person is shown in a meeting room with a bunch of 'experts' discussing a project while a colleague is shown on their phone looking at a Wikipedia article. A large, white speech bubble with the text 'Masters of BS' written clearly in a bold, black font.",
+      "A high-quality webcomic meme. A person is trying to have a meeting but their colleagues keep interrupting with 'urgent' emails and messages. A large, white speech bubble with the text 'Priorities' written clearly in a bold, black font.",
+      "A high-quality webcomic meme. A person is shown working from home while their colleagues are shown in a meeting room, all talking at once. A large, white speech bubble with the text 'Distractions' written clearly in a bold, black font.",
+      "A high-quality webcomic meme. A person is trying to explain a simple concept to a group of colleagues, but they just look confused. A large, white speech bubble with the text 'Lost in BS' written clearly in a bold, black font."
+   ]
+}
+INFO:     127.0.0.1:62798 - "POST /api/generate-meme-prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62798 - "POST /api/meme-generation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62919 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62997 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62997 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62997 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62997 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 1). Retrying in 1.89s...
+Rate limit on llama-3.3-70b-versatile (Attempt 2). Retrying in 2.49s...
+INFO:     127.0.0.1:63105 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63105 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 3). Retrying in 4.27s...
+INFO:     127.0.0.1:63105 - "POST /api/track-event HTTP/1.1" 200 OK
+Switching from llama-3.3-70b-versatile to next model...
+Error on mixtral-8x7b-32768: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from mixtral-8x7b-32768 to next model...
+Error on gemma2-9b-it: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from gemma2-9b-it to next model...
+Raw Groq Response: {
+  "prompts": [
+      "An animated GIF meme showing a person trying to hold a beach ball underwater, struggling to keep it afloat. The animation should loop showing the person's face turning red as they struggle. Include text overlay: 'BS Alert' in bold, white font.",
+      "An animated GIF meme showing a person blowing a party horn, but the sound is just a faint whisper. The animation should loop showing the person making a goofy face as they try to make the horn sound louder. Include text overlay: 'This is BS' in bold, white font.",
+      "An animated GIF meme showing a person trying to eat a ridiculously large sandwich, but it keeps falling apart. The animation should loop showing the person's face in a comedic expression as they try to assemble the sandwich again. Include text overlay: 'BS in every bite' in bold, white font.",
+      "An animated GIF meme showing a person trying to make a snowman, but it keeps melting. The animation should loop showing the person's face in frustration as they try to salvage the snowman. Include text overlay: 'BS weather' in bold, white font.",
+      "An animated GIF meme showing a person trying to do a cool dance move, but they end up tripping and falling. The animation should loop showing the person's face in embarrassment as they try to get back up. Include text overlay: 'BS dance skills' in bold, white font."
+   ]
+}
+INFO:     127.0.0.1:62997 - "POST /api/generate-meme-prompt HTTP/1.1" 200 OK
+📨 RECEIVED REQUEST: {'prompt': "An animated GIF meme showing a person trying to hold a beach ball underwater, struggling to keep it afloat. The animation should loop showing the person's face turning red as they struggle. Include text overlay: 'BS Alert' in bold, white font.", 'meme_type': 'gif', 'index': 0}
+INFO:     127.0.0.1:62997 - "POST /api/generate-gif-video HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62997 - "POST /api/meme-generation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62997 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 1). Retrying in 1.03s...
+Rate limit on llama-3.3-70b-versatile (Attempt 2). Retrying in 2.45s...
+INFO:     127.0.0.1:63201 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63201 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 3). Retrying in 4.86s...
+Switching from llama-3.3-70b-versatile to next model...
+Error on mixtral-8x7b-32768: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from mixtral-8x7b-32768 to next model...
+Error on gemma2-9b-it: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from gemma2-9b-it to next model...
+Raw Groq Response: {
+  "prompts": [
+       "A high-quality webcomic meme. A person stuck in a meeting room surrounded by empty chairs. A large, white speech bubble with the text 'BS Alert' written clearly in a bold, black font.",
+       "A high-quality webcomic meme. A person trapped in an elevator with a motivational poster of a cat. A large, white speech bubble with the text 'Faking It' written clearly in a bold, black font.",
+       "A high-quality webcomic meme. A person sitting at a desk staring at a stack of papers with a 'TO DO' list. A large, white speech bubble with the text 'Just BSing' written clearly in a bold, black font.",
+       "A high-quality webcomic meme. A person standing in a field of white lies surrounded by BS signs. A large, white speech bubble with the text 'Lying in Wait' written clearly in a bold, black font.",
+       "A high-quality webcomic meme. A person sitting at a desk with a 'CONFIDENTIAL' folder and a red 'BS' sticker on it. A large, white speech bubble with the text 'Confidential B.S.' written clearly in a bold, black font.",
+       "A high-quality webcomic meme. A person stuck in a never-ending loop of PowerPoint presentations. A large, white speech bubble with the text 'BS in a Slide' written clearly in a bold, black font.",
+       "A high-quality webcomic meme. A person sitting at a desk with a 'TO BRIEF' folder and a giant red 'BS' stamp on it. A large, white speech bubble with the text 'B.S. Briefed' written clearly in a bold, black font.",
+       "A high-quality webcomic meme. A person trapped in a meeting room with a whiteboard full of confusing acronyms. A large, white speech bubble with the text 'B.S. Speak' written clearly in a bold, black font."
+   ]
+}
+INFO:     127.0.0.1:62997 - "POST /api/generate-meme-prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62997 - "POST /api/meme-generation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63283 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63309 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63472 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63600 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63631 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63790 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63908 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63937 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64107 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64236 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64263 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64426 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64563 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64563 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:64586 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64586 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:64586 - "GET /style.css?v=2.1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64563 - "GET /enhancements.css?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64590 - "GET /analytics.js?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64588 - "GET /emoji-animations.css?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64592 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64588 - "GET /auth_component.js?v=6.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64590 - "GET /user_settings.js?v=1.4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64563 - "GET /app_new.js?v=3.7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64592 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64588 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64592 - "GET /api/trending?limit=6 HTTP/1.1" 200 OK
+DEBUG: Checking superuser for 'ankitcoolji@gmail.com'
+INFO:     127.0.0.1:64563 - "GET /api/profile HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64590 - "GET /api/is-superuser HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64590 - "GET /api/mcq-generations/2 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64590 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64590 - "GET /api/bookmarks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64678 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64678 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64678 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64678 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64678 - "POST /api/bookmarks/toggle HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/bookmarks/toggle HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/bookmarks/toggle HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/track-event HTTP/1.1" 200 OK
+Raw Groq Response: {
+  "prompts": [
+       "A high-quality webcomic meme. Ankit sitting at a desk with a confused expression. A large, white speech bubble with the text 'Lost Again' written clearly in a bold, black font."
+   ]
+}
+INFO:     127.0.0.1:64710 - "POST /api/generate-meme-prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/meme-generation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 1). Retrying in 1.69s...
+Rate limit on llama-3.3-70b-versatile (Attempt 2). Retrying in 2.57s...
+INFO:     127.0.0.1:64818 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 3). Retrying in 4.71s...
+Switching from llama-3.3-70b-versatile to next model...
+Error on mixtral-8x7b-32768: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from mixtral-8x7b-32768 to next model...
+Error on gemma2-9b-it: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from gemma2-9b-it to next model...
+Raw Groq Response: {
+  "prompts": [
+   "A high-quality webcomic meme. Ankit is sitting alone at a table in a dimly lit, empty coffee shop. There are old coffee cups and trash scattered around him. A large, white speech bubble with the text 'Adulting' written clearly in a bold, black font."
+   ]
+}
+INFO:     127.0.0.1:64710 - "POST /api/generate-meme-prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "POST /api/meme-generation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64922 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64922 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65095 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65259 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65259 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65426 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49175 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49175 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49370 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49531 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49531 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49659 - "GET /api/social/feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49690 - "GET /api/bookmarks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49690 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49690 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49690 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49745 - "GET /api/social/feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49745 - "GET /api/analytics/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49759 - "GET /api/analytics/dashboard?time_range=all HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49759 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49800 - "GET /api/analytics/dashboard?time_range=all&target_email=global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49800 - "GET /api/analytics/dashboard?time_range=all&target_email=global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49800 - "GET /api/analytics/dashboard?time_range=all HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49800 - "GET /api/analytics/dashboard?time_range=all&target_email=global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49800 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49800 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49800 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49800 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49853 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49853 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49929 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49931 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:49931 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49931 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49929 - "GET /app_new.js?v=3.7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49931 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49951 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49952 - "GET /api/trending?limit=6 HTTP/1.1" 200 OK
+DEBUG: Checking superuser for 'ankitcoolji@gmail.com'
+INFO:     127.0.0.1:49929 - "GET /api/profile HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49931 - "GET /api/is-superuser HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49931 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49929 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49929 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:49929 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49931 - "GET /style.css?v=2.1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49929 - "GET /enhancements.css?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49951 - "GET /analytics.js?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49952 - "GET /emoji-animations.css?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49931 - "GET /auth_component.js?v=6.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49951 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49929 - "GET /app_new.js?v=3.7 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49952 - "GET /user_settings.js?v=1.4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49931 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49951 - "GET /api/trending?limit=6 HTTP/1.1" 200 OK
+DEBUG: Checking superuser for 'ankitcoolji@gmail.com'
+INFO:     127.0.0.1:49952 - "GET /api/profile HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49929 - "GET /api/is-superuser HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49929 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49929 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49929 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49929 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 1). Retrying in 1.31s...
+Rate limit on llama-3.3-70b-versatile (Attempt 2). Retrying in 2.76s...
+INFO:     127.0.0.1:50032 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50032 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 3). Retrying in 4.84s...
+Switching from llama-3.3-70b-versatile to next model...
+Error on mixtral-8x7b-32768: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from mixtral-8x7b-32768 to next model...
+Error on gemma2-9b-it: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from gemma2-9b-it to next model...
+Raw Groq Response: {
+  "prompts": [
+      "A high-quality webcomic meme. A person staring at a broken smartphone screen. A large, white speech bubble with the text 'Image not found' written clearly in a bold, black font."
+   ]
+}
+INFO:     127.0.0.1:49929 - "POST /api/generate-meme-prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49929 - "POST /api/meme-generation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50137 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50207 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50285 - "GET /api/bookmarks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50285 - "POST /api/bookmarks/toggle HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50285 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50285 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50285 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50285 - "GET /api/trending?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50285 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50285 - "GET /api/social/feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50285 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50285 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50479 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50510 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50510 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50510 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50641 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50802 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50872 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50967 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51148 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51224 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51314 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51490 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51565 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51657 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51824 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51896 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51989 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52149 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52219 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52305 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52455 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52524 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52611 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52767 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52832 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52914 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53066 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53134 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53191 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53259 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53420 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53498 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53824 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53950 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54134 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54134 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54428 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54428 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54432 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54432 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54432 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54586 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:54432 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:54432 - "GET /style.css?v=2.1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54586 - "GET /enhancements.css?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54588 - "GET /emoji-animations.css?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54592 - "GET /analytics.js?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54590 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54588 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54592 - "GET /auth_component.js?v=6.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54590 - "GET /user_settings.js?v=1.4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54586 - "GET /app_new.js?v=3.8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54586 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54586 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54586 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54586 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54586 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:54641 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54641 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:54641 - "GET /style.css?v=2.1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54586 - "GET /enhancements.css?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54643 - "GET /emoji-animations.css?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54647 - "GET /analytics.js?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54645 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54643 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54647 - "GET /user_settings.js?v=1.4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54586 - "GET /auth_component.js?v=6.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54641 - "GET /app_new.js?v=3.8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54641 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54641 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54641 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54641 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54765 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54805 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54885 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54977 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55096 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55132 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55400 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55400 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55703 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55705 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55705 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55930 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55930 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55943 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55943 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55943 - "GET /style.css?v=2.1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55945 - "GET /emoji-animations.css?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55947 - "GET /enhancements.css?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55930 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55949 - "GET /analytics.js?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55949 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55947 - "GET /user_settings.js?v=1.4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55943 - "GET /app_new.js?v=3.9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55945 - "GET /auth_component.js?v=6.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55945 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55943 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:55943 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55943 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55943 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55943 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55945 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:55945 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55943 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55943 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55943 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55943 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55943 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55943 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55943 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56145 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56319 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56369 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56493 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56621 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:56623 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56623 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:56623 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56621 - "GET /app_new.js?v=3.9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56623 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56621 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56621 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56621 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56621 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56621 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:56683 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56683 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:56683 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56683 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56621 - "GET /app_new.js?v=3.9 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56715 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56717 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56715 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56715 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56715 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56715 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56860 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57028 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57357 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57359 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57357 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57661 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57661 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57661 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57953 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58299 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58299 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58627 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58628 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58848 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58926 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58926 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58928 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59231 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59529 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59531 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59824 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59824 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60131 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60131 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60174 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60174 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60174 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60184 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:60174 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:60174 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60184 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60192 - "GET /app_new.js?v=3.10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60200 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60201 - "GET /api/trending?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60184 - "GET /api/is-superuser HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60192 - "GET /api/profile HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60192 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60192 - "POST /api/logout HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60192 - "GET /api/auth/login/google HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60192 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:60192 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+DEBUG: Got user info from google: {'provider': 'google', 'provider_user_id': '102049157252926736062', 'email': 'digitalaks9@gmail.com', 'full_name': 'Ankit Sharma', 'picture': 'https://lh3.googleusercontent.com/a/ACg8ocJqzx0J2s7IlfjVOE8QndSEL7n7bfY7NwBZDzuHvIExfDi70Q=s96-c'}
+DEBUG: User created/found: digitalaks9@gmail.com, ID: 1
+INFO:     127.0.0.1:60192 - "GET /api/auth/callback/google?state=Ez83mqC7Ay9Ep6boLeeuAT7TLclpWtzKcWbvC7vLkP0&code=4%2F0Ab32j90YAgcaPEsTpfmIHPNSqL6_NJxnFtEoA4yWq_v3F1VBmyxelrXniOXhdWVdNiVFcw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=3&prompt=none HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:60192 - "GET /?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWdpdGFsYWtzOUBnbWFpbC5jb20iLCJleHAiOjE3NjQwNDc4OTN9.iRRO5PZY-08bL_T_EaIZ_Mtf0hXk7o5jb5GhqvXXivo&provider=google HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60192 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60192 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60192 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60272 - "GET /api/trending?limit=6 HTTP/1.1" 200 OK
+DEBUG: Checking superuser for 'digitalaks9@gmail.com'
+INFO:     127.0.0.1:60275 - "GET /api/profile HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60276 - "GET /api/is-superuser HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60276 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60276 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60276 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60276 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60276 - "POST /api/track-event HTTP/1.1" 200 OK
+Raw Groq Response: {
+  "prompts": [
+       "A high-quality webcomic meme. A person sitting at a desk, surrounded by screens displaying various memes. A large, white speech bubble with the text 'Meme Lord' written clearly in a bold, black font."
+   ]
+}
+INFO:     127.0.0.1:60276 - "POST /api/generate-meme-prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60276 - "POST /api/meme-generation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60276 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60276 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60415 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60454 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60563 - "GET /api/bookmarks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60563 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60563 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60563 - "GET /api/social/feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60563 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60740 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60740 - "GET /api/mcq-generations/31 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60740 - "GET /api/mcq-generations/2 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60740 - "GET /api/mcq-generations/5 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60740 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60740 - "GET /api/social/feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60740 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60740 - "GET /api/analytics/users HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "GET /api/analytics/dashboard?time_range=all HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "GET /api/analytics/dashboard?time_range=all&target_email=global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "GET /api/analytics/dashboard?time_range=all&target_email=global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "GET /api/analytics/dashboard?time_range=all HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "GET /api/analytics/dashboard?time_range=all&target_email=global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "GET /api/analytics/dashboard?time_range=all&target_email=global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "GET /api/bookmarks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60795 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61059 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61098 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61163 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61217 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61385 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61429 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61636 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61636 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61709 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61709 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61709 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61709 - "POST /api/generate-mcqs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61709 - "POST /api/content/view HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61709 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61709 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61748 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61748 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61748 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61748 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61748 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61748 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61748 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61748 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61748 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61742 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:61797 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:61797 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61742 - "GET /app_new.js?v=3.11 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61808 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61809 - "GET /api/trending?limit=6 HTTP/1.1" 200 OK
+DEBUG: Checking superuser for 'digitalaks9@gmail.com'
+INFO:     127.0.0.1:61742 - "GET /api/profile HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "GET /api/is-superuser HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/generate-mcqs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "POST /api/content/view HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61867 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61797 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61967 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61995 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:61995 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:61995 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:61995 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61995 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62018 - "GET /app_new.js?v=3.11 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62025 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62027 - "GET /api/trending?limit=6 HTTP/1.1" 200 OK
+DEBUG: Checking superuser for 'digitalaks9@gmail.com'
+INFO:     127.0.0.1:61995 - "GET /api/is-superuser HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62018 - "GET /api/profile HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62018 - "GET /api/mcq-generations/33 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62018 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 1). Retrying in 1.07s...
+INFO:     127.0.0.1:62078 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62078 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62078 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62078 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62078 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 2). Retrying in 2.64s...
+Rate limit on llama-3.3-70b-versatile (Attempt 3). Retrying in 4.12s...
+INFO:     127.0.0.1:62114 - "POST /api/track-event HTTP/1.1" 200 OK
+Switching from llama-3.3-70b-versatile to next model...
+Error on mixtral-8x7b-32768: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from mixtral-8x7b-32768 to next model...
+Error on gemma2-9b-it: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from gemma2-9b-it to next model...
+Raw Groq Response: {
+  "prompts": [
+       "A high-quality webcomic meme. A person sitting on a couch, staring blankly at a pile of useless junk. A large, white speech bubble with the text 'Procrastination Mode Activated' written clearly in a bold, black font.",
+       "A high-quality webcomic meme. A person stuck in a never-ending loop of chores. They're holding a dirty sock and looking frustrated. A large, white speech bubble with the text 'Adulting is Overrated' written clearly in a bold, black font.",
+       "A high-quality webcomic meme. A person surrounded by empty pizza boxes and soda cans. They're lying on the couch, looking guilty. A large, white speech bubble with the text 'Food Coma Status' written clearly in a bold, black font."
+   ]
+}
+INFO:     127.0.0.1:62018 - "POST /api/generate-meme-prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62018 - "POST /api/meme-generation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62205 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62317 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62364 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62446 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62518 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62518 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "GET /api/mcq-generations/31 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62594 - "GET /api/bookmarks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62633 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:62594 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:62594 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62594 - "GET /style.css?v=2.1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62633 - "GET /enhancements.css?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62635 - "GET /emoji-animations.css?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /analytics.js?v=1.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62635 - "GET /user_settings.js?v=1.4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62633 - "GET /app_new.js?v=3.12 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "GET /auth_component.js?v=6.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62635 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/trending?limit=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62633 - "GET /api/profile HTTP/1.1" 200 OK
+DEBUG: Checking superuser for 'digitalaks9@gmail.com'
+INFO:     127.0.0.1:62594 - "GET /api/is-superuser HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 1). Retrying in 1.52s...
+Rate limit on llama-3.3-70b-versatile (Attempt 2). Retrying in 2.46s...
+Rate limit on llama-3.3-70b-versatile (Attempt 3). Retrying in 4.54s...
+Switching from llama-3.3-70b-versatile to next model...
+Error on mixtral-8x7b-32768: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from mixtral-8x7b-32768 to next model...
+Error on gemma2-9b-it: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from gemma2-9b-it to next model...
+INFO:     127.0.0.1:62594 - "POST /api/generate-mcqs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62700 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "POST /api/content/view HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "POST /api/bookmarks/toggle HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "POST /api/bookmarks/toggle HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62594 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62886 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62886 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 1). Retrying in 1.01s...
+Rate limit on llama-3.3-70b-versatile (Attempt 2). Retrying in 2.84s...
+INFO:     127.0.0.1:62916 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62916 - "POST /api/track-event HTTP/1.1" 200 OK
+Rate limit on llama-3.3-70b-versatile (Attempt 3). Retrying in 4.09s...
+INFO:     127.0.0.1:62916 - "GET /api/bookmarks HTTP/1.1" 200 OK
+Switching from llama-3.3-70b-versatile to next model...
+Error on mixtral-8x7b-32768: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from mixtral-8x7b-32768 to next model...
+Error on gemma2-9b-it: 400 Client Error: Bad Request for url: https://api.groq.com/openai/v1/chat/completions
+Switching from gemma2-9b-it to next model...
+Raw Groq Response: {
+  "prompts": [
+      "A high-quality webcomic meme. A person is lying in bed, fast asleep. A giant alarm clock is looming over them, filled with alarm clock faces instead of numbers. A large, white speech bubble with the text 'NO, JUST FIVE MORE MINUTES!' written clearly in a bold, black font.",
+      "A high-quality webcomic meme. A person is standing in front of a dream portal, looking excited. On the other side of the portal, a giant 'WAKE UP' sign is visible. A large, white speech bubble with the text 'WORTH IT?' written clearly in a bold, black font.",
+      "A high-quality webcomic meme. A person is having a wild dream, with crazy creatures and objects flying around them. In the corner of the dream, a tiny voice is saying 'ALARM CLOCK IS COMING'. A large, white speech bubble with the text 'DON'T RUIN IT!' written clearly in a bold, black font.",
+      "A high-quality webcomic meme. A person is lying in bed, asleep, with a big smile on their face. A giant 'WAKE UP' sign is looming over them, but they're snuggled up tight, refusing to budge. A large, white speech bubble with the text 'JUST FIVE MORE MINUTES!' written clearly in a bold, black font.",
+      "A high-quality webcomic meme. A person is having a dream where they're a superhero, saving the world from bad guys. In the corner of the dream, a tiny voice is saying 'BUT YOU HAVE A 9 AM MEETING'. A large, white speech bubble with the text 'NOT TODAY!' written clearly in a bold, black font."
+   ]
+}
+INFO:     127.0.0.1:62886 - "POST /api/generate-meme-prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62886 - "POST /api/meme-generation HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62886 - "GET /api/social/feed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62886 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62886 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62886 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63063 - "GET /api/bookmarks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63063 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63063 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63063 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63063 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63063 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63063 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63063 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63294 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63359 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63359 - "GET /api/admin/table/generated_memes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63425 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63425 - "GET /admin HTTP/1.1" 200 OK
+DEBUG: Checking superuser for 'digitalaks9@gmail.com'
+INFO:     127.0.0.1:63425 - "GET /api/is-superuser HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63425 - "GET /api/admin/tables HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63455 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63455 - "GET /api/admin/table/generated_contents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63455 - "GET /api/admin/table/generated_memes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63455 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63549 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63589 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63589 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63663 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63779 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63779 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63779 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63779 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63779 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63999 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64107 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64425 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64720 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64722 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65035 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65034 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65328 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65330 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49267 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49269 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49614 - "POST /api/track-event HTTP/1.1" 200 OK
+Event tracking error: (sqlite3.OperationalError) disk I/O error
+[SQL: INSERT INTO user_events (user_id, session_id, event_type, event_category, event_action, event_label, event_value, page_url, page_title, referrer, ip_address, user_agent, device_type, browser, os, time_on_page, event_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, timestamp]
+[parameters: (None, 'sess_1763996305802_bn9bybhus', 'time_on_page', 'engagement', 'time_spent', None, 360.074, 'http://localhost:8000/', '✨ AI That Makes Learning Fun Again! | MCQ & Meme Generator', None, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'desktop', 'Chrome', 'MacOS', 360.074, 'null')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:49616 - "POST /api/track-event HTTP/1.1" 200 OK
+Event tracking error: (sqlite3.OperationalError) disk I/O error
+[SQL: INSERT INTO user_events (user_id, session_id, event_type, event_category, event_action, event_label, event_value, page_url, page_title, referrer, ip_address, user_agent, device_type, browser, os, time_on_page, event_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, timestamp]
+[parameters: (None, 'sess_1763996305802_bn9bybhus', 'time_on_page', 'engagement', 'time_spent', None, 420.083, 'http://localhost:8000/', '✨ AI That Makes Learning Fun Again! | MCQ & Meme Generator', None, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'desktop', 'Chrome', 'MacOS', 420.083, 'null')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:49917 - "POST /api/track-event HTTP/1.1" 200 OK
+Event tracking error: (sqlite3.OperationalError) disk I/O error
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:49919 - "POST /api/track-event HTTP/1.1" 200 OK
+Event tracking error: (sqlite3.OperationalError) disk I/O error
+[SQL: INSERT INTO user_events (user_id, session_id, event_type, event_category, event_action, event_label, event_value, page_url, page_title, referrer, ip_address, user_agent, device_type, browser, os, time_on_page, event_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, timestamp]
+[parameters: (None, 'sess_1764007088930_v625nw3bk', 'time_on_page', 'engagement', 'time_spent', None, 40122.187, 'http://localhost:8000/', '✨ AI That Makes Learning Fun Again! | MCQ & Meme Generator', None, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'desktop', 'Chrome', 'MacOS', 40122.187, 'null')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50228 - "POST /api/track-event HTTP/1.1" 200 OK
+Event tracking error: (sqlite3.OperationalError) disk I/O error
+[SQL: INSERT INTO user_events (user_id, session_id, event_type, event_category, event_action, event_label, event_value, page_url, page_title, referrer, ip_address, user_agent, device_type, browser, os, time_on_page, event_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, timestamp]
+[parameters: (None, 'sess_1763996305802_bn9bybhus', 'time_on_page', 'engagement', 'time_spent', None, 480.073, 'http://localhost:8000/', '✨ AI That Makes Learning Fun Again! | MCQ & Meme Generator', None, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'desktop', 'Chrome', 'MacOS', 480.073, 'null')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50230 - "POST /api/track-event HTTP/1.1" 200 OK
+Event tracking error: (sqlite3.OperationalError) disk I/O error
+[SQL: INSERT INTO user_events (user_id, session_id, event_type, event_category, event_action, event_label, event_value, page_url, page_title, referrer, ip_address, user_agent, device_type, browser, os, time_on_page, event_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, timestamp]
+[parameters: (None, 'sess_1763996305802_bn9bybhus', 'time_on_page', 'engagement', 'time_spent', None, 540.08, 'http://localhost:8000/', '✨ AI That Makes Learning Fun Again! | MCQ & Meme Generator', None, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'desktop', 'Chrome', 'MacOS', 540.08, 'null')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50300 - "POST /api/track-event HTTP/1.1" 200 OK
+Event tracking error: (sqlite3.OperationalError) disk I/O error
+[SQL: INSERT INTO user_events (user_id, session_id, event_type, event_category, event_action, event_label, event_value, page_url, page_title, referrer, ip_address, user_agent, device_type, browser, os, time_on_page, event_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, timestamp]
+[parameters: (None, 'sess_1763996305802_bn9bybhus', 'page_visible', 'navigation', 'show', None, None, 'http://localhost:8000/', '✨ AI That Makes Learning Fun Again! | MCQ & Meme Generator', None, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'desktop', 'Chrome', 'MacOS', None, 'null')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50300 - "POST /api/track-event HTTP/1.1" 200 OK
+Event tracking error: (sqlite3.OperationalError) disk I/O error
+[SQL: INSERT INTO user_events (user_id, session_id, event_type, event_category, event_action, event_label, event_value, page_url, page_title, referrer, ip_address, user_agent, device_type, browser, os, time_on_page, event_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, timestamp]
+[parameters: (None, 'sess_1763996305802_bn9bybhus', 'time_on_page', 'engagement', 'time_spent', None, 0.015, 'http://localhost:8000/', '✨ AI That Makes Learning Fun Again! | MCQ & Meme Generator', None, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'desktop', 'Chrome', 'MacOS', 0.015, 'null')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50300 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50300 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50317 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50317 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50317 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+Session tracking error: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT user_sessions.id AS user_sessions_id, user_sessions.user_id AS user_sessions_user_id, user_sessions.session_id AS user_sessions_session_id, user_sessions.started_at AS user_sessions_started_at, user_sessions.ended_at AS user_sessions_ended_at, user_sessions.duration_seconds AS user_sessions_duration_seconds, user_sessions.is_active AS user_sessions_is_active, user_sessions.pages_viewed AS user_sessions_pages_viewed, user_sessions.mcqs_generated AS user_sessions_mcqs_generated, user_sessions.quizzes_taken AS user_sessions_quizzes_taken, user_sessions.memes_generated AS user_sessions_memes_generated, user_sessions.ip_address AS user_sessions_ip_address, user_sessions.user_agent AS user_sessions_user_agent 
+FROM user_sessions 
+WHERE user_sessions.session_id = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('sess_1763996305802_bn9bybhus', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50300 - "GET /app_new.js?v=3.14 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50317 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50334 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50335 - "GET /api/trending?limit=6 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 404, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/trustedhost.py", line 34, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 782, in app
+    await route.handle(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/routing.py", line 299, in app
+    raise e
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/routing.py", line 294, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/backend/category_endpoints.py", line 100, in get_trending
+    mcqs = db.query(models.MCQGeneration).filter(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT mcq_generations.id AS mcq_generations_id, mcq_generations.user_id AS mcq_generations_user_id, mcq_generations.input_type AS mcq_generations_input_type, mcq_generations.content_type AS mcq_generations_content_type, mcq_generations.difficulty AS mcq_generations_difficulty, mcq_generations.num_questions AS mcq_generations_num_questions, mcq_generations.include_explanation AS mcq_generations_include_explanation, mcq_generations.category AS mcq_generations_category, mcq_generations.source_content AS mcq_generations_source_content, mcq_generations.source_url AS mcq_generations_source_url, mcq_generations.source_filename AS mcq_generations_source_filename, mcq_generations.model_name AS mcq_generations_model_name, mcq_generations.generation_time_seconds AS mcq_generations_generation_time_seconds, mcq_generations.questions_data AS mcq_generations_questions_data, mcq_generations.view_count AS mcq_generations_view_count, mcq_generations.share_count AS mcq_generations_share_count, mcq_generations.save_count AS mcq_generations_save_count, mcq_generations.quiz_completion_count AS mcq_generations_quiz_completion_count, mcq_generations.created_at AS mcq_generations_created_at, mcq_generations.ip_address AS mcq_generations_ip_address, mcq_generations.user_agent AS mcq_generations_user_agent 
+FROM mcq_generations 
+WHERE mcq_generations.created_at >= ?]
+[parameters: ('2025-11-18 05:08:07.013277',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50300 - "GET /api/profile HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 404, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/trustedhost.py", line 34, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 782, in app
+    await route.handle(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/routing.py", line 285, in app
+    raise e
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/routing.py", line 275, in app
+    solved_result = await solve_dependencies(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/dependencies/utils.py", line 600, in solve_dependencies
+    solved = await run_in_threadpool(call, **sub_values)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 40, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2485, in run_sync_in_worker_thread
+    return await future
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/backend/main.py", line 168, in get_current_user
+    user = auth.get_user_by_email(db, email=email)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/backend/auth/core.py", line 37, in get_user_by_email
+    return db.query(models.User).filter(models.User.email == email).first()
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.phone_number AS users_phone_number, users.full_name AS users_full_name, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.profile_picture AS users_profile_picture, users.bio AS users_bio, users.designation AS users_designation, users.nature_of_work AS users_nature_of_work, users.company_name AS users_company_name, users.linkedin_url AS users_linkedin_url, users.twitter_url AS users_twitter_url, users.github_url AS users_github_url, users.website_url AS users_website_url 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('digitalaks9@gmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50317 - "GET /api/is-superuser HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 404, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/trustedhost.py", line 34, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 782, in app
+    await route.handle(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/routing.py", line 285, in app
+    raise e
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/routing.py", line 275, in app
+    solved_result = await solve_dependencies(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/dependencies/utils.py", line 600, in solve_dependencies
+    solved = await run_in_threadpool(call, **sub_values)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 40, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2485, in run_sync_in_worker_thread
+    return await future
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/backend/main.py", line 168, in get_current_user
+    user = auth.get_user_by_email(db, email=email)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/backend/auth/core.py", line 37, in get_user_by_email
+    return db.query(models.User).filter(models.User.email == email).first()
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.phone_number AS users_phone_number, users.full_name AS users_full_name, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.profile_picture AS users_profile_picture, users.bio AS users_bio, users.designation AS users_designation, users.nature_of_work AS users_nature_of_work, users.company_name AS users_company_name, users.linkedin_url AS users_linkedin_url, users.twitter_url AS users_twitter_url, users.github_url AS users_github_url, users.website_url AS users_website_url 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('digitalaks9@gmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Event tracking error: (sqlite3.OperationalError) disk I/O error
+[SQL: INSERT INTO user_events (user_id, session_id, event_type, event_category, event_action, event_label, event_value, page_url, page_title, referrer, ip_address, user_agent, device_type, browser, os, time_on_page, event_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, timestamp]
+[parameters: (None, 'sess_1763996305802_bn9bybhus', 'page_view', 'navigation', 'view', None, None, 'http://localhost:8000/', '✨ AI That Makes Learning Fun Again! | MCQ & Meme Generator', None, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'desktop', 'Chrome', 'MacOS', None, 'null')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50334 - "POST /api/track-event HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50334 - "POST /api/logout HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50334 - "GET /api/auth/login/google HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50334 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50334 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+DEBUG: Got user info from google: {'provider': 'google', 'provider_user_id': '102049157252926736062', 'email': 'digitalaks9@gmail.com', 'full_name': 'Ankit Sharma', 'picture': 'https://lh3.googleusercontent.com/a/ACg8ocJqzx0J2s7IlfjVOE8QndSEL7n7bfY7NwBZDzuHvIExfDi70Q=s96-c'}
+ERROR in OAuth callback: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.phone_number AS users_phone_number, users.full_name AS users_full_name, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.profile_picture AS users_profile_picture, users.bio AS users_bio, users.designation AS users_designation, users.nature_of_work AS users_nature_of_work, users.company_name AS users_company_name, users.linkedin_url AS users_linkedin_url, users.twitter_url AS users_twitter_url, users.github_url AS users_github_url, users.website_url AS users_website_url 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('digitalaks9@gmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/backend/auth/oauth_routes.py", line 58, in oauth_callback
+    user = get_or_create_oauth_user(db, user_info)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/backend/auth/oauth_routes.py", line 108, in get_or_create_oauth_user
+    user = auth.get_user_by_email(db, email)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/backend/auth/core.py", line 37, in get_user_by_email
+    return db.query(models.User).filter(models.User.email == email).first()
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.phone_number AS users_phone_number, users.full_name AS users_full_name, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.profile_picture AS users_profile_picture, users.bio AS users_bio, users.designation AS users_designation, users.nature_of_work AS users_nature_of_work, users.company_name AS users_company_name, users.linkedin_url AS users_linkedin_url, users.twitter_url AS users_twitter_url, users.github_url AS users_github_url, users.website_url AS users_website_url 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('digitalaks9@gmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50334 - "GET /api/auth/callback/google?state=wCk2dFfj7ANT4vDlzXg0zED7IlyiMvv6hN_dhouHrzI&code=4%2F0Ab32j90Kb_rnaWORB5TZawxnw6NMQGOzcRefG4DodJ8otB1tw1colzD3halYJn4zsmmXZQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=3&prompt=none HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50334 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /api/auth/callback/google?state=wCk2dFfj7ANT4vDlzXg0zED7IlyiMvv6hN_dhouHrzI&code=4%2F0Ab32j90Kb_rnaWORB5TZawxnw6NMQGOzcRefG4DodJ8otB1tw1colzD3halYJn4zsmmXZQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=3&prompt=none HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50441 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /api/auth/callback/google?state=wCk2dFfj7ANT4vDlzXg0zED7IlyiMvv6hN_dhouHrzI&code=4%2F0Ab32j90Kb_rnaWORB5TZawxnw6NMQGOzcRefG4DodJ8otB1tw1colzD3halYJn4zsmmXZQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=3&prompt=none HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50441 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /api/auth/callback/google?state=wCk2dFfj7ANT4vDlzXg0zED7IlyiMvv6hN_dhouHrzI&code=4%2F0Ab32j90Kb_rnaWORB5TZawxnw6NMQGOzcRefG4DodJ8otB1tw1colzD3halYJn4zsmmXZQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=3&prompt=none HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50441 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /api/auth/callback/google?state=wCk2dFfj7ANT4vDlzXg0zED7IlyiMvv6hN_dhouHrzI&code=4%2F0Ab32j90Kb_rnaWORB5TZawxnw6NMQGOzcRefG4DodJ8otB1tw1colzD3halYJn4zsmmXZQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=3&prompt=none HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50441 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /api/auth/callback/google?state=wCk2dFfj7ANT4vDlzXg0zED7IlyiMvv6hN_dhouHrzI&code=4%2F0Ab32j90Kb_rnaWORB5TZawxnw6NMQGOzcRefG4DodJ8otB1tw1colzD3halYJn4zsmmXZQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=3&prompt=none HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50441 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /api/auth/callback/google?state=wCk2dFfj7ANT4vDlzXg0zED7IlyiMvv6hN_dhouHrzI&code=4%2F0Ab32j90Kb_rnaWORB5TZawxnw6NMQGOzcRefG4DodJ8otB1tw1colzD3halYJn4zsmmXZQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=3&prompt=none HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50441 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /api/auth/callback/google?state=wCk2dFfj7ANT4vDlzXg0zED7IlyiMvv6hN_dhouHrzI&code=4%2F0Ab32j90Kb_rnaWORB5TZawxnw6NMQGOzcRefG4DodJ8otB1tw1colzD3halYJn4zsmmXZQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=3&prompt=none HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50441 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+Session tracking error: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT user_sessions.id AS user_sessions_id, user_sessions.user_id AS user_sessions_user_id, user_sessions.session_id AS user_sessions_session_id, user_sessions.started_at AS user_sessions_started_at, user_sessions.ended_at AS user_sessions_ended_at, user_sessions.duration_seconds AS user_sessions_duration_seconds, user_sessions.is_active AS user_sessions_is_active, user_sessions.pages_viewed AS user_sessions_pages_viewed, user_sessions.mcqs_generated AS user_sessions_mcqs_generated, user_sessions.quizzes_taken AS user_sessions_quizzes_taken, user_sessions.memes_generated AS user_sessions_memes_generated, user_sessions.ip_address AS user_sessions_ip_address, user_sessions.user_agent AS user_sessions_user_agent 
+FROM user_sessions 
+WHERE user_sessions.session_id = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('sess_1763996305802_bn9bybhus', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50441 - "POST /api/track-session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50441 - "GET /api/categories HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50472 - "GET /api/trending?limit=6 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 404, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 83, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/trustedhost.py", line 34, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 762, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 782, in app
+    await route.handle(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/routing.py", line 299, in app
+    raise e
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/routing.py", line 294, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/backend/category_endpoints.py", line 100, in get_trending
+    mcqs = db.query(models.MCQGeneration).filter(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT mcq_generations.id AS mcq_generations_id, mcq_generations.user_id AS mcq_generations_user_id, mcq_generations.input_type AS mcq_generations_input_type, mcq_generations.content_type AS mcq_generations_content_type, mcq_generations.difficulty AS mcq_generations_difficulty, mcq_generations.num_questions AS mcq_generations_num_questions, mcq_generations.include_explanation AS mcq_generations_include_explanation, mcq_generations.category AS mcq_generations_category, mcq_generations.source_content AS mcq_generations_source_content, mcq_generations.source_url AS mcq_generations_source_url, mcq_generations.source_filename AS mcq_generations_source_filename, mcq_generations.model_name AS mcq_generations_model_name, mcq_generations.generation_time_seconds AS mcq_generations_generation_time_seconds, mcq_generations.questions_data AS mcq_generations_questions_data, mcq_generations.view_count AS mcq_generations_view_count, mcq_generations.share_count AS mcq_generations_share_count, mcq_generations.save_count AS mcq_generations_save_count, mcq_generations.quiz_completion_count AS mcq_generations_quiz_completion_count, mcq_generations.created_at AS mcq_generations_created_at, mcq_generations.ip_address AS mcq_generations_ip_address, mcq_generations.user_agent AS mcq_generations_user_agent 
+FROM mcq_generations 
+WHERE mcq_generations.created_at >= ?]
+[parameters: ('2025-11-18 05:08:32.498525',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50441 - "GET /api/auth/login/google HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50441 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:50441 - "POST /api/track-session HTTP/1.1" 422 Unprocessable Entity
+DEBUG: Got user info from google: {'provider': 'google', 'provider_user_id': '102049157252926736062', 'email': 'digitalaks9@gmail.com', 'full_name': 'Ankit Sharma', 'picture': 'https://lh3.googleusercontent.com/a/ACg8ocJqzx0J2s7IlfjVOE8QndSEL7n7bfY7NwBZDzuHvIExfDi70Q=s96-c'}
+ERROR in OAuth callback: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.phone_number AS users_phone_number, users.full_name AS users_full_name, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.profile_picture AS users_profile_picture, users.bio AS users_bio, users.designation AS users_designation, users.nature_of_work AS users_nature_of_work, users.company_name AS users_company_name, users.linkedin_url AS users_linkedin_url, users.twitter_url AS users_twitter_url, users.github_url AS users_github_url, users.website_url AS users_website_url 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('digitalaks9@gmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/backend/auth/oauth_routes.py", line 58, in oauth_callback
+    user = get_or_create_oauth_user(db, user_info)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/backend/auth/oauth_routes.py", line 108, in get_or_create_oauth_user
+    user = auth.get_user_by_email(db, email)
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/backend/auth/core.py", line 37, in get_user_by_email
+    return db.query(models.User).filter(models.User.email == email).first()
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.phone_number AS users_phone_number, users.full_name AS users_full_name, users.hashed_password AS users_hashed_password, users.is_active AS users_is_active, users.is_superuser AS users_is_superuser, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.profile_picture AS users_profile_picture, users.bio AS users_bio, users.designation AS users_designation, users.nature_of_work AS users_nature_of_work, users.company_name AS users_company_name, users.linkedin_url AS users_linkedin_url, users.twitter_url AS users_twitter_url, users.github_url AS users_github_url, users.website_url AS users_website_url 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('digitalaks9@gmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50441 - "GET /api/auth/callback/google?state=rTgttV9JwIRGRc23fdnF0gn6LuDuO9SRMK3MB6hwCJo&code=4%2F0Ab32j92jle8jtsmXqAPuX8pJn-qpMACU5mJVspTgGDZdC4oDkL1K7t66zWbnl_Na-1nrYA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=3&prompt=none HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50441 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+Event tracking error: (sqlite3.OperationalError) disk I/O error
+[SQL: INSERT INTO user_events (user_id, session_id, event_type, event_category, event_action, event_label, event_value, page_url, page_title, referrer, ip_address, user_agent, device_type, browser, os, time_on_page, event_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, timestamp]
+[parameters: (None, 'sess_1764007088930_v625nw3bk', 'time_on_page', 'engagement', 'time_spent', None, 40182.184, 'http://localhost:8000/', '✨ AI That Makes Learning Fun Again! | MCQ & Meme Generator', None, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'desktop', 'Chrome', 'MacOS', 40182.184, 'null')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50575 - "POST /api/track-event HTTP/1.1" 200 OK
+Event tracking error: (sqlite3.OperationalError) disk I/O error
+[SQL: INSERT INTO user_events (user_id, session_id, event_type, event_category, event_action, event_label, event_value, page_url, page_title, referrer, ip_address, user_agent, device_type, browser, os, time_on_page, event_metadata) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id, timestamp]
+[parameters: (None, 'sess_1764007088930_v625nw3bk', 'time_on_page', 'engagement', 'time_spent', None, 40242.211, 'http://localhost:8000/', '✨ AI That Makes Learning Fun Again! | MCQ & Meme Generator', None, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'desktop', 'Chrome', 'MacOS', 40242.211, 'null')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:50890 - "POST /api/track-event HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'backend/database.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [51041]
+/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/pypdf/_crypt_providers/_cryptography.py:32: CryptographyDeprecationWarning: ARC4 has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.ARC4 and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  from cryptography.hazmat.primitives.ciphers.algorithms import AES, ARC4
+/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:383: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [54579]
+INFO:     Waiting for application startup.
+--> STARTUP: Listing all registered routes:
+   Route: /openapi.json [GET,HEAD]
+   Route: /docs [GET,HEAD]
+   Route: /docs/oauth2-redirect [GET,HEAD]
+   Route: /redoc [GET,HEAD]
+   Route: /api/categories [GET]
+   Route: /api/content/view [POST]
+   Route: /api/content/share [POST]
+   Route: /api/trending [GET]
+   Route: /api/content/by-category [GET]
+   Route: /health [GET]
+   Route: /api/auth/login/{provider} [GET]
+   Route: /api/auth/callback/{provider} [GET]
+   Route: /api/signup [POST]
+   Route: /api/token [POST]
+   Route: /api/profile [GET]
+   Route: /api/is-superuser [GET]
+   Route: /api/profile [PUT]
+   Route: /api/generate-meme-prompt [POST]
+   Route: /api/generate-ai-video [POST]
+   Route: /api/generate-gif-video [POST]
+   Route: /api/generate-meme [POST]
+   Route: /api/extract-url [POST]
+   Route: /api/extract-file [POST]
+   Route: /api/generate-mcqs [POST]
+   Route: /api/quiz-session [POST]
+   Route: /api/meme-generation [POST]
+   Route: /api/logout [POST]
+   Route: /api/track-event [POST]
+   Route: /api/track-session [POST]
+   Route: /api/upload-image [POST]
+   Route: /api/social/like [POST]
+   Route: /api/social/comment [POST]
+   Route: /api/social/comments [GET]
+   Route: /api/social/feed [GET]
+   Route: /api/bookmarks/toggle [POST]
+   Route: /api/bookmarks [GET]
+   Route: /api/bookmarks/check [GET]
+   Route: /api/analytics/dashboard [GET]
+   Route: /api/analytics/users [GET]
+   Route: /api/admin/tables [GET]
+   Route: /api/admin/table/{table_name} [GET]
+   Route: /api/admin/query [POST]
+   Route: /admin [GET]
+   Route:  (Mount)
+INFO:     Application startup complete.
+./start_server.sh: line 8: 51007 Killed: 9               venv/bin/uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000 --log-level debug
