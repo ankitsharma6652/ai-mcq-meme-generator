@@ -1,27 +1,23 @@
 name: Deploy to PythonAnywhere
 
-# Disabled for now - use manual deployment instead
-# Uncomment when SSH authentication is fixed
 on:
-  workflow_dispatch:  # Only run manually
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Deploy to PythonAnywhere
-      uses: appleboy/ssh-action@master
-      with:
-        host: ssh.pythonanywhere.com
-        username: quizmeme
-        password: ${{ secrets.PYTHONANYWHERE_PASSWORD }}
-        script: |
-          cd /home/quizmeme/ai-mcq-meme-generator
-          git pull origin main
-          source venv/bin/activate
-          pip install -r requirements.txt
-          touch /var/www/quizmeme_pythonanywhere_com_wsgi.py
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Deploy via API
+      env:
+        PA_USERNAME: ${{ secrets.PA_USERNAME }}
+        PA_API_TOKEN: ${{ secrets.PA_API_TOKEN }}
+        PA_DOMAIN: ${{ secrets.PA_DOMAIN }}
+      run: |
+        pip install requests
+        python deploy.py
