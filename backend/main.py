@@ -29,6 +29,10 @@ import uuid
 from groq import Groq
 from dotenv import load_dotenv
 from gradio_client import Client
+import sys
+
+# Add the current directory (backend) to sys.path to allow imports like 'import models'
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Import new modules
 # Import new modules

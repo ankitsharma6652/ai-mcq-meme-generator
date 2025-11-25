@@ -57,3 +57,5 @@ dist/
 
 # Project specific
 frontend/uploads/
+*.db-shm
+*.db-wal

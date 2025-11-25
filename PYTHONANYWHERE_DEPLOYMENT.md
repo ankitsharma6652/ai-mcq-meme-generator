@@ -5,40 +5,27 @@
 1. Go to https://www.pythonanywhere.com/registration/register/beginner/
 2. Create a **free Beginner account**
 3. Choose a username (this will be your URL: `yourusername.pythonanywhere.com`)
-   - Suggested: `memucate` or `quizmeme` or `ankitsharma6652`
 
-## Step 2: Upload Your Code
+## Step 2: Get Your Code (Clone from GitHub)
 
-### Option A: Upload ZIP File (Easiest)
+Since your code is now on GitHub, this is the best way!
 
-1. **Download the ZIP file** from your local machine:
-   - Location: `/Users/ankit-sharma/Downloads/ai-mcq-meme-generator/ai-mcq-meme-generator.zip`
-
-2. **In PythonAnywhere:**
-   - Click on the **Files** tab
-   - Click **Upload a file**
-   - Select `ai-mcq-meme-generator.zip`
-   - Wait for upload to complete
-
-3. **Extract the ZIP:**
-   - Click on **Consoles** tab
+1. **In PythonAnywhere:**
+   - Click on the **Consoles** tab
    - Start a new **Bash console**
-   - Run:
-     ```bash
-     unzip ai-mcq-meme-generator.zip -d ai-mcq-meme-generator
-     cd ai-mcq-meme-generator
-     ```
-
-### Option B: Clone from GitHub (If you get GitHub working)
+   - Run these commands:
 
 ```bash
+# Clone your repository
 git clone https://github.com/ankitsharma6652/ai-mcq-meme-generator.git
+
+# Go into the directory
 cd ai-mcq-meme-generator
 ```
 
 ## Step 3: Set Up Virtual Environment
 
-In the Bash console:
+In the same Bash console:
 
 ```bash
 # Create virtual environment
@@ -80,8 +67,13 @@ project_home = '/home/YOUR_USERNAME/ai-mcq-meme-generator'
 if project_home not in sys.path:
     sys.path.insert(0, project_home)
 
-# Set environment variables
-os.environ['DATABASE_URL'] = f"sqlite:///{project_home}/backend/mcq_meme_v2.db"
+# Set environment variables (IMPORTANT: Update with your keys)
+os.environ['GROQ_API_KEY'] = "YOUR_GROQ_API_KEY"
+os.environ['REPLICATE_API_TOKEN'] = "YOUR_REPLICATE_API_TOKEN"
+os.environ['HF_TOKEN'] = "YOUR_HF_TOKEN"
+
+# Database URL
+os.environ['DATABASE_URL'] = f"sqlite:///{project_home}/backend/meme_quiz_generator.db"
 
 # Import the FastAPI app
 from backend.main import app as application
@@ -91,7 +83,9 @@ from a2wsgi import ASGIMiddleware
 application = ASGIMiddleware(application)
 ```
 
-**Important:** Replace `YOUR_USERNAME` with your actual PythonAnywhere username!
+**CRITICAL:** 
+- Replace `YOUR_USERNAME` with your actual PythonAnywhere username.
+- Replace `YOUR_GROQ_API_KEY`, etc. with your actual keys from your local `.env` file.
 
 4. Click **Save**
 
@@ -172,39 +166,20 @@ If the app doesn't work:
 
 ### Update Your App
 
-When you make changes:
-1. Upload new files via **Files** tab
-2. Click **Reload** in **Web** tab
-
-## Environment Variables (Optional)
-
-If you need to set environment variables:
-1. Go to **Web** tab
-2. Scroll to **Environment variables**
-3. Add:
-   - `GROQ_API_KEY`: Your Groq API key
-   - `DATABASE_URL`: `sqlite:///./mcq_meme_v2.db`
-
-## Free Tier Limitations
-
-- Your app will sleep after inactivity
-- Limited CPU seconds per day
-- 512 MB storage
-- No custom domain (unless you upgrade)
+When you make changes locally:
+1. Push to GitHub: `git push`
+2. In PythonAnywhere Bash console:
+   ```bash
+   cd ai-mcq-meme-generator
+   git pull
+   ```
+3. Reload Web App
 
 ## Upgrade Options
 
 If you need more resources:
 - **Hacker Plan**: $5/month - More CPU, storage, custom domain
 - **Web Developer Plan**: $12/month - Even more resources
-
----
-
-## Quick Reference
-
-**Your App URL:** `https://YOUR_USERNAME.pythonanywhere.com`
-**Admin Panel:** `https://YOUR_USERNAME.pythonanywhere.com/admin`
-**Files Location:** `/home/YOUR_USERNAME/ai-mcq-meme-generator`
 
 ---
 
