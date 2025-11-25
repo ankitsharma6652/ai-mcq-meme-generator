@@ -1523,34 +1523,38 @@ async def track_event(
     current_user: models.User = Depends(get_current_user_optional)
 ):
     """Track user events for journey analysis"""
-    try:
-        user_event = models.UserEvent(
-            user_id=current_user.id if current_user else None,
-            session_id=event.session_id,
-            event_type=event.event_type,
-            event_category=event.event_category,
-            event_action=event.event_action,
-            event_label=event.event_label,
-            event_value=event.event_value,
-            page_url=event.page_url,
-            page_title=event.page_title,
-            referrer=event.referrer,
-            device_type=event.device_type,
-            browser=event.browser,
-            os=event.os,
-            time_on_page=event.time_on_page,
-            event_metadata=event.metadata,
-            ip_address=req.client.host if req.client else None,
-            user_agent=req.headers.get('user-agent', None)
-        )
-        db.add(user_event)
-        db.commit()
-        
-        return {"success": True}
-    except Exception as e:
-        print(f"Event tracking error: {e}")
-        db.rollback()
-        return {"success": False, "error": str(e)}
+    # Return immediately to avoid timeouts - analytics is non-critical
+    return {"success": True}
+    
+    # Disabled for now to prevent timeouts on PythonAnywhere
+    # try:
+    #     user_event = models.UserEvent(
+    #         user_id=current_user.id if current_user else None,
+    #         session_id=event.session_id,
+    #         event_type=event.event_type,
+    #         event_category=event.event_category,
+    #         event_action=event.event_action,
+    #         event_label=event.event_label,
+    #         event_value=event.event_value,
+    #         page_url=event.page_url,
+    #         page_title=event.page_title,
+    #         referrer=event.referrer,
+    #         device_type=event.device_type,
+    #         browser=event.browser,
+    #         os=event.os,
+    #         time_on_page=event.time_on_page,
+    #         event_metadata=event.metadata,
+    #         ip_address=req.client.host if req.client else None,
+    #         user_agent=req.headers.get('user-agent', None)
+    #     )
+    #     db.add(user_event)
+    #     db.commit()
+    #     
+    #     return {"success": True}
+    # except Exception as e:
+    #     print(f"Event tracking error: {e}")
+    #     db.rollback()
+    #     return {"success": False, "error": str(e)}
 
 @app.post("/api/track-session")
 async def track_session(
