@@ -1,9 +1,14 @@
 const { useState } = React;
 
+// Get API base URL (works for both localhost and PythonAnywhere)
+const API_BASE_URL = window.location.hostname === 'localhost'
+    ? 'http://localhost:8000'
+    : window.location.origin;
+
 // OAuth Helper Function
 const initiateOAuthLogin = async (provider) => {
     try {
-        const response = await fetch(`http://localhost:8000/api/auth/login/${provider}`);
+        const response = await fetch(`${API_BASE_URL}/api/auth/login/${provider}`);
         const data = await response.json();
 
         if (data.authorization_url) {
