@@ -1560,45 +1560,50 @@ async def track_session(
     current_user: models.User = Depends(get_current_user_optional)
 ):
     """Track or update user session"""
-    try:
-        # Check if session exists
-        existing_session = db.query(models.UserSession).filter(
-            models.UserSession.session_id == session.session_id
-        ).first()
-        
-        if existing_session:
-            # Update existing session
-            existing_session.ended_at = session.ended_at
-            existing_session.duration_seconds = session.duration_seconds
-            existing_session.is_active = session.is_active
-            existing_session.pages_viewed = session.pages_viewed
-            existing_session.mcqs_generated = session.mcqs_generated
-            existing_session.quizzes_taken = session.quizzes_taken
-            existing_session.memes_generated = session.memes_generated
-        else:
-            # Create new session
-            user_session = models.UserSession(
-                user_id=current_user.id if current_user else None,
-                session_id=session.session_id,
-                started_at=session.started_at,
-                ended_at=session.ended_at,
-                duration_seconds=session.duration_seconds,
-                is_active=session.is_active,
-                pages_viewed=session.pages_viewed,
-                mcqs_generated=session.mcqs_generated,
-                quizzes_taken=session.quizzes_taken,
-                memes_generated=session.memes_generated,
-                ip_address=req.client.host if req.client else None,
-                user_agent=req.headers.get('user-agent', None)
-            )
-            db.add(user_session)
-        
-        db.commit()
-        return {"success": True}
-    except Exception as e:
-        print(f"Session tracking error: {e}")
-        db.rollback()
-        return {"success": False, "error": str(e)}
+    # Return immediately to avoid timeouts - analytics is non-critical
+    return {"success": True}
+    
+    # Disabled for now to prevent HARAKIRI timeouts on PythonAnywhere
+    # try:
+    #     # Check if session exists
+    #     existing_session = db.query(models.UserSession).filter(
+    #         models.UserSession.session_id == session.session_id
+    #     ).first()
+    #     
+    #     if existing_session:
+    #         # Update existing session
+    #         existing_session.ended_at = session.ended_at
+    #         existing_session.duration_seconds = session.duration_seconds
+    #         existing_session.is_active = session.is_active
+    #         existing_session.pages_viewed = session.pages_viewed
+    #         existing_session.mcqs_generated = session.mcqs_generated
+    #         existing_session.quizzes_taken = session.quizzes_taken
+    #         existing_session.memes_generated = session.memes_generated
+    #     else:
+    #         # Create new session
+    #         user_session = models.UserSession(
+    #             user_id=current_user.id if current_user else None,
+    #             session_id=session.session_id,
+    #             started_at=session.started_at,
+    #             ended_at=session.ended_at,
+    #             duration_seconds=session.duration_seconds,
+    #             is_active=session.is_active,
+    #             pages_viewed=session.pages_viewed,
+    #             mcqs_generated=session.mcqs_generated,
+    #             quizzes_taken=session.quizzes_taken,
+    #             memes_generated=session.memes_generated,
+    #             ip_address=req.client.host if req.client else None,
+    #             user_agent=req.headers.get('user-agent', None)
+    #         )
+    #         db.add(user_session)
+    #     
+    #     db.commit()
+    #     return {"success": True}
+    # except Exception as e:
+    #     print(f"Session tracking error: {e}")
+    #     db.rollback()
+    #     return {"success": False, "error": str(e)}
+
 
 # ==================== END EVENT & SESSION TRACKING ====================
 
