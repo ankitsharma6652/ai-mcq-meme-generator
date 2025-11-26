@@ -1,6 +1,5 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException, Request, Depends, status
-import nest_asyncio
-nest_asyncio.apply()
+
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
