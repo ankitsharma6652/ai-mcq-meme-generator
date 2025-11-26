@@ -854,4 +854,48 @@ pre code {
     to {
         opacity: 1;
     }
+}/* Header Responsive Styles */
+.main-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.header-center {
+    /* The pill */
+}
+
+.header-right {
+    position: absolute;
+    right: 20px;
+    top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 100;
+}
+
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .header-right {
+        position: static;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* Adjust user menu width on mobile */
+    .header-right>div {
+        width: 100%;
+        justify-content: center;
+    }
 }

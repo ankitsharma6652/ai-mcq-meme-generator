@@ -1494,7 +1494,7 @@ function App() {
                     const encodedPrompt = encodeURIComponent(safePrompt);
                     const seed = Math.floor(Math.random() * 10000);
                     // Explicitly use 'turbo' model since 'flux' servers are down
-                    const url = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=1024&height=1024&seed=${seed}&nologo=true&model=turbo`;
+                    const url = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=800&seed=${seed}&nologo=true&model=turbo`;
 
                     console.log('🎨 Generated meme URL:', url);
                     console.log('📝 Prompt:', prompt);
@@ -1812,7 +1812,7 @@ function App() {
     // Otherwise, show the main generator interface
     return (
         <div className="container">
-            <header style={{ marginBottom: '2rem', textAlign: 'center', position: 'relative', paddingTop: '1rem' }}>
+            <header className="main-header">
                 <div style={{
                     display: 'inline-block',
                     padding: '0.75rem 1.5rem',
@@ -1834,7 +1834,7 @@ function App() {
                     </div>
                 </div>
 
-                <div style={{ position: 'absolute', right: '20px', top: '1rem', display: 'flex', alignItems: 'center', gap: '1rem', zIndex: 100 }}>
+                <div className="header-right">
                     {token ? (
                         <div
                             style={{ position: 'relative' }}
