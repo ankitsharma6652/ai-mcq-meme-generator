@@ -2728,9 +2728,24 @@ function App() {
                                             }}>
                                                 <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>⏳</div>
                                                 <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Loading image...</div>
-                                                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', wordBreak: 'break-all', background: 'rgba(255,255,255,0.5)', padding: '0.5rem', borderRadius: '4px' }}>
+                                                <a
+                                                    href={imgUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    style={{
+                                                        fontSize: '0.75rem',
+                                                        color: '#3b82f6',
+                                                        wordBreak: 'break-all',
+                                                        background: 'rgba(255,255,255,0.5)',
+                                                        padding: '0.5rem',
+                                                        borderRadius: '4px',
+                                                        display: 'block',
+                                                        textDecoration: 'underline',
+                                                        cursor: 'pointer'
+                                                    }}
+                                                >
                                                     {imgUrl}
-                                                </div>
+                                                </a>
                                             </div>
                                             <img
                                                 src={imgUrl}
