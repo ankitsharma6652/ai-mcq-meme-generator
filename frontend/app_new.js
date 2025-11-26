@@ -897,6 +897,7 @@ function App() {
     const [numMemes, setNumMemes] = useState(1);
     const [memeLoading, setMemeLoading] = useState(false);
     const [timer, setTimer] = useState(0);
+    const [longLoading, setLongLoading] = useState(false);
     const [mcqSource, setMcqSource] = useState(null);
     const [generationId, setGenerationId] = useState(null);
     const [mcqId, setMcqId] = useState(null);
@@ -1379,6 +1380,8 @@ function App() {
         }
 
         setMemeLoading(true);
+        setLongLoading(false);
+        setTimeout(() => setLongLoading(true), 10000);
         setError(null);
         setMemeImages([]);
 
@@ -2640,7 +2643,7 @@ function App() {
                         }}
                     >
                         {memeLoading ? <span className="material-icons spin" style={{ marginRight: '0.5rem' }}>autorenew</span> : <span className="material-icons" style={{ marginRight: '0.5rem' }}>brush</span>}
-                        {memeLoading ? `Dreaming up a meme... ${loadingProgress}%` : 'Dreaming up a meme...'}
+                        {memeLoading ? (longLoading ? "🎨 AI is painting... taking a bit longer!" : `Dreaming up a meme... ${loadingProgress}%`) : 'Dreaming up a meme...'}
                     </button>
                 )}
             </div>
