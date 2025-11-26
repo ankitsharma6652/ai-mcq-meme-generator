@@ -111,13 +111,13 @@ app.add_middleware(
 # Include routers
 app.include_router(category_endpoints.router)
 
-# Feedback router
-try:
-    from feedback_routes import router as feedback_router
-    app.include_router(feedback_router)
-    print("✅ Feedback routes loaded")
-except Exception as e:
-    print(f"⚠️ Could not load feedback routes: {e}")
+# Feedback router (now defined directly in main.py)
+# try:
+#     from feedback_routes import router as feedback_router
+#     app.include_router(feedback_router)
+#     print("✅ Feedback routes loaded")
+# except Exception as e:
+#     print(f"⚠️ Could not load feedback routes: {e}")
 
 # Superuser Configuration
 SUPERUSER_EMAILS = [
@@ -2488,6 +2488,105 @@ async def execute_query(request: QueryRequest, db: Session = Depends(get_db)):
         raise HTTPException(status_code=500, detail=str(e))
 
 # ==================== END ADMIN PANEL ENDPOINTS ====================
+
+# ==================== FEEDBACK ENDPOINTS ====================
+
+from pydantic import EmailStr
+
+class FeedbackCreate(BaseModel):
+    guest_name: Optional[str] = None
+    guest_email: Optional[EmailStr] = None
+    guest_mobile: Optional[str] = None
+    guest_country: Optional[str] = None
+    message: str
+    rating: Optional[int] = None
+
+@app.post("/api/feedback/submit")
+async def submit_feedback(
+    feedback_data: FeedbackCreate,
+    request: Request,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_user_optional)
+):
+    """Submit feedback (works for both guests and logged-in users)"""
+    
+    # Validation
+    if not current_user:
+        if not feedback_data.guest_name or not feedback_data.guest_email:
+            raise HTTPException(
+                status_code=400,
+                detail="Name and email are required for guest feedback"
+            )
+    
+    if not feedback_data.message or len(feedback_data.message.strip()) < 10:
+        raise HTTPException(
+            status_code=400,
+            detail="Feedback message must be at least 10 characters"
+        )
+    
+    if feedback_data.rating and (feedback_data.rating < 1 or feedback_data.rating > 5):
+        raise HTTPException(
+            status_code=400,
+            detail="Rating must be between 1 and 5"
+        )
+    
+    # Create feedback entry
+    feedback = models.Feedback(
+        user_id=current_user.id if current_user else None,
+        guest_name=feedback_data.guest_name if not current_user else None,
+        guest_email=feedback_data.guest_email if not current_user else None,
+        guest_mobile=feedback_data.guest_mobile if not current_user else None,
+        guest_country=feedback_data.guest_country if not current_user else None,
+        message=feedback_data.message,
+        rating=feedback_data.rating,
+        ip_address=request.client.host if request.client else None,
+        user_agent=request.headers.get("user-agent")
+    )
+    
+    db.add(feedback)
+    db.commit()
+    db.refresh(feedback)
+    
+    return {
+        "success": True,
+        "message": "Thank you for your feedback!",
+        "feedback_id": feedback.id
+    }
+
+@app.get("/api/feedback/list")
+async def list_feedback(
+    skip: int = 0,
+    limit: int = 50,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_user_optional)
+):
+    """List all feedback (admin only)"""
+    if not current_user or not current_user.is_superuser:
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    feedbacks = db.query(models.Feedback).order_by(models.Feedback.created_at.desc()).offset(skip).limit(limit).all()
+    
+    return {
+        "feedbacks": [
+            {
+                "id": f.id,
+                "user_id": f.user_id,
+                "user_name": f.user.full_name if f.user else f.guest_name,
+                "user_email": f.user.email if f.user else f.guest_email,
+                "guest_mobile": f.guest_mobile,
+                "guest_country": f.guest_country,
+                "message": f.message,
+                "rating": f.rating,
+                "created_at": f.created_at.isoformat(),
+                "is_read": f.is_read,
+                "admin_notes": f.admin_notes
+            }
+            for f in feedbacks
+        ]
+    }
+
+# ==================== END FEEDBACK ENDPOINTS ====================
+
 
 # Admin Panel Route
 @app.get("/admin")
