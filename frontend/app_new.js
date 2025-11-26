@@ -2715,7 +2715,23 @@ function App() {
                                             </video>
                                         </div>
                                     ) : (
-                                        <div style={{ position: 'relative', width: '100%', paddingTop: '100%' }}>
+                                        <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: '#f1f5f9', borderRadius: '0.5rem' }}>
+                                            {/* Loading Placeholder */}
+                                            <div style={{
+                                                position: 'absolute',
+                                                top: '50%',
+                                                left: '50%',
+                                                transform: 'translate(-50%, -50%)',
+                                                textAlign: 'center',
+                                                width: '90%',
+                                                zIndex: 0
+                                            }}>
+                                                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>⏳</div>
+                                                <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Loading image...</div>
+                                                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', wordBreak: 'break-all', background: 'rgba(255,255,255,0.5)', padding: '0.5rem', borderRadius: '4px' }}>
+                                                    {imgUrl}
+                                                </div>
+                                            </div>
                                             <img
                                                 src={imgUrl}
                                                 alt={`Meme ${index + 1}`}
