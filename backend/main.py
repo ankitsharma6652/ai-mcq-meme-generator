@@ -1,4 +1,6 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException, Request, Depends, status
+import nest_asyncio
+nest_asyncio.apply()
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -54,10 +56,17 @@ import category_endpoints
 
 # Load environment variables from parent directory
 env_path = os.path.join(os.path.dirname(__file__), "..", ".env")
-load_dotenv(dotenv_path=env_path)
+load_dotenv(dotenv_path=env_path, override=False)
 
+# Debug: Log environment variables at startup
+logger.info("=" * 50)
+logger.info("ENVIRONMENT VARIABLES CHECK:")
+logger.info(f"GOOGLE_CLIENT_ID: {'SET' if os.getenv('GOOGLE_CLIENT_ID') else 'NOT SET'}")
+logger.info(f"GOOGLE_CLIENT_SECRET: {'SET' if os.getenv('GOOGLE_CLIENT_SECRET') else 'NOT SET'}")
+logger.info(f"APP_BASE_URL: {os.getenv('APP_BASE_URL', 'NOT SET')}")
+logger.info("=" * 50)
 # Initialize Database Tables
-models.Base.metadata.create_all(bind=database.engine)
+# Database creation moved to startup event
 
 # Initialize Rate Limiter
 limiter = Limiter(key_func=get_remote_address)

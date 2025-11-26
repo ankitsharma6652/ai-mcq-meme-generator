@@ -16,54 +16,49 @@ class OAuthProvider:
         self.user_info_url = user_info_url
         self.scopes = scopes
 
-# OAuth Provider Configurations
-GOOGLE = OAuthProvider(
-    name="google",
-    client_id=os.getenv("GOOGLE_CLIENT_ID", ""),
-    client_secret=os.getenv("GOOGLE_CLIENT_SECRET", ""),
-    authorize_url="https://accounts.google.com/o/oauth2/v2/auth",
-    token_url="https://oauth2.googleapis.com/token",
-    user_info_url="https://www.googleapis.com/oauth2/v2/userinfo",
-    scopes=["openid", "email", "profile"]
-)
 
-GITHUB = OAuthProvider(
-    name="github",
-    client_id=os.getenv("GITHUB_CLIENT_ID", ""),
-    client_secret=os.getenv("GITHUB_CLIENT_SECRET", ""),
-    authorize_url="https://github.com/login/oauth/authorize",
-    token_url="https://github.com/login/oauth/access_token",
-    user_info_url="https://api.github.com/user",
-    scopes=["user:email"]
-)
 
-LINKEDIN = OAuthProvider(
-    name="linkedin",
-    client_id=os.getenv("LINKEDIN_CLIENT_ID", ""),
-    client_secret=os.getenv("LINKEDIN_CLIENT_SECRET", ""),
-    authorize_url="https://www.linkedin.com/oauth/v2/authorization",
-    token_url="https://www.linkedin.com/oauth/v2/accessToken",
-    user_info_url="https://api.linkedin.com/v2/me",
-    scopes=["r_liteprofile", "r_emailaddress"]
-)
-
-TWITTER = OAuthProvider(
-    name="twitter",
-    client_id=os.getenv("TWITTER_CLIENT_ID", ""),
-    client_secret=os.getenv("TWITTER_CLIENT_SECRET", ""),
-    authorize_url="https://twitter.com/i/oauth2/authorize",
-    token_url="https://api.twitter.com/2/oauth2/token",
-    user_info_url="https://api.twitter.com/2/users/me",
-    scopes=["tweet.read", "users.read"]
-)
-
-# Map provider names to configurations
-PROVIDERS: Dict[str, OAuthProvider] = {
-    "google": GOOGLE,
-    "github": GITHUB,
-    "linkedin": LINKEDIN,
-    "twitter": TWITTER
-}
+# Lazy provider initialization - reads env vars at runtime, not import time
+def get_providers() -> Dict[str, OAuthProvider]:
+    """Create providers dictionary with current environment variables"""
+    return {
+        "google": OAuthProvider(
+            name="google",
+            client_id=os.getenv("GOOGLE_CLIENT_ID", ""),
+            client_secret=os.getenv("GOOGLE_CLIENT_SECRET", ""),
+            authorize_url="https://accounts.google.com/o/oauth2/v2/auth",
+            token_url="https://oauth2.googleapis.com/token",
+            user_info_url="https://www.googleapis.com/oauth2/v2/userinfo",
+            scopes=["openid", "email", "profile"]
+        ),
+        "github": OAuthProvider(
+            name="github",
+            client_id=os.getenv("GITHUB_CLIENT_ID", ""),
+            client_secret=os.getenv("GITHUB_CLIENT_SECRET", ""),
+            authorize_url="https://github.com/login/oauth/authorize",
+            token_url="https://github.com/login/oauth/access_token",
+            user_info_url="https://api.github.com/user",
+            scopes=["user:email"]
+        ),
+        "linkedin": OAuthProvider(
+            name="linkedin",
+            client_id=os.getenv("LINKEDIN_CLIENT_ID", ""),
+            client_secret=os.getenv("LINKEDIN_CLIENT_SECRET", ""),
+            authorize_url="https://www.linkedin.com/oauth/v2/authorization",
+            token_url="https://www.linkedin.com/oauth/v2/accessToken",
+            user_info_url="https://api.linkedin.com/v2/me",
+            scopes=["r_liteprofile", "r_emailaddress"]
+        ),
+        "twitter": OAuthProvider(
+            name="twitter",
+            client_id=os.getenv("TWITTER_CLIENT_ID", ""),
+            client_secret=os.getenv("TWITTER_CLIENT_SECRET", ""),
+            authorize_url="https://twitter.com/i/oauth2/authorize",
+            token_url="https://api.twitter.com/2/oauth2/token",
+            user_info_url="https://api.twitter.com/2/users/me",
+            scopes=["tweet.read", "users.read"]
+        )
+    }
 
 # Get redirect URI for your application
 def get_redirect_uri(provider_name: str) -> str:

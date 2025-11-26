@@ -7,7 +7,7 @@ import secrets
 from urllib.parse import urlencode
 from fastapi import HTTPException
 from typing import Dict, Optional
-from auth.oauth_config import PROVIDERS, get_redirect_uri
+from auth.oauth_config import get_providers, get_redirect_uri
 
 # Store for OAuth state tokens (in production, use Redis or database)
 oauth_states = {}
@@ -16,10 +16,11 @@ def generate_oauth_url(provider_name: str) -> str:
     """
     Generate OAuth authorization URL for given provider
     """
-    if provider_name not in PROVIDERS:
+    providers = get_providers()
+    if provider_name not in providers:
         raise HTTPException(status_code=400, detail=f"Unknown provider: {provider_name}")
     
-    provider = PROVIDERS[provider_name]
+    provider = providers[provider_name]
     
     if not provider.client_id:
         raise HTTPException(
@@ -51,10 +52,11 @@ async def exchange_code_for_token(provider_name: str, code: str) -> str:
     """
     Exchange authorization code for access token
     """
-    if provider_name not in PROVIDERS:
+    providers = get_providers()
+    if provider_name not in providers:
         raise HTTPException(status_code=400, detail=f"Unknown provider: {provider_name}")
     
-    provider = PROVIDERS[provider_name]
+    provider = providers[provider_name]
     
     data = {
         "client_id": provider.client_id,
@@ -80,10 +82,11 @@ async def get_user_info(provider_name: str, access_token: str) -> Dict:
     """
     Fetch user information from OAuth provider
     """
-    if provider_name not in PROVIDERS:
+    providers = get_providers()
+    if provider_name not in providers:
         raise HTTPException(status_code=400, detail=f"Unknown provider: {provider_name}")
     
-    provider = PROVIDERS[provider_name]
+    provider = providers[provider_name]
     
     headers = {
         "Authorization": f"Bearer {access_token}",
