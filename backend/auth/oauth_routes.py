@@ -151,4 +151,18 @@ def get_or_create_oauth_user(db: Session, user_info: dict) -> models.User:
             db.commit()
             db.refresh(user)
     
+    # Check for superuser promotion
+    SUPERUSER_EMAILS = [
+        "digitalaks9@gmail.com",
+        "ankitcoolji@gmail.com"
+    ]
+    
+    if user.email.lower().strip() in [e.lower().strip() for e in SUPERUSER_EMAILS]:
+        if not user.is_superuser:
+            logger.info(f"Promoting user to superuser on login: {user.email}")
+            user.is_superuser = True
+            db.add(user)
+            db.commit()
+            db.refresh(user)
+    
     return user
