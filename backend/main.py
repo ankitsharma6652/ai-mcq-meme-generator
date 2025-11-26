@@ -113,8 +113,8 @@ app.include_router(category_endpoints.router)
 
 # Feedback router
 try:
-    import feedback_routes
-    app.include_router(feedback_routes.router)
+    from feedback_routes import router as feedback_router
+    app.include_router(feedback_router)
     print("✅ Feedback routes loaded")
 except Exception as e:
     print(f"⚠️ Could not load feedback routes: {e}")
