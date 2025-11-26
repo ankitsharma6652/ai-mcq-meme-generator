@@ -2781,28 +2781,56 @@ function App() {
                                                 transform: 'translate(-50%, -50%)',
                                                 textAlign: 'center',
                                                 width: '90%',
-                                                zIndex: 0
+                                                zIndex: 2,
+                                                pointerEvents: 'auto'
                                             }}>
                                                 <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>⏳</div>
                                                 <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Loading image...</div>
-                                                <a
-                                                    href={imgUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    style={{
-                                                        fontSize: '0.75rem',
-                                                        color: '#3b82f6',
-                                                        wordBreak: 'break-all',
-                                                        background: 'rgba(255,255,255,0.5)',
-                                                        padding: '0.5rem',
-                                                        borderRadius: '4px',
-                                                        display: 'block',
-                                                        textDecoration: 'underline',
-                                                        cursor: 'pointer'
-                                                    }}
-                                                >
-                                                    {imgUrl}
-                                                </a>
+                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
+                                                    <a
+                                                        href={imgUrl}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        style={{
+                                                            fontSize: '0.75rem',
+                                                            color: '#3b82f6',
+                                                            wordBreak: 'break-all',
+                                                            background: 'rgba(255,255,255,0.9)',
+                                                            padding: '0.5rem',
+                                                            borderRadius: '4px',
+                                                            display: 'block',
+                                                            textDecoration: 'underline',
+                                                            cursor: 'pointer',
+                                                            maxHeight: '60px',
+                                                            overflow: 'auto',
+                                                            width: '100%'
+                                                        }}
+                                                    >
+                                                        {imgUrl}
+                                                    </a>
+                                                    <button
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            navigator.clipboard.writeText(imgUrl);
+                                                            e.target.textContent = '✅ Copied!';
+                                                            setTimeout(() => {
+                                                                e.target.textContent = '📋 Copy URL';
+                                                            }, 2000);
+                                                        }}
+                                                        style={{
+                                                            padding: '0.5rem 1rem',
+                                                            background: '#3b82f6',
+                                                            color: 'white',
+                                                            border: 'none',
+                                                            borderRadius: '6px',
+                                                            cursor: 'pointer',
+                                                            fontSize: '0.85rem',
+                                                            fontWeight: '600'
+                                                        }}
+                                                    >
+                                                        📋 Copy URL
+                                                    </button>
+                                                </div>
                                             </div>
                                             <img
                                                 src={imgUrl}
