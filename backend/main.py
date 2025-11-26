@@ -111,6 +111,14 @@ app.add_middleware(
 # Include routers
 app.include_router(category_endpoints.router)
 
+# Feedback router
+try:
+    import feedback_routes
+    app.include_router(feedback_routes.router)
+    print("✅ Feedback routes loaded")
+except Exception as e:
+    print(f"⚠️ Could not load feedback routes: {e}")
+
 # Superuser Configuration
 SUPERUSER_EMAILS = [
     "digitalaks9@gmail.com",

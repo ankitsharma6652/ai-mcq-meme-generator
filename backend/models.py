@@ -420,3 +420,34 @@ class Bookmark(Base):
     user = relationship("User")
 
 # ==================== END NORMALIZED TABLES ====================
+
+# ==================== FEEDBACK ====================
+
+class Feedback(Base):
+    """Store user and guest feedback"""
+    __tablename__ = "feedback"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
+    
+    # Guest Information (only if user_id is None)
+    guest_name = Column(String(100), nullable=True)
+    guest_email = Column(String(255), nullable=True)
+    guest_mobile = Column(String(50), nullable=True)
+    guest_country = Column(String(100), nullable=True)
+    
+    # Feedback Content
+    message = Column(Text, nullable=False)
+    rating = Column(Integer, nullable=True)  # 1-5 stars (optional)
+    
+    # Metadata
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), index=True)
+    ip_address = Column(String(50), nullable=True)
+    user_agent = Column(String(500), nullable=True)
+    
+    # Status
+    is_read = Column(Boolean, default=False, index=True)
+    admin_notes = Column(Text, nullable=True)
+    
+    # Relationship
+    user = relationship("User")

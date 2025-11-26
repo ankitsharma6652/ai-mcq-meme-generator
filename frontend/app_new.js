@@ -908,6 +908,7 @@ function App() {
     const [showSettings, setShowSettings] = useState(false);
     const [showUserMenu, setShowUserMenu] = useState(false);
     const [showImageModal, setShowImageModal] = useState(false);
+    const [showFeedback, setShowFeedback] = useState(false);
 
     const [showDashboard, setShowDashboard] = useState(() => localStorage.getItem('showDashboard') === 'true');
     const [showSocialFeed, setShowSocialFeed] = useState(() => localStorage.getItem('showSocialFeed') === 'true');
@@ -2110,6 +2111,33 @@ function App() {
                                             )}
 
                                             <div
+                                                onClick={() => { setShowFeedback(true); setShowUserMenu(false); }}
+                                                className="menu-item"
+                                                style={{
+                                                    padding: '0.8rem 1rem',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '1rem',
+                                                    cursor: 'pointer',
+                                                    color: 'var(--text-primary)',
+                                                    borderRadius: '12px',
+                                                    transition: 'all 0.2s',
+                                                    fontWeight: '500'
+                                                }}
+                                                onMouseEnter={(e) => {
+                                                    e.currentTarget.style.background = 'rgba(16, 185, 129, 0.1)';
+                                                    e.currentTarget.style.color = '#10b981';
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    e.currentTarget.style.background = 'transparent';
+                                                    e.currentTarget.style.color = 'var(--text-primary)';
+                                                }}
+                                            >
+                                                <span className="material-icons" style={{ fontSize: '1.3rem' }}>feedback</span>
+                                                Send Feedback
+                                            </div>
+
+                                            <div
                                                 onClick={() => { setShowSettings(true); setShowUserMenu(false); }}
                                                 className="menu-item"
                                                 style={{
@@ -2196,6 +2224,35 @@ function App() {
                             >
                                 <span className="material-icons" style={{ fontSize: '1.2rem' }}>groups</span>
                                 Community
+                            </button>
+                            <button
+                                onClick={() => setShowFeedback(true)}
+                                style={{
+                                    padding: '0.8rem 1.5rem',
+                                    background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '30px',
+                                    cursor: 'pointer',
+                                    fontWeight: '700',
+                                    fontSize: '1rem',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
+                                    boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)',
+                                    transition: 'all 0.3s ease'
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(-2px)';
+                                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(16, 185, 129, 0.4)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(0)';
+                                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(16, 185, 129, 0.3)';
+                                }}
+                            >
+                                <span className="material-icons" style={{ fontSize: '1.2rem' }}>feedback</span>
+                                Feedback
                             </button>
                             <button
                                 className="btn btn-primary"
@@ -3007,6 +3064,14 @@ function App() {
                     isOpen: showSettings,
                     onClose: () => setShowSettings(false),
                     token: token
+                })
+            )}
+
+            {/* Feedback Modal */}
+            {showFeedback && window.Feedback && (
+                React.createElement(window.Feedback, {
+                    token: token,
+                    onClose: () => setShowFeedback(false)
                 })
             )}
 
