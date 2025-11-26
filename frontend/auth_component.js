@@ -22,10 +22,28 @@ const initiateOAuthLogin = async (provider) => {
     }
 };
 
-const Auth = ({ onLogin }) => {
+const Auth = ({ onLogin, onClose }) => {
     return (
         <div className="auth-container">
-            <div className="auth-card">
+            <div className="auth-card" style={{ position: 'relative' }}>
+                <button
+                    onClick={onClose}
+                    style={{
+                        position: 'absolute',
+                        top: '1rem',
+                        right: '1rem',
+                        background: 'none',
+                        border: 'none',
+                        fontSize: '1.5rem',
+                        cursor: 'pointer',
+                        color: 'var(--text-secondary)',
+                        padding: '0.5rem',
+                        lineHeight: 1,
+                        zIndex: 10
+                    }}
+                >
+                    ✕
+                </button>
                 <h2>Welcome!</h2>
                 <p className="auth-subtitle">
                     Sign in to access your AI workspace

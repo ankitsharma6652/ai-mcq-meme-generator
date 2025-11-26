@@ -2964,53 +2964,11 @@ function App() {
             )}
 
             {/* Auth Modal */}
-            {showAuth && window.Auth && (
-                <div
-                    className="modal-overlay"
-                    onClick={() => setShowAuth(false)}
-                    style={{
-                        position: 'fixed',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        zIndex: 1000
-                    }}
-                >
-                    <div
-                        onClick={(e) => e.stopPropagation()}
-                        style={{
-                            position: 'relative',
-                            maxWidth: '500px',
-                            width: '90%',
-                            maxHeight: '90vh',
-                            overflowY: 'auto'
-                        }}
-                    >
-                        <button
-                            onClick={() => setShowAuth(false)}
-                            style={{
-                                position: 'absolute',
-                                top: '10px',
-                                right: '10px',
-                                background: 'transparent',
-                                border: 'none',
-                                fontSize: '2rem',
-                                cursor: 'pointer',
-                                color: 'var(--text-primary)',
-                                zIndex: 1001
-                            }}
-                        >
-                            ×
-                        </button>
-                        {React.createElement(window.Auth, { onLogin: (token) => { setToken(token); setShowAuth(false); } })}
-                    </div>
-                </div>
-            )}
+            {/* Auth Modal */}
+            {showAuth && window.Auth && React.createElement(window.Auth, {
+                onLogin: (token) => { setToken(token); setShowAuth(false); },
+                onClose: () => setShowAuth(false)
+            })}
 
             {/* User Settings Modal */}
             {showSettings && window.UserSettings && (
