@@ -31,7 +31,7 @@ const UserSettings = ({ isOpen, onClose, token }) => {
     const fetchProfile = async () => {
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:8000/api/profile', {
+            const response = await fetch('/api/profile', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -118,7 +118,7 @@ const UserSettings = ({ isOpen, onClose, token }) => {
         setMessage('');
 
         try {
-            const response = await fetch('http://localhost:8000/api/profile', {
+            const response = await fetch('/api/profile', {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
