@@ -20,3 +20,4 @@ aiofiles==23.2.1
 a2wsgi==1.10.0
 phonenumbers==8.13.26
 email-validator==2.1.0
+psycopg2-binary==2.9.9

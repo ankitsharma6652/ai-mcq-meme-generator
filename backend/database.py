@@ -12,17 +12,19 @@ load_dotenv(dotenv_path=env_path)
 # Format: mysql+pymysql://username:password@hostname/databasename
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
-if not DATABASE_URL:
-    # Fallback to SQLite for# Database URL
-# Using a new database file to resolve disk I/O errors
+if DATABASE_URL:
+    # Fix for Render/Heroku using postgres:// which SQLAlchemy deprecated
+    if DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+    
+    connect_args = {}
+else:
+    # Fallback to SQLite
     DATABASE_URL = "sqlite:///./mcq_meme_v2.db"
     connect_args = {
         "check_same_thread": False,
-        "timeout": 60  # Increase timeout to 60 seconds
+        "timeout": 60
     }
-else:
-    # MySQL configuration
-    connect_args = {}
 
 engine = create_engine(
     DATABASE_URL, 

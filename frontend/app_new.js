@@ -2715,7 +2715,7 @@ function App() {
                                             </video>
                                         </div>
                                     ) : (
-                                        <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: '#f1f5f9', borderRadius: '0.5rem' }}>
+                                        <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: 'var(--input-bg)', borderRadius: '0.5rem' }}>
                                             {/* Loading Placeholder */}
                                             <div style={{
                                                 position: 'absolute',
