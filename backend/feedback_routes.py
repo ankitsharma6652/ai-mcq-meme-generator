@@ -4,9 +4,35 @@ from pydantic import BaseModel, EmailStr
 from typing import Optional
 from database import get_db
 from models import Feedback, User
-from auth.jwt_handler import get_current_user_optional
+from auth.jwt_handler import decode_token
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
 router = APIRouter(prefix="/api/feedback", tags=["feedback"])
+
+security = HTTPBearer(auto_error=False)
+
+def get_current_user_optional(
+    credentials: Optional[HTTPAuthorizationCredentials] = Depends(security),
+    db: Session = Depends(get_db)
+) -> Optional[User]:
+    """Get current user if token is provided, otherwise return None"""
+    if not credentials:
+        return None
+    
+    try:
+        token = credentials.credentials
+        payload = decode_token(token)
+        if not payload:
+            return None
+        
+        email = payload.get("sub")
+        if not email:
+            return None
+        
+        user = db.query(User).filter(User.email == email).first()
+        return user
+    except Exception:
+        return None
 
 class FeedbackCreate(BaseModel):
     # Guest fields (optional, required if not logged in)
