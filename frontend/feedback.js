@@ -49,7 +49,18 @@ const Feedback = ({ token, onClose }) => {
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.detail || 'Failed to submit feedback');
+                // Handle different error formats
+                let errorMsg = 'Failed to submit feedback';
+                if (typeof data.detail === 'string') {
+                    errorMsg = data.detail;
+                } else if (Array.isArray(data.detail)) {
+                    errorMsg = data.detail.map(e => e.msg || e).join(', ');
+                } else if (data.detail && typeof data.detail === 'object') {
+                    errorMsg = JSON.stringify(data.detail);
+                } else if (data.message) {
+                    errorMsg = data.message;
+                }
+                throw new Error(errorMsg);
             }
 
             setSubmitted(true);
@@ -58,7 +69,8 @@ const Feedback = ({ token, onClose }) => {
             }, 2000);
 
         } catch (err) {
-            setError(err.message);
+            console.error('Feedback submission error:', err);
+            setError(err.message || 'An error occurred');
         } finally {
             setSubmitting(false);
         }
