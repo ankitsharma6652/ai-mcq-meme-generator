@@ -1046,6 +1046,18 @@ function App() {
         const provider = urlParams.get('provider');
 
         if (oauthToken && provider) {
+            // Clear guest data to ensure privacy/fresh start
+            const keysToClear = ['inputText', 'urlInput', 'memeTopic', 'memeUrlInput', 'mcqs', 'memeImages'];
+            keysToClear.forEach(k => localStorage.removeItem(k));
+
+            // Reset state
+            setInputText('');
+            setUrlInput('');
+            setMemeTopic('');
+            setMemeUrlInput('');
+            setMcqs([]);
+            setMemeImages([]);
+
             // Store token
             localStorage.setItem('token', oauthToken);
             setToken(oauthToken);
