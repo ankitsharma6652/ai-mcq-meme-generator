@@ -40,10 +40,24 @@ const Feedback = ({ token, onClose }) => {
                 headers['Authorization'] = `Bearer ${token}`;
             }
 
+            // Prepare payload - only include guest fields if not logged in
+            const payload = {
+                message: formData.message,
+                rating: formData.rating || null
+            };
+
+            // Only add guest fields if user is NOT logged in
+            if (!isLoggedIn) {
+                payload.guest_name = formData.guest_name;
+                payload.guest_email = formData.guest_email;
+                payload.guest_mobile = formData.guest_mobile || null;
+                payload.guest_country = formData.guest_country || null;
+            }
+
             const response = await fetch('/api/feedback/submit', {
                 method: 'POST',
                 headers,
-                body: JSON.stringify(formData)
+                body: JSON.stringify(payload)
             });
 
             const data = await response.json();
