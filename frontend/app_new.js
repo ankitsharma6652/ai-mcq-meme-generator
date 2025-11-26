@@ -1091,9 +1091,19 @@ function App() {
         } catch (e) {
             console.error('Logout tracking failed', e);
         } finally {
-            localStorage.removeItem('token');
+            // Clear all user data from localStorage
+            const keysToRemove = [
+                'token', 'mcqs', 'memeImages', 'inputText', 'urlInput',
+                'memeTopic', 'memeUrlInput', 'activeTab', 'inputType',
+                'memeInputType', 'showDashboard', 'showSocialFeed', 'showSavedItems'
+            ];
+            keysToRemove.forEach(k => localStorage.removeItem(k));
+
             setToken(null);
             setShowUserMenu(false);
+
+            // Reload to ensure a completely fresh state
+            window.location.reload();
         }
     };
 
@@ -1813,8 +1823,7 @@ function App() {
     return (
         <div className="container">
             <header className="main-header">
-                <div style={{
-                    display: 'inline-block',
+                <div className="header-center" style={{
                     padding: '0.75rem 1.5rem',
                     background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%)',
                     borderRadius: '2rem',
