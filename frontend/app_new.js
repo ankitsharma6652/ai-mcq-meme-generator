@@ -1486,7 +1486,9 @@ function App() {
             } else {
                 // Image generation (Pollinations) - Using simpler, more reliable format
                 contentPromises = prompts.map(async (prompt) => {
-                    const encodedPrompt = encodeURIComponent(prompt);
+                    // Truncate prompt to avoid 414 URI Too Long errors
+                    const safePrompt = prompt.length > 500 ? prompt.substring(0, 500) : prompt;
+                    const encodedPrompt = encodeURIComponent(safePrompt);
                     const seed = Math.floor(Math.random() * 10000);
                     // Explicitly use 'turbo' model since 'flux' servers are down
                     const url = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=1024&height=1024&seed=${seed}&nologo=true&model=turbo`;
@@ -1559,12 +1561,12 @@ function App() {
                 });
             }, 800);
 
-            // Safety timeout: stop loading after 45 seconds if image never loads
+            // Safety timeout: stop loading after 90 seconds if image never loads
             setTimeout(() => {
                 console.log('⚠️ Safety timeout triggered');
                 setMemeLoading(false);
                 if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
-            }, 45000);
+            }, 90000);
 
             // NOTE: We do NOT setMemeLoading(false) here anymore.
             // It will be set to false in the image onLoad handler.
