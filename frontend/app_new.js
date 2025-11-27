@@ -1442,14 +1442,37 @@ function App() {
                 }
             }
 
-            // FAST MODE: Skip Groq and go directly to Pollinations (like PythonAnywhere)
-            // This is 3-5x faster!
+            // Determine generation strategy based on quality setting
             let prompts;
             let currentMemeType = memeType;
             let modelUsed = 'direct';
 
-            // Use simple, direct prompt for faster generation
-            prompts = [topicToUse]; // Use topic directly as prompt
+            if (memeQuality === 'fast') {
+                // FAST MODE: Skip Groq and go directly to Pollinations (like PythonAnywhere)
+                // This is 3-5x faster!
+                // Generate 'numMemes' prompts (same topic, but different seeds will be used)
+                prompts = Array(numMemes).fill(topicToUse);
+            } else {
+                // HIGH QUALITY: Use Groq to generate creative prompts first
+                const res = await fetch('/api/generate-meme-prompt', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ topic: topicToUse, count: numMemes, meme_type: memeType }),
+                    signal
+                });
+
+                if (!res.ok) {
+                    const errData = await res.json();
+                    throw new Error(errData.detail || 'Failed to generate meme concepts');
+                }
+                const data = await res.json();
+                console.log("Meme Generation Model:", data.model);
+                console.log("Meme Type:", data.meme_type || memeType);
+                prompts = data.prompts;
+                currentMemeType = data.meme_type || memeType;
+                modelUsed = data.model;
+                if (!prompts || prompts.length === 0) throw new Error('No meme concepts generated');
+            }
 
             // 2. Generate content based on meme type
             let contentPromises;
