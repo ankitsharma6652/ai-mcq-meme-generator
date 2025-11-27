@@ -183,10 +183,13 @@
    uvicorn main:app --reload
    ```
 
+
 5. **Open in browser**
    ```
    http://localhost:8000
    ```
+   
+   **Or visit the live site:** [https://quiz-meme.onrender.com](https://quiz-meme.onrender.com)
 
 ---
 
@@ -196,7 +199,7 @@
 - **[Feedback System](docs/FEEDBACK_SYSTEM.md)** - User feedback documentation
 - **[Trending Features](docs/TRENDING_COMPLETE.md)** - Latest features and updates
 - **[PythonAnywhere Deployment](docs/PYTHONANYWHERE_DEPLOYMENT.md)** - Alternative deployment option
-- **[API Documentation](http://localhost:8000/docs)** - FastAPI auto-generated docs
+- **[API Documentation](https://quiz-meme.onrender.com/docs)** - FastAPI auto-generated docs
 
 ---
 
