@@ -1439,25 +1439,14 @@ function App() {
                 }
             }
 
-            // 1. Get prompts from Groq
-            const res = await fetch('/api/generate-meme-prompt', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ topic: topicToUse, count: numMemes, meme_type: memeType }),
-                signal
-            });
+            // FAST MODE: Skip Groq and go directly to Pollinations (like PythonAnywhere)
+            // This is 3-5x faster!
+            let prompts;
+            let currentMemeType = memeType;
+            let modelUsed = 'direct';
 
-            if (!res.ok) {
-                const errData = await res.json();
-                throw new Error(errData.detail || 'Failed to generate meme concepts');
-            }
-            const data = await res.json();
-            console.log("Meme Generation Model:", data.model);
-            console.log("Meme Type:", data.meme_type || memeType);
-            const prompts = data.prompts;
-            const currentMemeType = data.meme_type || memeType;
-            const modelUsed = data.model;
-            if (!prompts || prompts.length === 0) throw new Error('No meme concepts generated');
+            // Use simple, direct prompt for faster generation
+            prompts = [topicToUse]; // Use topic directly as prompt
 
             // 2. Generate content based on meme type
             let contentPromises;
