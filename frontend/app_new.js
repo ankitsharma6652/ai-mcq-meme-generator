@@ -3071,31 +3071,24 @@ function App() {
                 </p>
 
                 {/* Developer Info with LinkedIn Link */}
-                <div style={{ marginBottom: '1rem' }}>
-                    <p style={{ fontSize: '1rem', marginBottom: '0' }}>
-                        Made with ❤️ and a lot of ☕ by{' '}
-                        <a
-                            href="https://www.linkedin.com/in/ankit-sharma-317619177/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{
-                                color: 'var(--accent-color)',
-                                textDecoration: 'none',
-                                fontWeight: '600',
-                                transition: 'all 0.3s ease'
-                            }}
-                            onMouseOver={(e) => {
-                                e.currentTarget.style.color = '#0077b5';
-                                e.currentTarget.style.textDecoration = 'underline';
-                            }}
-                            onMouseOut={(e) => {
-                                e.currentTarget.style.color = 'var(--accent-color)';
-                                e.currentTarget.style.textDecoration = 'none';
-                            }}
-                        >
-                            Ankit Sharma
+                {/* Developer Info & Footer */}
+                <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--border-color)', textAlign: 'center', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                    <div style={{ marginBottom: '0.5rem' }}>
+                        Made with ❤️ and a lot of ☕ by <a href="https://github.com/ankitsharma6652" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-color)', textDecoration: 'none', fontWeight: '600' }}>Ankit Sharma</a>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
+                        <a href="https://www.buymeacoffee.com/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#FFDD00'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
+                            <span className="material-icons" style={{ fontSize: '1.2rem' }}>coffee</span>
+                            <span>Buy me a coffee</span>
                         </a>
-                    </p>
+                        <a href="https://github.com/ankitsharma6652/ai-mcq-meme-generator" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = 'var(--primary-color)'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
+                            <span className="material-icons" style={{ fontSize: '1.2rem' }}>code</span>
+                            <span>Source Code</span>
+                        </a>
+                    </div>
+                    <div style={{ marginTop: '1rem', opacity: 0.7, fontSize: '0.8rem' }}>
+                        &copy; {new Date().getFullYear()} AI MCQ & Meme Generator. All rights reserved.
+                    </div>
                 </div>
             </div>
 
