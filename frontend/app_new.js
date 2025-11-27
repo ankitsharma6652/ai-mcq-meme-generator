@@ -2862,7 +2862,7 @@ function App() {
                                         </div>
                                     ) : (
                                         <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: 'var(--input-bg)', borderRadius: '0.5rem' }}>
-                                            {/* Loading Placeholder - Only show if not loaded */}
+                                            {/* Minimal Loading Spinner - Overlay that disappears when loaded */}
                                             {!imageLoadStates[index] && (
                                                 <div
                                                     style={{
@@ -2870,42 +2870,19 @@ function App() {
                                                         top: '50%',
                                                         left: '50%',
                                                         transform: 'translate(-50%, -50%)',
-                                                        textAlign: 'center',
-                                                        width: '90%',
                                                         zIndex: 2,
-                                                        pointerEvents: 'auto'
+                                                        pointerEvents: 'none' // Let clicks pass through to image
                                                     }}>
-                                                    <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>⏳</div>
-                                                    <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Loading image...</div>
-                                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
-                                                        <a
-                                                            href={imgUrl}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            style={{
-                                                                fontSize: '0.75rem',
-                                                                color: '#3b82f6',
-                                                                wordBreak: 'break-all',
-                                                                background: 'rgba(255,255,255,0.9)',
-                                                                padding: '0.5rem',
-                                                                borderRadius: '4px',
-                                                                display: 'block',
-                                                                textDecoration: 'underline',
-                                                                cursor: 'pointer',
-                                                                maxHeight: '60px',
-                                                                overflow: 'auto',
-                                                                width: '100%'
-                                                            }}
-                                                        >
-                                                            {imgUrl}
-                                                        </a>
-                                                    </div>
+                                                    <div className="material-icons spin" style={{ fontSize: '3rem', color: 'var(--primary-color)', textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>autorenew</div>
                                                 </div>
                                             )}
                                             <img
                                                 src={imgUrl}
                                                 alt={`Meme ${index + 1}`}
                                                 crossOrigin="anonymous"
+                                                loading="eager"      // Force immediate loading
+                                                fetchpriority="high" // Prioritize this resource
+                                                decoding="async"     // Don't block main thread
                                                 ref={(el) => {
                                                     // Check if image is already loaded when ref is attached
                                                     if (el && el.complete && !imageLoadStates[index]) {
