@@ -1410,6 +1410,7 @@ function App() {
         setTimeout(() => setLongLoading(true), 10000);
         setError(null);
         setMemeImages([]);
+        setImageLoadStates({});
 
         const startTime = Date.now();
 
@@ -1547,27 +1548,16 @@ function App() {
                     console.log('📝 Prompt:', prompt);
 
                     try {
-                        // Preload image to ensure it's ready before showing
-                        await new Promise((resolve, reject) => {
-                            const img = new Image();
-                            img.onload = resolve;
-                            img.onerror = reject;
-                            img.src = url;
-                        });
-
+                        // Return URL directly - let the UI handle loading individually
+                        // This makes the "Generating" phase instant!
                         return {
                             url: url,
                             type: 'image',
                             source: 'pollinations'
                         };
                     } catch (err) {
-                        console.error("Image preload error:", err);
-                        // Return anyway, let the UI handle the error or show broken image
-                        return {
-                            url: url,
-                            type: 'image',
-                            source: 'pollinations'
-                        };
+                        console.error("Image generation error:", err);
+                        return null;
                     }
                 });
             }
@@ -1581,12 +1571,8 @@ function App() {
 
             setMemeImages(validResults);
 
-            // Initialize load states for new images (all set to true since we preloaded)
-            const newLoadStates = {};
-            validResults.forEach((_, index) => {
-                newLoadStates[index] = true;
-            });
-            setImageLoadStates(newLoadStates);
+            // Reset load states (all false initially)
+            setImageLoadStates({});
 
             setMemeLoading(false);
 
