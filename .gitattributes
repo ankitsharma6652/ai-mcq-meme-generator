@@ -1,0 +1,10 @@
+# Mark docs folder as documentation (excluded from language stats)
+docs/** linguist-documentation
+
+# Mark screenshots as binary (excluded from diffs)
+screenshots/** linguist-generated=true
+
+# Mark frontend assets
+frontend/*.html linguist-language=HTML
+frontend/*.js linguist-language=JavaScript
+frontend/*.css linguist-language=CSS
