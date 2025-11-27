@@ -2603,7 +2603,13 @@ frontend_dir = os.path.join(os.path.dirname(__file__), "..", "frontend")
 if not os.path.exists(frontend_dir):
     raise RuntimeError(f"Frontend directory not found at {frontend_dir}")
 
+# Mount screenshots directory
+screenshots_dir = os.path.join(os.path.dirname(__file__), "..", "screenshots")
+if os.path.exists(screenshots_dir):
+    app.mount("/screenshots", StaticFiles(directory=screenshots_dir), name="screenshots")
+
 app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="frontend")
+
 
 # --- MAIN EXECUTION ---
 if __name__ == "__main__":
