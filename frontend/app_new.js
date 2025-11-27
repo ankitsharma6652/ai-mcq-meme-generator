@@ -905,6 +905,7 @@ function App() {
     const [memeType, setMemeType] = useState('image');
     const [memeQuality, setMemeQuality] = useState('fast'); // 'fast' or 'high'
     const [memeSize, setMemeSize] = useState('medium'); // 'small', 'medium', 'large'
+    const [imageLoadStates, setImageLoadStates] = useState({}); // { index: boolean }
 
     const [showAuth, setShowAuth] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
@@ -1523,27 +1524,48 @@ function App() {
                     console.log('📝 Prompt:', prompt);
 
                     try {
-                        // Return URL directly - browser will handle loading
-                        // Pollinations.ai generates images on-demand, so preload check fails
+                        // Preload image to ensure it's ready before showing
+                        await new Promise((resolve, reject) => {
+                            const img = new Image();
+                            img.onload = resolve;
+                            img.onerror = reject;
+                            img.src = url;
+                        });
+
                         return {
                             url: url,
                             type: 'image',
                             source: 'pollinations'
                         };
                     } catch (err) {
-                        if (err.name === 'AbortError') throw err;
-                        console.error("Image generation error:", err);
-                        return null;
+                        console.error("Image preload error:", err);
+                        // Return anyway, let the UI handle the error or show broken image
+                        return {
+                            url: url,
+                            type: 'image',
+                            source: 'pollinations'
+                        };
                     }
                 });
             }
 
             const results = await Promise.all(contentPromises);
+
+            // Filter out nulls
             const validResults = results.filter(r => r !== null);
 
             if (validResults.length === 0) throw new Error('Failed to generate memes');
 
             setMemeImages(validResults);
+
+            // Initialize load states for new images (all set to true since we preloaded)
+            const newLoadStates = {};
+            validResults.forEach((_, index) => {
+                newLoadStates[index] = true;
+            });
+            setImageLoadStates(newLoadStates);
+
+            setMemeLoading(false);
 
             // ==================== ANALYTICS TRACKING ====================
             const generationTime = (Date.now() - startTime) / 1000; // seconds
@@ -2831,90 +2853,55 @@ function App() {
                                         </div>
                                     ) : (
                                         <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: 'var(--input-bg)', borderRadius: '0.5rem' }}>
-                                            {/* Loading Placeholder */}
-                                            <div
-                                                id={`loading-placeholder-${index}`}
-                                                style={{
-                                                    position: 'absolute',
-                                                    top: '50%',
-                                                    left: '50%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    textAlign: 'center',
-                                                    width: '90%',
-                                                    zIndex: 2,
-                                                    pointerEvents: 'auto'
-                                                }}>
-                                                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>⏳</div>
-                                                <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Loading image...</div>
-                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
-                                                    <a
-                                                        href={imgUrl}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        style={{
-                                                            fontSize: '0.75rem',
-                                                            color: '#3b82f6',
-                                                            wordBreak: 'break-all',
-                                                            background: 'rgba(255,255,255,0.9)',
-                                                            padding: '0.5rem',
-                                                            borderRadius: '4px',
-                                                            display: 'block',
-                                                            textDecoration: 'underline',
-                                                            cursor: 'pointer',
-                                                            maxHeight: '60px',
-                                                            overflow: 'auto',
-                                                            width: '100%'
-                                                        }}
-                                                    >
-                                                        {imgUrl}
-                                                    </a>
-                                                    <button
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            navigator.clipboard.writeText(imgUrl);
-                                                            e.target.textContent = '✅ Copied!';
-                                                            setTimeout(() => {
-                                                                e.target.textContent = '📋 Copy URL';
-                                                            }, 2000);
-                                                        }}
-                                                        style={{
-                                                            padding: '0.5rem 1rem',
-                                                            background: '#3b82f6',
-                                                            color: 'white',
-                                                            border: 'none',
-                                                            borderRadius: '6px',
-                                                            cursor: 'pointer',
-                                                            fontSize: '0.85rem',
-                                                            fontWeight: '600'
-                                                        }}
-                                                    >
-                                                        📋 Copy URL
-                                                    </button>
+                                            {/* Loading Placeholder - Only show if not loaded */}
+                                            {!imageLoadStates[index] && (
+                                                <div
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: '50%',
+                                                        left: '50%',
+                                                        transform: 'translate(-50%, -50%)',
+                                                        textAlign: 'center',
+                                                        width: '90%',
+                                                        zIndex: 2,
+                                                        pointerEvents: 'auto'
+                                                    }}>
+                                                    <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>⏳</div>
+                                                    <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Loading image...</div>
+                                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
+                                                        <a
+                                                            href={imgUrl}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            style={{
+                                                                fontSize: '0.75rem',
+                                                                color: '#3b82f6',
+                                                                wordBreak: 'break-all',
+                                                                background: 'rgba(255,255,255,0.9)',
+                                                                padding: '0.5rem',
+                                                                borderRadius: '4px',
+                                                                display: 'block',
+                                                                textDecoration: 'underline',
+                                                                cursor: 'pointer',
+                                                                maxHeight: '60px',
+                                                                overflow: 'auto',
+                                                                width: '100%'
+                                                            }}
+                                                        >
+                                                            {imgUrl}
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            )}
                                             <img
                                                 src={imgUrl}
                                                 alt={`Meme ${index + 1}`}
-                                                onLoad={(e) => {
-                                                    console.log('✅ Image loaded successfully:', imgUrl);
-                                                    e.target.style.opacity = 1;
-                                                    // Hide the loading placeholder
-                                                    const placeholder = document.getElementById(`loading-placeholder-${index}`);
-                                                    if (placeholder) {
-                                                        placeholder.style.display = 'none';
-                                                    }
-                                                    // Finish loading
-                                                    setLoadingProgress(100);
-                                                    setTimeout(() => {
-                                                        setMemeLoading(false);
-                                                        if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
-                                                    }, 500);
+                                                crossOrigin="anonymous"
+                                                onLoad={() => {
+                                                    setImageLoadStates(prev => ({ ...prev, [index]: true }));
                                                 }}
                                                 onError={(e) => {
                                                     console.error('❌ Image failed to load:', imgUrl);
-                                                    // Hide broken image icon
-                                                    e.target.style.opacity = 0;
-
                                                     // Get current retry count from URL
                                                     const currentSrc = e.target.src;
                                                     const retryMatch = currentSrc.match(/&retryCount=(\d+)/);
