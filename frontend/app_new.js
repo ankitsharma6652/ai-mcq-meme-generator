@@ -2906,6 +2906,12 @@ function App() {
                                                 src={imgUrl}
                                                 alt={`Meme ${index + 1}`}
                                                 crossOrigin="anonymous"
+                                                ref={(el) => {
+                                                    // Check if image is already loaded when ref is attached
+                                                    if (el && el.complete && !imageLoadStates[index]) {
+                                                        setImageLoadStates(prev => ({ ...prev, [index]: true }));
+                                                    }
+                                                }}
                                                 onLoad={() => {
                                                     setImageLoadStates(prev => ({ ...prev, [index]: true }));
                                                 }}
@@ -2939,8 +2945,7 @@ function App() {
                                                     objectFit: 'contain',
                                                     borderRadius: '0.5rem',
                                                     backgroundColor: '#f8fafc', // Light gray background while loading
-                                                    opacity: 0, // Start hidden, fade in on load
-                                                    transition: 'opacity 0.5s ease-in-out'
+                                                    // No opacity hiding - image shows as soon as browser renders it
                                                 }}
                                             />
                                         </div>
