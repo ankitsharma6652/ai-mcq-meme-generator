@@ -2862,18 +2862,39 @@ function App() {
                                         </div>
                                     ) : (
                                         <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: 'var(--input-bg)', borderRadius: '0.5rem' }}>
-                                            {/* Minimal Loading Spinner - Overlay that disappears when loaded */}
+                                            {/* Skeleton Loader - Shows while image is loading */}
                                             {!imageLoadStates[index] && (
                                                 <div
                                                     style={{
                                                         position: 'absolute',
-                                                        top: '50%',
-                                                        left: '50%',
-                                                        transform: 'translate(-50%, -50%)',
+                                                        top: 0,
+                                                        left: 0,
+                                                        width: '100%',
+                                                        height: '100%',
                                                         zIndex: 2,
-                                                        pointerEvents: 'none' // Let clicks pass through to image
+                                                        background: 'linear-gradient(90deg, var(--input-bg) 25%, var(--bg-secondary) 50%, var(--input-bg) 75%)',
+                                                        backgroundSize: '200% 100%',
+                                                        animation: 'skeleton-loading 1.5s infinite',
+                                                        borderRadius: '0.5rem',
+                                                        display: 'flex',
+                                                        flexDirection: 'column',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        pointerEvents: 'none'
                                                     }}>
-                                                    <div className="material-icons spin" style={{ fontSize: '3rem', color: 'var(--primary-color)', textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>autorenew</div>
+                                                    <div style={{
+                                                        background: 'rgba(0,0,0,0.6)',
+                                                        padding: '0.5rem 1rem',
+                                                        borderRadius: '20px',
+                                                        color: 'white',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '0.5rem',
+                                                        backdropFilter: 'blur(4px)'
+                                                    }}>
+                                                        <span className="material-icons spin" style={{ fontSize: '1.2rem' }}>autorenew</span>
+                                                        <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Creating Meme...</span>
+                                                    </div>
                                                 </div>
                                             )}
                                             <img
