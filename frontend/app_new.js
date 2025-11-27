@@ -2721,7 +2721,7 @@ function App() {
                         }}
                     >
                         {memeLoading ? <span className="material-icons spin" style={{ marginRight: '0.5rem' }}>autorenew</span> : <span className="material-icons" style={{ marginRight: '0.5rem' }}>brush</span>}
-                        {memeLoading ? (longLoading ? "🎨 AI is painting... taking a bit longer!" : `Dreaming up a meme... ${loadingProgress}%`) : 'Dreaming up a meme...'}
+                        {memeLoading ? (longLoading ? "🎨 Click to Cancel" : `Generating... ${loadingProgress}% (Click to Cancel)`) : 'Dreaming up a meme...'}
                     </button>
                 )}
             </div>
@@ -2774,16 +2774,18 @@ function App() {
                                     ) : (
                                         <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: 'var(--input-bg)', borderRadius: '0.5rem' }}>
                                             {/* Loading Placeholder */}
-                                            <div style={{
-                                                position: 'absolute',
-                                                top: '50%',
-                                                left: '50%',
-                                                transform: 'translate(-50%, -50%)',
-                                                textAlign: 'center',
-                                                width: '90%',
-                                                zIndex: 2,
-                                                pointerEvents: 'auto'
-                                            }}>
+                                            <div
+                                                id={`loading-placeholder-${index}`}
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: '50%',
+                                                    left: '50%',
+                                                    transform: 'translate(-50%, -50%)',
+                                                    textAlign: 'center',
+                                                    width: '90%',
+                                                    zIndex: 2,
+                                                    pointerEvents: 'auto'
+                                                }}>
                                                 <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>⏳</div>
                                                 <div style={{ fontWeight: '600', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Loading image...</div>
                                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
@@ -2838,6 +2840,11 @@ function App() {
                                                 onLoad={(e) => {
                                                     console.log('✅ Image loaded successfully:', imgUrl);
                                                     e.target.style.opacity = 1;
+                                                    // Hide the loading placeholder
+                                                    const placeholder = document.getElementById(`loading-placeholder-${index}`);
+                                                    if (placeholder) {
+                                                        placeholder.style.display = 'none';
+                                                    }
                                                     // Finish loading
                                                     setLoadingProgress(100);
                                                     setTimeout(() => {
