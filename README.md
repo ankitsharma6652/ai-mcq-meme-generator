@@ -80,6 +80,38 @@
 ![URL Input Dark](screenshots/url-input-dark.png)
 *Generate MCQs from any URL - supports multilingual content*
 
+### 💬 **Feedback Modal (Dark Mode)**
+![Feedback Modal](screenshots/feedback-modal-dark.png)
+*Beautiful feedback form with star ratings and guest/user modes*
+
+### 🔐 **Login Modal**
+![Login Modal](screenshots/login-modal.png)
+*Secure Google OAuth authentication*
+
+### 📊 **Analytics Dashboard (Personal)**
+![Analytics Personal](screenshots/analytics-personal.png)
+*Track your personal performance with beautiful charts*
+
+### 🌍 **Analytics Dashboard (Global)**
+![Analytics Global](screenshots/analytics-global.png)
+*View global statistics and trends*
+
+### 🏆 **Leaderboard**
+![Leaderboard](screenshots/leaderboard.png)
+*Compete with top performers - Quiz Champions, Meme Lords, and MCQ Masters*
+
+### 🌐 **Community Feed**
+![Community Feed](screenshots/community-feed.png)
+*Browse and interact with community-generated memes and quiz results*
+
+### 📚 **Saved Items**
+![Saved Items](screenshots/saved-items.png)
+*Bookmark and review your favorite MCQs and memes*
+
+### 💬 **Feedback Modal (Light Mode)**
+![Feedback Light](screenshots/feedback-modal-light.png)
+*User-friendly feedback form for logged-in users*
+
 ---
 
 ## 🛠️ Tech Stack
