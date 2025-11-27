@@ -20,10 +20,10 @@
 
         #video-container {
             width: 1080px;
-            /* Instagram Reel / TikTok Aspect Ratio (9:16) - scaled for desktop viewing */
+            /* Instagram Reel / TikTok Aspect Ratio (9:16) */
             height: 1920px;
-            transform: scale(0.45);
-            /* Scale down to fit screen */
+            /* Scale will be set by JS */
+            transform-origin: center center;
             background: #111;
             position: relative;
             overflow: hidden;
@@ -191,17 +191,35 @@
             </div>
         </div>
 
-        <!-- Scene 5: Community (Leaderboard) -->
+        <!-- Scene 5: Community (Feed) -->
         <div class="slide" id="slide5">
-            <img src="/screenshots/leaderboard.png" class="bg-image" alt="Leaderboard">
+            <img src="/screenshots/community-feed.png" class="bg-image" alt="Community Feed">
             <div class="content">
-                <h1>Join the <span class="highlight">Community</span> 🏆</h1>
-                <p>Compete globally.<br>Climb the ranks.<br>Become a legend!</p>
+                <h1>Explore the <span class="highlight">Feed</span> 🌍</h1>
+                <p>Discover what others are creating.<br>Like, Share, and Get Inspired!</p>
             </div>
         </div>
 
-        <!-- Scene 6: CTA -->
+        <!-- Scene 6: Analytics -->
         <div class="slide" id="slide6">
+            <img src="/screenshots/analytics-personal.png" class="bg-image" alt="Analytics">
+            <div class="content">
+                <h1>Track Your <span class="highlight">Growth</span> 📈</h1>
+                <p>Visualize your progress.<br>See your strengths.<br>Improve every day!</p>
+            </div>
+        </div>
+
+        <!-- Scene 7: Leaderboard -->
+        <div class="slide" id="slide7">
+            <img src="/screenshots/leaderboard.png" class="bg-image" alt="Leaderboard">
+            <div class="content">
+                <h1>Climb the <span class="highlight">Ranks</span> 🏆</h1>
+                <p>Compete globally.<br>Become a Legend.<br>Win bragging rights!</p>
+            </div>
+        </div>
+
+        <!-- Scene 8: CTA -->
+        <div class="slide" id="slide8">
             <img src="/screenshots/home-light.png" class="bg-image" style="filter: brightness(0.4);" alt="Try Now">
             <div class="content">
                 <h1>Try It <span class="highlight">NOW!</span> 🚀</h1>
@@ -282,6 +300,23 @@
             showSlide(0);
             document.getElementById('progress').style.width = '0%';
         }
+
+        function resizePlayer() {
+            const container = document.getElementById('video-container');
+            const windowHeight = window.innerHeight;
+            const windowWidth = window.innerWidth;
+
+            // Calculate scale to fit 90% of screen height
+            // Base height is 1920px
+            const targetHeight = windowHeight * 0.9;
+            const scale = targetHeight / 1920;
+
+            container.style.transform = `scale(${scale})`;
+        }
+
+        window.addEventListener('resize', resizePlayer);
+        // Initial resize
+        resizePlayer();
 
         async function recordAndDownload() {
             try {
