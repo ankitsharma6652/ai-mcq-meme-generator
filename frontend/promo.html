@@ -215,6 +215,7 @@
     <div id="controls">
         <button onclick="playVideo()">▶ Play</button>
         <button onclick="resetVideo()">↺ Reset</button>
+        <button onclick="recordAndDownload()" style="background: #ff4444; color: white;">🔴 Download Video</button>
     </div>
 
     <script>
@@ -224,6 +225,8 @@
         const slideDuration = 4000; // 4 seconds per slide
         let interval;
         let progressInterval;
+        let mediaRecorder;
+        let recordedChunks = [];
 
         function showSlide(index) {
             slides.forEach(s => s.classList.remove('active'));
@@ -232,14 +235,19 @@
             // Reset animations
             const h1 = slides[index].querySelector('h1');
             const p = slides[index].querySelector('p');
-            h1.style.animation = 'none';
-            p.style.animation = 'none';
-            h1.offsetHeight; /* trigger reflow */
-            h1.style.animation = 'slideUp 0.8s forwards 0.5s';
-            p.style.animation = 'slideUp 0.8s forwards 1s';
+            if (h1) {
+                h1.style.animation = 'none';
+                h1.offsetHeight; /* trigger reflow */
+                h1.style.animation = 'slideUp 0.8s forwards 0.5s';
+            }
+            if (p) {
+                p.style.animation = 'none';
+                p.offsetHeight; /* trigger reflow */
+                p.style.animation = 'slideUp 0.8s forwards 1s';
+            }
         }
 
-        function playVideo() {
+        function playVideo(onComplete) {
             if (interval) clearInterval(interval);
             if (progressInterval) clearInterval(progressInterval);
 
@@ -260,6 +268,7 @@
                 if (currentSlide >= totalSlides) {
                     clearInterval(interval);
                     clearInterval(progressInterval);
+                    if (onComplete) onComplete();
                     return;
                 }
                 showSlide(currentSlide);
@@ -272,6 +281,62 @@
             currentSlide = 0;
             showSlide(0);
             document.getElementById('progress').style.width = '0%';
+        }
+
+        async function recordAndDownload() {
+            try {
+                alert("Please select 'This Tab' or 'Chrome Tab' -> 'App Promo Video' to record properly.");
+
+                const stream = await navigator.mediaDevices.getDisplayMedia({
+                    video: {
+                        displaySurface: "browser",
+                    },
+                    audio: false,
+                    preferCurrentTab: true // Experimental flag to auto-select current tab
+                });
+
+                // Hide controls during recording
+                document.getElementById('controls').style.display = 'none';
+
+                recordedChunks = [];
+                mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm; codecs=vp9' });
+
+                mediaRecorder.ondataavailable = (event) => {
+                    if (event.data.size > 0) {
+                        recordedChunks.push(event.data);
+                    }
+                };
+
+                mediaRecorder.onstop = () => {
+                    const blob = new Blob(recordedChunks, { type: 'video/webm' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'quiz-meme-promo.webm';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+
+                    // Show controls again
+                    document.getElementById('controls').style.display = 'flex';
+
+                    // Stop all tracks
+                    stream.getTracks().forEach(track => track.stop());
+                };
+
+                mediaRecorder.start();
+
+                // Start playing the video
+                playVideo(() => {
+                    // Stop recording when video ends
+                    mediaRecorder.stop();
+                });
+
+            } catch (err) {
+                console.error("Error: " + err);
+                document.getElementById('controls').style.display = 'flex';
+            }
         }
     </script>
 </body>
