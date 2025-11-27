@@ -2920,18 +2920,25 @@ function App() {
                                                     const retryMatch = currentSrc.match(/&retryCount=(\d+)/);
                                                     const retryCount = retryMatch ? parseInt(retryMatch[1]) : 0;
 
-                                                    if (retryCount < 5) {
-                                                        console.log(`Retrying image load (${retryCount + 1}/5) in 3 seconds...`);
+                                                    if (retryCount < 8) { // Increased max retries to 8 for stubborn 429s
+                                                        // Exponential backoff: 2s, 4s, 8s, 16s...
+                                                        // Plus random jitter (0-2s) to prevent synchronized retries
+                                                        const baseDelay = Math.pow(2, retryCount) * 1500;
+                                                        const jitter = Math.random() * 2000;
+                                                        const delay = baseDelay + jitter;
+
+                                                        console.log(`⚠️ Server busy (429). Retrying image ${index + 1} (${retryCount + 1}/8) in ${Math.round(delay)}ms...`);
+
                                                         setTimeout(() => {
                                                             const separator = imgUrl.includes('?') ? '&' : '?';
                                                             // Remove old retry param if exists to avoid stacking
                                                             const cleanUrl = imgUrl.replace(/&retryCount=\d+/, '').replace(/&retry=\d+/, '');
+                                                            // Add timestamp to bypass browser cache
                                                             e.target.src = `${cleanUrl}${separator}retryCount=${retryCount + 1}&t=${Date.now()}`;
-                                                        }, 3000);
+                                                        }, delay);
                                                     } else {
                                                         console.error('❌ Max retries reached. Giving up.');
-                                                        setMemeLoading(false);
-                                                        if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
+                                                        // Could show a "Failed to load" icon here
                                                     }
                                                 }}
                                                 style={{
