@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - AI MCQ & Meme Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .tutorial-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .tutorial-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .tutorial-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tutorial-section {
+            margin-bottom: 4rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .tutorial-section h2 {
+            color: var(--text-primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tutorial-section h2 .material-icons {
+            font-size: 2.5rem;
+            color: #6366f1;
+        }
+
+        .tutorial-section h3 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tutorial-section p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .tutorial-section ul {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tutorial-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .screenshot {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            margin: 1.5rem 0;
+            border: 2px solid var(--border-color);
+        }
+
+        .screenshot-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .steps {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background: var(--input-bg);
+            border-radius: 12px;
+            border-left: 4px solid #6366f1;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .step-content p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: var(--input-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+            border-color: #6366f1;
+        }
+
+        .feature-card h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-card .material-icons {
+            color: #6366f1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tutorial-container">
+        <a href="/" class="back-button">
+            <span class="material-icons">arrow_back</span>
+            Back to Home
+        </a>
+
+        <div class="tutorial-header">
+            <h1>📚 How It Works</h1>
+            <p style="font-size: 1.2rem; margin: 0;">Learn how to use AI MCQ & Meme Generator like a pro!</p>
+        </div>
+
+        <!-- MCQ Generation -->
+        <div class="tutorial-section">
+            <h2><span class="material-icons">quiz</span> Generating MCQs</h2>
+            <p>Create multiple-choice questions from any content in seconds!</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Choose Your Input Method</h4>
+                        <p>Paste text, upload a file (PDF, TXT, MD, DOCX), or provide a URL</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Customize Settings</h4>
+                        <p>Select content type (Auto, Coding, General), difficulty level, and number of questions</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Generate MCQs</h4>
+                        <p>Click "Generate MCQs" and watch AI create questions instantly!</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Review & Export</h4>
+                        <p>Review generated questions, start a quiz, or export as PDF/JSON/TXT</p>
+                    </div>
+                </div>
+            </div>
+
+            <img src="../screenshots/home-light.png" alt="MCQ Generation Interface" class="screenshot">
+            <p class="screenshot-caption">Clean interface with multiple input options</p>
+
+            <img src="../screenshots/mcq-generated.png" alt="Generated MCQs" class="screenshot">
+            <p class="screenshot-caption">Instant MCQ generation with correct/incorrect indicators</p>
+        </div>
+
+        <!-- Quiz Mode -->
+        <div class="tutorial-section">
+            <h2><span class="material-icons">timer</span> Taking a Quiz</h2>
+            <p>Test your knowledge with interactive timed quizzes!</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Start Quiz</h4>
+                        <p>After generating MCQs, click "Start Quiz" to begin</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Answer Questions</h4>
+                        <p>Select your answer and click "Next" to proceed</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Track Progress</h4>
+                        <p>Monitor your time and question progress at the top</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>View Results</h4>
+                        <p>See your score, time taken, and detailed explanations</p>
+                    </div>
+                </div>
+            </div>
+
+            <img src="../screenshots/quiz-mode.png" alt="Quiz Mode" class="screenshot">
+            <p class="screenshot-caption">Interactive quiz mode with timer and progress tracking</p>
+        </div>
+
+        <!-- Meme Generation -->
+        <div class="tutorial-section">
+            <h2><span class="material-icons">photo_camera</span> Creating Memes</h2>
+            <p>Generate hilarious AI-powered memes in seconds!</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Switch to Meme Mode</h4>
+                        <p>Click the "Meme" tab at the top</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Enter Your Topic</h4>
+                        <p>Type what you want the meme to be about</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Choose Format</h4>
+                        <p>Select Static Image, Animated GIF, or Video</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Generate & Share</h4>
+                        <p>Click "Dreaming up a meme..." and download or share your creation!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- File Upload -->
+        <div class="tutorial-section">
+            <h2><span class="material-icons">upload_file</span> Uploading Files</h2>
+            <p>Generate MCQs from your documents!</p>
+
+            <img src="../screenshots/file-upload-dark.png" alt="File Upload" class="screenshot">
+            <p class="screenshot-caption">Upload PDFs, TXT, MD, or DOCX files for MCQ generation</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4><span class="material-icons">picture_as_pdf</span> PDF Support</h4>
+                    <p>Upload lecture notes, textbooks, or study materials</p>
+                </div>
+                <div class="feature-card">
+                    <h4><span class="material-icons">description</span> Text Files</h4>
+                    <p>Support for TXT, MD, and DOCX formats</p>
+                </div>
+                <div class="feature-card">
+                    <h4><span class="material-icons">auto_awesome</span> Auto Extract</h4>
+                    <p>AI automatically extracts and processes content</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- URL Input -->
+        <div class="tutorial-section">
+            <h2><span class="material-icons">link</span> Using URLs</h2>
+            <p>Generate MCQs from any web page!</p>
+
+            <img src="../screenshots/url-input-dark.png" alt="URL Input" class="screenshot">
+            <p class="screenshot-caption">Generate MCQs from any URL - supports multilingual content</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Click URL Tab</h4>
+                        <p>Switch to the URL input method</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Paste URL</h4>
+                        <p>Enter the URL of the article, documentation, or blog post</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>AI Scrapes Content</h4>
+                        <p>AI automatically extracts text from the webpage</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Generate Questions</h4>
+                        <p>Click "Generate MCQs" to create questions from the content</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community Features -->
+        <div class="tutorial-section">
+            <h2><span class="material-icons">people</span> Community Features</h2>
+            <p>Engage with other users and share your creations!</p>
+
+            <img src="../screenshots/community-feed.png" alt="Community Feed" class="screenshot">
+            <p class="screenshot-caption">Browse and interact with community-generated content</p>
+
+            <h3>What You Can Do:</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4><span class="material-icons">favorite</span> Like & Comment</h4>
+                    <p>Engage with memes and quiz results from other users</p>
+                </div>
+                <div class="feature-card">
+                    <h4><span class="material-icons">bookmark</span> Save Items</h4>
+                    <p>Bookmark your favorite MCQs and memes for later</p>
+                </div>
+                <div class="feature-card">
+                    <h4><span class="material-icons">share</span> Share</h4>
+                    <p>Share your creations with the community</p>
+                </div>
+            </div>
+
+            <img src="../screenshots/saved-items.png" alt="Saved Items" class="screenshot">
+            <p class="screenshot-caption">Access your bookmarked content anytime</p>
+        </div>
+
+        <!-- Analytics -->
+        <div class="tutorial-section">
+            <h2><span class="material-icons">analytics</span> Track Your Progress</h2>
+            <p>Monitor your learning journey with detailed analytics!</p>
+
+            <img src="../screenshots/analytics-personal.png" alt="Personal Analytics" class="screenshot">
+            <p class="screenshot-caption">Track your personal performance with beautiful charts</p>
+
+            <img src="../screenshots/analytics-global.png" alt="Global Analytics" class="screenshot">
+            <p class="screenshot-caption">View global statistics and trends</p>
+
+            <img src="../screenshots/leaderboard.png" alt="Leaderboard" class="screenshot">
+            <p class="screenshot-caption">Compete with top performers</p>
+        </div>
+
+        <!-- Feedback -->
+        <div class="tutorial-section">
+            <h2><span class="material-icons">feedback</span> Send Feedback</h2>
+            <p>Help us improve by sharing your thoughts!</p>
+
+            <img src="../screenshots/feedback-modal-light.png" alt="Feedback Form" class="screenshot">
+            <p class="screenshot-caption">Easy feedback form with star ratings</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Click Feedback Button</h4>
+                        <p>Find it in the header or user menu</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Rate Your Experience</h4>
+                        <p>Give us 1-5 stars (optional)</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Write Your Feedback</h4>
+                        <p>Tell us what you think (minimum 10 characters)</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Submit</h4>
+                        <p>Click "Submit Feedback" and you're done!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips & Tricks -->
+        <div class="tutorial-section">
+            <h2><span class="material-icons">tips_and_updates</span> Tips & Tricks</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4><span class="material-icons">lightbulb</span> Better MCQs</h4>
+                    <p>Provide more detailed content for higher quality questions</p>
+                </div>
+                <div class="feature-card">
+                    <h4><span class="material-icons">speed</span> Faster Generation</h4>
+                    <p>Use "Auto Detect" for content type to save time</p>
+                </div>
+                <div class="feature-card">
+                    <h4><span class="material-icons">dark_mode</span> Dark Mode</h4>
+                    <p>Toggle dark/light mode with the button in the header</p>
+                </div>
+                <div class="feature-card">
+                    <h4><span class="material-icons">cancel</span> Cancel Generation</h4>
+                    <p>Click the button again during generation to cancel</p>
+                </div>
+                <div class="feature-card">
+                    <h4><span class="material-icons">download</span> Export Options</h4>
+                    <p>Export MCQs as PDF for printing or JSON for sharing</p>
+                </div>
+                <div class="feature-card">
+                    <h4><span class="material-icons">language</span> Multilingual</h4>
+                    <p>Supports content in multiple languages automatically</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="/" class="back-button">
+                <span class="material-icons">home</span>
+                Back to Home
+            </a>
+        </div>
+    </div>
+
+    <script src="theme.js"></script>
+</body>
+
+</html>

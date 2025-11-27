@@ -2225,6 +2225,36 @@ function App() {
                                 <span className="material-icons" style={{ fontSize: '1.2rem' }}>groups</span>
                                 Community
                             </button>
+                            <a
+                                href="/tutorial.html"
+                                style={{
+                                    padding: '0.8rem 1.5rem',
+                                    background: 'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '30px',
+                                    cursor: 'pointer',
+                                    fontWeight: '700',
+                                    fontSize: '1rem',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
+                                    boxShadow: '0 4px 15px rgba(245, 158, 11, 0.3)',
+                                    transition: 'all 0.3s ease',
+                                    textDecoration: 'none'
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(-2px)';
+                                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(245, 158, 11, 0.4)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(0)';
+                                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(245, 158, 11, 0.3)';
+                                }}
+                            >
+                                <span className="material-icons" style={{ fontSize: '1.2rem' }}>school</span>
+                                How It Works
+                            </a>
                             <button
                                 onClick={() => setShowFeedback(true)}
                                 style={{

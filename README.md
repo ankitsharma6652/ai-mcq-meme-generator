@@ -186,8 +186,10 @@
 
 ## 📚 Documentation
 
-- **[Deployment Guide](RENDER_DEPLOYMENT.md)** - Deploy to Render.com
-- **[Feedback System](FEEDBACK_SYSTEM.md)** - User feedback documentation
+- **[Deployment Guide](docs/RENDER_DEPLOYMENT.md)** - Deploy to Render.com
+- **[Feedback System](docs/FEEDBACK_SYSTEM.md)** - User feedback documentation
+- **[Trending Features](docs/TRENDING_COMPLETE.md)** - Latest features and updates
+- **[PythonAnywhere Deployment](docs/PYTHONANYWHERE_DEPLOYMENT.md)** - Alternative deployment option
 - **[API Documentation](http://localhost:8000/docs)** - FastAPI auto-generated docs
 
 ---
