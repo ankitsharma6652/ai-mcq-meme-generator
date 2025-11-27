@@ -903,6 +903,8 @@ function App() {
     const [mcqId, setMcqId] = useState(null);
     const abortControllerRef = useRef(null);
     const [memeType, setMemeType] = useState('image');
+    const [memeQuality, setMemeQuality] = useState('fast'); // 'fast' or 'high'
+    const [memeSize, setMemeSize] = useState('medium'); // 'small', 'medium', 'large'
 
     const [showAuth, setShowAuth] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
@@ -1505,8 +1507,17 @@ function App() {
                     const safePrompt = prompt.length > 500 ? prompt.substring(0, 500) : prompt;
                     const encodedPrompt = encodeURIComponent(safePrompt);
                     const seed = Math.floor(Math.random() * 10000);
-                    // Simpler URL format - no model parameter (uses default)
-                    const url = `https://image.pollinations.ai/prompt/${encodedPrompt}?seed=${seed}&width=800&height=800&nologo=true`;
+                    // Determine dimensions based on size selection
+                    let width = 800, height = 800;
+                    if (memeSize === 'small') { width = 512; height = 512; }
+                    else if (memeSize === 'large') { width = 1024; height = 1024; }
+
+                    // Construct URL based on quality selection
+                    let url = `https://image.pollinations.ai/prompt/${encodedPrompt}?seed=${seed}&width=${width}&height=${height}&nologo=true`;
+
+                    if (memeQuality === 'high') {
+                        url += '&model=turbo'; // Use turbo model for high quality
+                    }
 
                     console.log('🎨 Generated meme URL:', url);
                     console.log('📝 Prompt:', prompt);
@@ -2557,6 +2568,34 @@ function App() {
                                     {memeType === 'image' ? '📸 Classic meme images' : memeType === 'gif' ? '🔄 Looping animated memes' : '🎞️ Video memes (experimental)'}
                                 </small>
                             </div>
+
+                            {memeType === 'image' && (
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1rem' }}>
+                                    <div>
+                                        <label>Quality ⚡</label>
+                                        <select
+                                            value={memeQuality}
+                                            onChange={(e) => setMemeQuality(e.target.value)}
+                                            style={{ width: '100%' }}
+                                        >
+                                            <option value="fast">⚡ Fast (Standard)</option>
+                                            <option value="high">🌟 High Quality (Turbo)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label>Size 📏</label>
+                                        <select
+                                            value={memeSize}
+                                            onChange={(e) => setMemeSize(e.target.value)}
+                                            style={{ width: '100%' }}
+                                        >
+                                            <option value="small">Small (512px)</option>
+                                            <option value="medium">Medium (800px)</option>
+                                            <option value="large">Large (1024px)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            )}
                             <small style={{ color: 'var(--text-secondary)', marginTop: '0.5rem', display: 'block' }}>
                                 💡 {memeInputType === 'topic' ? '"Python" → Hilarious snake jokes. "JavaScript" → async/await memes. You get the idea! 🎨' : 'Paste a URL and watch our AI turn boring content into comedy gold! 🏆'}
                             </small>
