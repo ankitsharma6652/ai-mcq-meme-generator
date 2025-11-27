@@ -4,9 +4,15 @@
 > Generate coding MCQs, quizzes, and hilarious memes — all from text, files, or URLs.  
 > Learn → Laugh → Level Up! 🎓😂
 
+<div align="center">
+
+## 🌐 **[Try it Live: quiz-meme.onrender.com](https://quiz-meme.onrender.com)** 🚀
+
 [![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge&logo=render)](https://quiz-meme.onrender.com)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red?style=for-the-badge)](https://github.com/ankitsharma6652)
+
+</div>
 
 ---
 
