@@ -905,7 +905,29 @@ function App() {
     const [memeType, setMemeType] = useState('image');
     const [memeQuality, setMemeQuality] = useState('fast'); // 'fast' or 'high'
     const [memeSize, setMemeSize] = useState('medium'); // 'small', 'medium', 'large'
-    const [imageLoadStates, setImageLoadStates] = useState({}); // { index: boolean }
+    const [imageLoadStates, setImageLoadStates] = React.useState({}); // { index: boolean }
+    const [isOnline, setIsOnline] = React.useState(navigator.onLine); // Track connectivity
+
+    // Monitor Online/Offline Status
+    React.useEffect(() => {
+        const handleOnline = () => {
+            setIsOnline(true);
+            // Sync offline data if needed (future implementation)
+            alert("You are back online! 🌐");
+        };
+        const handleOffline = () => {
+            setIsOnline(false);
+            alert("You are offline. You can still view saved quizzes and profile! 📡");
+        };
+
+        window.addEventListener('online', handleOnline);
+        window.addEventListener('offline', handleOffline);
+
+        return () => {
+            window.removeEventListener('online', handleOnline);
+            window.removeEventListener('offline', handleOffline);
+        };
+    }, []);
 
     const [showAuth, setShowAuth] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
@@ -4234,6 +4256,73 @@ function QuizMode({ mcqs, onExit, generationId }) {
         }
     };
 
+    const handleDownloadPDF = () => {
+        try {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const score = calculateScore();
+            const percentage = Math.round((score / mcqs.length) * 100);
+
+            // Title
+            doc.setFontSize(22);
+            doc.setTextColor(99, 102, 241); // Primary color
+            doc.text("Quiz Results - AI MCQ Generator", 20, 20);
+
+            // Score Section
+            doc.setFontSize(16);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Score: ${score} / ${mcqs.length} (${percentage}%)`, 20, 40);
+            doc.text(`Time Taken: ${formatTime(timeElapsed)}`, 20, 50);
+            doc.text(`Date: ${new Date().toLocaleDateString()}`, 20, 60);
+
+            // Questions
+            doc.setFontSize(14);
+            doc.text("Detailed Report:", 20, 80);
+
+            let y = 90;
+
+            mcqs.forEach((mcq, idx) => {
+                const userAnswer = answers[idx];
+                const isCorrect = userAnswer === mcq.correct_option;
+
+                // Check page break
+                if (y > 270) {
+                    doc.addPage();
+                    y = 20;
+                }
+
+                // Question
+                doc.setFontSize(12);
+                doc.setTextColor(0, 0, 0);
+                const questionLines = doc.splitTextToSize(`${idx + 1}. ${mcq.question}`, 170);
+                doc.text(questionLines, 20, y);
+                y += (questionLines.length * 7);
+
+                // User Answer
+                doc.setFontSize(11);
+                doc.setTextColor(isCorrect ? 16 : 239, isCorrect ? 185 : 68, isCorrect ? 129 : 68); // Green or Red
+                const userAnsText = userAnswer ? mcq.options[userAnswer] : 'Not answered';
+                doc.text(`Your Answer: ${userAnsText}`, 25, y);
+                y += 7;
+
+                // Correct Answer (if wrong)
+                if (!isCorrect) {
+                    doc.setTextColor(16, 185, 129); // Green
+                    doc.text(`Correct Answer: ${mcq.options[mcq.correct_option]}`, 25, y);
+                    y += 7;
+                }
+
+                y += 10; // Spacing
+            });
+
+            doc.save("quiz-results.pdf");
+
+        } catch (err) {
+            console.error("PDF Generation Error:", err);
+            alert("Failed to generate PDF. Please try again.");
+        }
+    };
+
     if (showResults) {
         const score = calculateScore();
         const percentage = Math.round((score / mcqs.length) * 100);
@@ -4263,6 +4352,9 @@ function QuizMode({ mcqs, onExit, generationId }) {
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                         <button className="btn btn-primary" style={{ width: 'auto' }} onClick={() => setShowResults(false)}>
                             Review Answers
+                        </button>
+                        <button className="btn btn-secondary" onClick={handleDownloadPDF} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <span className="material-icons">picture_as_pdf</span> Download PDF
                         </button>
                         <button className="btn btn-secondary" onClick={onExit}>
                             Exit Quiz
