@@ -1560,10 +1560,11 @@ function App() {
                     else if (memeSize === 'large') { width = 1024; height = 1024; }
 
                     // Construct URL based on quality selection
-                    let url = `https://image.pollinations.ai/prompt/${encodedPrompt}?seed=${seed}&width=${width}&height=${height}&nologo=true`;
+                    // Use 'flux' as the default model for high quality and speed
+                    let url = `https://image.pollinations.ai/prompt/${encodedPrompt}?seed=${seed}&width=${width}&height=${height}&nologo=true&model=flux`;
 
                     if (memeQuality === 'high') {
-                        url += '&model=turbo'; // Use turbo model for high quality
+                        url += '&enhance=true'; // Optional: Add enhancement flag if supported, or stick to base flux
                     }
 
                     console.log('🎨 Generated meme URL:', url);
