@@ -382,7 +382,7 @@ function SocialFeed({ token, onClose, onLoginReq }) {
                                     {loadingComments[item.id] ? (
                                         <div style={{ textAlign: 'center', padding: '1rem', color: 'var(--text-secondary)' }}>Loading comments...</div>
                                     ) : (
-                                        <>
+                                        <React.Fragment>
                                             {/* Comments List */}
                                             <div style={{ maxHeight: '300px', overflowY: 'auto', marginBottom: '1rem' }}>
                                                 {comments[item.id]?.map((comment, idx) => (
@@ -471,7 +471,7 @@ function SocialFeed({ token, onClose, onLoginReq }) {
                                                     </button>
                                                 </div>
                                             )}
-                                        </>
+                                        </React.Fragment>
                                     )}
                                 </div>
                             )}
@@ -906,28 +906,6 @@ function App() {
     const [memeQuality, setMemeQuality] = useState('fast'); // 'fast' or 'high'
     const [memeSize, setMemeSize] = useState('medium'); // 'small', 'medium', 'large'
     const [imageLoadStates, setImageLoadStates] = React.useState({}); // { index: boolean }
-    const [isOnline, setIsOnline] = React.useState(navigator.onLine); // Track connectivity
-
-    // Monitor Online/Offline Status
-    React.useEffect(() => {
-        const handleOnline = () => {
-            setIsOnline(true);
-            // Sync offline data if needed (future implementation)
-            alert("You are back online! 🌐");
-        };
-        const handleOffline = () => {
-            setIsOnline(false);
-            alert("You are offline. You can still view saved quizzes and profile! 📡");
-        };
-
-        window.addEventListener('online', handleOnline);
-        window.addEventListener('offline', handleOffline);
-
-        return () => {
-            window.removeEventListener('online', handleOnline);
-            window.removeEventListener('offline', handleOffline);
-        };
-    }, []);
 
     const [showAuth, setShowAuth] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
@@ -2249,7 +2227,7 @@ function App() {
                             )}
                         </div>
                     ) : (
-                        <>
+                        <React.Fragment>
                             <button
                                 onClick={() => setShowAuth(true)}
                                 style={{
@@ -2354,7 +2332,7 @@ function App() {
                             >
                                 <span className="material-icons" style={{ fontSize: '1.2rem' }}>login</span> Login
                             </button>
-                        </>
+                        </React.Fragment>
                     )}
                 </div>
             </header>
@@ -2541,7 +2519,7 @@ function App() {
                             </div>
 
                             {memeInputType === 'topic' ? (
-                                <>
+                                <React.Fragment>
                                     <label>Meme Topic</label>
                                     <div style={{ position: 'relative' }}>
                                         <input
@@ -2573,9 +2551,9 @@ function App() {
                                             </button>
                                         )}
                                     </div>
-                                </>
+                                </React.Fragment>
                             ) : (
-                                <>
+                                <React.Fragment>
                                     <label>Enter URL</label>
                                     <input
                                         type="text"
@@ -2584,7 +2562,7 @@ function App() {
                                         placeholder="https://example.com (content will be used for memes)"
                                         style={{ width: '100%' }}
                                     />
-                                </>
+                                </React.Fragment>
                             )}
 
                             <div style={{ marginTop: '1rem' }}>
@@ -2730,7 +2708,7 @@ function App() {
                             }}
                         >
                             {genLoading ? <span className="material-icons" style={{ marginRight: '0.5rem' }}>cancel</span> : null}
-                            {genLoading ? `Cancel Generation (${timer.toFixed(1)}s)` : <><span className="emoji-pulse">✨</span> Generate MCQs</>}
+                            {genLoading ? `Cancel Generation (${timer.toFixed(1)}s)` : <React.Fragment><span className="emoji-pulse">✨</span> Generate MCQs</React.Fragment>}
                         </button>
                         <button
                             className="btn btn-secondary"
@@ -2816,7 +2794,7 @@ function App() {
                             disabled={false}
                         >
                             {quizLoading ? <span className="material-icons" style={{ marginRight: '0.5rem' }}>cancel</span> : <span className="material-icons" style={{ marginRight: '0.5rem' }}>play_circle</span>}
-                            {quizLoading ? `Cancel Generation (${timer.toFixed(1)}s)` : <><span className="emoji-bounce">🎮</span> Start Quiz</>}
+                            {quizLoading ? `Cancel Generation (${timer.toFixed(1)}s)` : <React.Fragment><span className="emoji-bounce">🎮</span> Start Quiz</React.Fragment>}
                         </button>
                     </div>
                 ) : (
@@ -3700,7 +3678,7 @@ function renderTextWithCode(text) {
         }
     }, 0);
 
-    return <>{parts}</>;
+    return <React.Fragment>{parts}</React.Fragment>;
 }
 
 function renderInlineCode(text) {
@@ -3731,7 +3709,7 @@ function renderInlineCode(text) {
         parts.push(text.substring(lastIndex));
     }
 
-    return parts.length > 0 ? <>{parts}</> : text;
+    return parts.length > 0 ? <React.Fragment>{parts}</React.Fragment> : text;
 }
 
 function MCQItem({ mcq, index, shareQuestion, shareToLinkedIn, shareToTwitter, shareToFacebook, shareToWhatsApp, shareToTelegram, shareToReddit, shareViaEmail, saveQuestion, generationId }) {
@@ -4257,72 +4235,7 @@ function QuizMode({ mcqs, onExit, generationId }) {
         }
     };
 
-    const handleDownloadPDF = () => {
-        try {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            const score = calculateScore();
-            const percentage = Math.round((score / mcqs.length) * 100);
 
-            // Title
-            doc.setFontSize(22);
-            doc.setTextColor(99, 102, 241); // Primary color
-            doc.text("Quiz Results - AI MCQ Generator", 20, 20);
-
-            // Score Section
-            doc.setFontSize(16);
-            doc.setTextColor(0, 0, 0);
-            doc.text(`Score: ${score} / ${mcqs.length} (${percentage}%)`, 20, 40);
-            doc.text(`Time Taken: ${formatTime(timeElapsed)}`, 20, 50);
-            doc.text(`Date: ${new Date().toLocaleDateString()}`, 20, 60);
-
-            // Questions
-            doc.setFontSize(14);
-            doc.text("Detailed Report:", 20, 80);
-
-            let y = 90;
-
-            mcqs.forEach((mcq, idx) => {
-                const userAnswer = answers[idx];
-                const isCorrect = userAnswer === mcq.correct_option;
-
-                // Check page break
-                if (y > 270) {
-                    doc.addPage();
-                    y = 20;
-                }
-
-                // Question
-                doc.setFontSize(12);
-                doc.setTextColor(0, 0, 0);
-                const questionLines = doc.splitTextToSize(`${idx + 1}. ${mcq.question}`, 170);
-                doc.text(questionLines, 20, y);
-                y += (questionLines.length * 7);
-
-                // User Answer
-                doc.setFontSize(11);
-                doc.setTextColor(isCorrect ? 16 : 239, isCorrect ? 185 : 68, isCorrect ? 129 : 68); // Green or Red
-                const userAnsText = userAnswer ? mcq.options[userAnswer] : 'Not answered';
-                doc.text(`Your Answer: ${userAnsText}`, 25, y);
-                y += 7;
-
-                // Correct Answer (if wrong)
-                if (!isCorrect) {
-                    doc.setTextColor(16, 185, 129); // Green
-                    doc.text(`Correct Answer: ${mcq.options[mcq.correct_option]}`, 25, y);
-                    y += 7;
-                }
-
-                y += 10; // Spacing
-            });
-
-            doc.save("quiz-results.pdf");
-
-        } catch (err) {
-            console.error("PDF Generation Error:", err);
-            alert("Failed to generate PDF. Please try again.");
-        }
-    };
 
     if (showResults) {
         const score = calculateScore();
@@ -4354,9 +4267,7 @@ function QuizMode({ mcqs, onExit, generationId }) {
                         <button className="btn btn-primary" style={{ width: 'auto' }} onClick={() => setShowResults(false)}>
                             Review Answers
                         </button>
-                        <button className="btn btn-secondary" onClick={handleDownloadPDF} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <span className="material-icons">picture_as_pdf</span> Download PDF
-                        </button>
+
                         <button className="btn btn-secondary" onClick={onExit}>
                             Exit Quiz
                         </button>
