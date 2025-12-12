@@ -438,15 +438,15 @@ function SocialFeed({ token, onClose, onLoginReq }) {
                                                     />
                                                     <button
                                                         onClick={() => handleCommentSubmit(item)}
-                                                        disabled={!commentText[item.id]?.trim()}
+                                                        disabled={!(commentText[item.id] || '').trim()}
                                                         style={{
                                                             padding: '0.75rem 1.5rem',
                                                             borderRadius: '20px',
                                                             border: 'none',
-                                                            background: commentText[item.id]?.trim() ? 'linear-gradient(135deg, #8b5cf6, #ec4899)' : 'var(--border-color)',
+                                                            background: (commentText[item.id] || '').trim() ? 'linear-gradient(135deg, #8b5cf6, #ec4899)' : 'var(--border-color)',
                                                             color: 'white',
                                                             fontWeight: '600',
-                                                            cursor: commentText[item.id]?.trim() ? 'pointer' : 'not-allowed',
+                                                            cursor: (commentText[item.id] || '').trim() ? 'pointer' : 'not-allowed',
                                                             transition: 'all 0.2s'
                                                         }}
                                                     >
@@ -1962,7 +1962,7 @@ function App() {
                                         letterSpacing: '0.5px',
                                         fontFamily: "'Inter', sans-serif"
                                     }}>
-                                        {userProfile?.full_name || userEmail?.split('@')[0] || 'User'}
+                                        {userProfile?.full_name || (userEmail || '').split('@')[0] || 'User'}
                                     </span>
                                 </div>
                                 <span className="material-icons" style={{ fontSize: '1.4rem', color: '#6366f1' }}>expand_more</span>
@@ -2696,7 +2696,7 @@ function App() {
                     <div style={{ display: 'flex', gap: '1rem' }}>
                         <button
                             className="btn btn-primary"
-                            onClick={genLoading ? () => abortControllerRef.current?.abort() : handleGenerate}
+                            onClick={genLoading ? () => abortControllerRef.current && abortControllerRef.current.abort() : handleGenerate}
                             style={{
                                 flex: 1,
                                 display: 'flex',
@@ -2722,7 +2722,7 @@ function App() {
                                 justifyContent: 'center',
                                 height: '3rem'
                             }}
-                            onClick={quizLoading ? () => abortControllerRef.current?.abort() : async () => {
+                            onClick={quizLoading ? () => abortControllerRef.current && abortControllerRef.current.abort() : async () => {
                                 // Validate
                                 if (inputType === 'url' && !urlInput) {
                                     setError("Please provide a URL first.");
@@ -2800,7 +2800,7 @@ function App() {
                 ) : (
                     <button
                         className="btn btn-primary"
-                        onClick={memeLoading ? () => abortControllerRef.current?.abort() : handleGenerateMeme}
+                        onClick={memeLoading ? () => abortControllerRef.current && abortControllerRef.current.abort() : handleGenerateMeme}
                         style={{
                             marginTop: 0,
                             display: 'flex',
@@ -3231,7 +3231,7 @@ function App() {
                                 </h2>
                                 <div style={{ display: 'flex', gap: '1rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                                        ⚡ {selectedTrendingMCQ.difficulty?.toUpperCase()}
+                                        ⚡ {(selectedTrendingMCQ.difficulty || '').toUpperCase()}
                                     </span>
                                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                                         ❓ {selectedTrendingMCQ.num_questions} Questions
