@@ -385,7 +385,7 @@ function SocialFeed({ token, onClose, onLoginReq }) {
                                         <React.Fragment>
                                             {/* Comments List */}
                                             <div style={{ maxHeight: '300px', overflowY: 'auto', marginBottom: '1rem' }}>
-                                                {comments[item.id]?.map((comment, idx) => (
+                                                {(comments[item.id] || []).map((comment, idx) => (
                                                     <div key={idx} style={{ display: 'flex', gap: '0.75rem', marginBottom: '1rem' }}>
                                                         <img
                                                             src={comment.user_avatar || `https://ui-avatars.com/api/?name=${comment.user_name}&background=random`}
@@ -769,7 +769,7 @@ function Dashboard({ token, isSuperuser, onClose }) {
                             <span className="material-icons">emoji_events</span> Quiz Champions
                         </h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1.5rem' }}>
-                            {data?.leaderboard?.map((user, i) => (
+                            {((data && data.leaderboard) || []).map((user, i) => (
                                 <div key={i} style={{
                                     display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem',
                                     background: i === 0 ? 'rgba(255, 215, 0, 0.1)' : 'var(--bg-color)',
@@ -792,7 +792,7 @@ function Dashboard({ token, isSuperuser, onClose }) {
                             <span className="material-icons">whatshot</span> Meme Lords
                         </h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1.5rem' }}>
-                            {data?.memeboard?.map((user, i) => (
+                            {((data && data.memeboard) || []).map((user, i) => (
                                 <div key={i} style={{
                                     display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem',
                                     background: i === 0 ? 'rgba(236, 72, 153, 0.1)' : 'var(--bg-color)',
@@ -815,7 +815,7 @@ function Dashboard({ token, isSuperuser, onClose }) {
                             <span className="material-icons">psychology</span> MCQ Masters
                         </h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1.5rem' }}>
-                            {data?.mcqboard?.map((user, i) => (
+                            {((data && data.mcqboard) || []).map((user, i) => (
                                 <div key={i} style={{
                                     display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem',
                                     background: i === 0 ? 'rgba(59, 130, 246, 0.1)' : 'var(--bg-color)',
@@ -3077,16 +3077,16 @@ function App() {
                     <div style={{ marginBottom: '0.5rem' }}>
                         Made with ❤️ and a lot of ☕ by <a href="https://github.com/ankitsharma6652" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-color)', textDecoration: 'none', fontWeight: '600' }}>Ankit Sharma</a>
                     </div>
-                    // <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
-                    //     <a href="https://www.buymeacoffee.com/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#FFDD00'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
-                    //         <span className="material-icons" style={{ fontSize: '1.2rem' }}>coffee</span>
-                    //         <span>Buy me a coffee</span>
-                    //     </a>
-                    //     <a href="https://github.com/ankitsharma6652/ai-mcq-meme-generator" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = 'var(--primary-color)'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
-                    //         <span className="material-icons" style={{ fontSize: '1.2rem' }}>code</span>
-                    //         <span>Source Code</span>
-                    //     </a>
-                    // </div>
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
+                        <a href="https://www.buymeacoffee.com/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#FFDD00'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
+                            <span className="material-icons" style={{ fontSize: '1.2rem' }}>coffee</span>
+                            <span>Buy me a coffee</span>
+                        </a>
+                        <a href="https://github.com/ankitsharma6652/ai-mcq-meme-generator" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = 'var(--primary-color)'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
+                            <span className="material-icons" style={{ fontSize: '1.2rem' }}>code</span>
+                            <span>Source Code</span>
+                        </a>
+                    </div>
                     <div style={{ marginTop: '1rem', opacity: 0.7, fontSize: '0.8rem' }}>
                         &copy; {new Date().getFullYear()} AI MCQ & Meme Generator. All rights reserved.
                     </div>
