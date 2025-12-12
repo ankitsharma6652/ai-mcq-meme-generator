@@ -3080,11 +3080,11 @@ function App() {
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
                         <a href="https://www.buymeacoffee.com/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#FFDD00'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
                             <span className="material-icons" style={{ fontSize: '1.2rem' }}>coffee</span>
-                            <span></span>
+                            <span>Buy me a coffee</span>
                         </a>
                         <a href="https://github.com/ankitsharma6652/ai-mcq-meme-generator" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = 'var(--primary-color)'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
                             <span className="material-icons" style={{ fontSize: '1.2rem' }}>code</span>
-                            <span></span>
+                            <span>Source Code</span>
                         </a>
                     </div>
                     <div style={{ marginTop: '1rem', opacity: 0.7, fontSize: '0.8rem' }}>
