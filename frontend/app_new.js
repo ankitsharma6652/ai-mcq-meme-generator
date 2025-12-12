@@ -3077,16 +3077,16 @@ function App() {
                     <div style={{ marginBottom: '0.5rem' }}>
                         Made with ❤️ and a lot of ☕ by <a href="https://github.com/ankitsharma6652" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-color)', textDecoration: 'none', fontWeight: '600' }}>Ankit Sharma</a>
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
-                        <a href="https://www.buymeacoffee.com/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#FFDD00'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
-                            <span className="material-icons" style={{ fontSize: '1.2rem' }}>coffee</span>
-                            <span>Buy me a coffee</span>
-                        </a>
-                        <a href="https://github.com/ankitsharma6652/ai-mcq-meme-generator" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = 'var(--primary-color)'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
-                            <span className="material-icons" style={{ fontSize: '1.2rem' }}>code</span>
-                            <span>Source Code</span>
-                        </a>
-                    </div>
+                    // <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
+                    //     <a href="https://www.buymeacoffee.com/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#FFDD00'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
+                    //         <span className="material-icons" style={{ fontSize: '1.2rem' }}>coffee</span>
+                    //         <span>Buy me a coffee</span>
+                    //     </a>
+                    //     <a href="https://github.com/ankitsharma6652/ai-mcq-meme-generator" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = 'var(--primary-color)'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
+                    //         <span className="material-icons" style={{ fontSize: '1.2rem' }}>code</span>
+                    //         <span>Source Code</span>
+                    //     </a>
+                    // </div>
                     <div style={{ marginTop: '1rem', opacity: 0.7, fontSize: '0.8rem' }}>
                         &copy; {new Date().getFullYear()} AI MCQ & Meme Generator. All rights reserved.
                     </div>
