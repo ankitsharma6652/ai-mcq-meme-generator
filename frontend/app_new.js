@@ -385,7 +385,7 @@ function SocialFeed({ token, onClose, onLoginReq }) {
                                         <React.Fragment>
                                             {/* Comments List */}
                                             <div style={{ maxHeight: '300px', overflowY: 'auto', marginBottom: '1rem' }}>
-                                                {(comments[item.id] || []).map((comment, idx) => (
+                                                {comments[item.id]?.map((comment, idx) => (
                                                     <div key={idx} style={{ display: 'flex', gap: '0.75rem', marginBottom: '1rem' }}>
                                                         <img
                                                             src={comment.user_avatar || `https://ui-avatars.com/api/?name=${comment.user_name}&background=random`}
@@ -438,15 +438,15 @@ function SocialFeed({ token, onClose, onLoginReq }) {
                                                     />
                                                     <button
                                                         onClick={() => handleCommentSubmit(item)}
-                                                        disabled={!(commentText[item.id] || '').trim()}
+                                                        disabled={!commentText[item.id]?.trim()}
                                                         style={{
                                                             padding: '0.75rem 1.5rem',
                                                             borderRadius: '20px',
                                                             border: 'none',
-                                                            background: (commentText[item.id] || '').trim() ? 'linear-gradient(135deg, #8b5cf6, #ec4899)' : 'var(--border-color)',
+                                                            background: commentText[item.id]?.trim() ? 'linear-gradient(135deg, #8b5cf6, #ec4899)' : 'var(--border-color)',
                                                             color: 'white',
                                                             fontWeight: '600',
-                                                            cursor: (commentText[item.id] || '').trim() ? 'pointer' : 'not-allowed',
+                                                            cursor: commentText[item.id]?.trim() ? 'pointer' : 'not-allowed',
                                                             transition: 'all 0.2s'
                                                         }}
                                                     >
@@ -769,7 +769,7 @@ function Dashboard({ token, isSuperuser, onClose }) {
                             <span className="material-icons">emoji_events</span> Quiz Champions
                         </h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1.5rem' }}>
-                            {((data && data.leaderboard) || []).map((user, i) => (
+                            {data?.leaderboard?.map((user, i) => (
                                 <div key={i} style={{
                                     display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem',
                                     background: i === 0 ? 'rgba(255, 215, 0, 0.1)' : 'var(--bg-color)',
@@ -792,7 +792,7 @@ function Dashboard({ token, isSuperuser, onClose }) {
                             <span className="material-icons">whatshot</span> Meme Lords
                         </h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1.5rem' }}>
-                            {((data && data.memeboard) || []).map((user, i) => (
+                            {data?.memeboard?.map((user, i) => (
                                 <div key={i} style={{
                                     display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem',
                                     background: i === 0 ? 'rgba(236, 72, 153, 0.1)' : 'var(--bg-color)',
@@ -815,7 +815,7 @@ function Dashboard({ token, isSuperuser, onClose }) {
                             <span className="material-icons">psychology</span> MCQ Masters
                         </h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1.5rem' }}>
-                            {((data && data.mcqboard) || []).map((user, i) => (
+                            {data?.mcqboard?.map((user, i) => (
                                 <div key={i} style={{
                                     display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem',
                                     background: i === 0 ? 'rgba(59, 130, 246, 0.1)' : 'var(--bg-color)',
@@ -1962,7 +1962,7 @@ function App() {
                                         letterSpacing: '0.5px',
                                         fontFamily: "'Inter', sans-serif"
                                     }}>
-                                        {userProfile?.full_name || (userEmail || '').split('@')[0] || 'User'}
+                                        {userProfile?.full_name || userEmail?.split('@')[0] || 'User'}
                                     </span>
                                 </div>
                                 <span className="material-icons" style={{ fontSize: '1.4rem', color: '#6366f1' }}>expand_more</span>
@@ -2696,7 +2696,7 @@ function App() {
                     <div style={{ display: 'flex', gap: '1rem' }}>
                         <button
                             className="btn btn-primary"
-                            onClick={genLoading ? () => abortControllerRef.current && abortControllerRef.current.abort() : handleGenerate}
+                            onClick={genLoading ? () => abortControllerRef.current?.abort() : handleGenerate}
                             style={{
                                 flex: 1,
                                 display: 'flex',
@@ -2722,7 +2722,7 @@ function App() {
                                 justifyContent: 'center',
                                 height: '3rem'
                             }}
-                            onClick={quizLoading ? () => abortControllerRef.current && abortControllerRef.current.abort() : async () => {
+                            onClick={quizLoading ? () => abortControllerRef.current?.abort() : async () => {
                                 // Validate
                                 if (inputType === 'url' && !urlInput) {
                                     setError("Please provide a URL first.");
@@ -2800,7 +2800,7 @@ function App() {
                 ) : (
                     <button
                         className="btn btn-primary"
-                        onClick={memeLoading ? () => abortControllerRef.current && abortControllerRef.current.abort() : handleGenerateMeme}
+                        onClick={memeLoading ? () => abortControllerRef.current?.abort() : handleGenerateMeme}
                         style={{
                             marginTop: 0,
                             display: 'flex',
@@ -3080,11 +3080,11 @@ function App() {
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
                         <a href="https://www.buymeacoffee.com/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = '#FFDD00'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
                             <span className="material-icons" style={{ fontSize: '1.2rem' }}>coffee</span>
-                            <span>Buy me a coffee</span>
+                            <span></span>
                         </a>
                         <a href="https://github.com/ankitsharma6652/ai-mcq-meme-generator" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color = 'var(--primary-color)'} onMouseOut={e => e.target.style.color = 'var(--text-secondary)'}>
                             <span className="material-icons" style={{ fontSize: '1.2rem' }}>code</span>
-                            <span>Source Code</span>
+                            <span></span>
                         </a>
                     </div>
                     <div style={{ marginTop: '1rem', opacity: 0.7, fontSize: '0.8rem' }}>
@@ -3231,7 +3231,7 @@ function App() {
                                 </h2>
                                 <div style={{ display: 'flex', gap: '1rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                                        ⚡ {(selectedTrendingMCQ.difficulty || '').toUpperCase()}
+                                        ⚡ {selectedTrendingMCQ.difficulty?.toUpperCase()}
                                     </span>
                                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                                         ❓ {selectedTrendingMCQ.num_questions} Questions
