@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test MCQ Generator</title>
+</head>
+
+<body>
+    <h1>Quick Test</h1>
+    <button onclick="testURL()">Test URL Extraction</button>
+    <button onclick="testFile()">Test File Upload</button>
+    <button onclick="testMCQ()">Test MCQ Generation</button>
+    <pre id="result"></pre>
+
+    <script>
+        async function testURL() {
+            const res = await fetch('/api/extract-url', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url: 'https://www.python.org/' })
+            });
+            document.getElementById('result').textContent = JSON.stringify(await res.json(), null, 2);
+        }
+
+        async function testFile() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.onchange = async (e) => {
+                const formData = new FormData();
+                formData.append('file', e.target.files[0]);
+                const res = await fetch('/api/extract-file', {
+                    method: 'POST',
+                    body: formData
+                });
+                document.getElementById('result').textContent = JSON.stringify(await res.json(), null, 2);
+            };
+            input.click();
+        }
+
+        async function testMCQ() {
+            const res = await fetch('/api/generate-mcqs', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    text: 'Python is a high-level programming language.',
+                    num_questions: 1,
+                    difficulty: 'easy',
+                    content_type: 'coding'
+                })
+            });
+            document.getElementById('result').textContent = JSON.stringify(await res.json(), null, 2);
+        }
+    </script>
+</body>
+
+</html>

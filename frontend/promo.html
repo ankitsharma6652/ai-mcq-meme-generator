@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Promo Video</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #video-container {
+            width: 1080px;
+            /* Instagram Reel / TikTok Aspect Ratio (9:16) */
+            height: 1920px;
+            /* Scale will be set by JS */
+            transform-origin: center center;
+            background: #111;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            animation: zoomPan 10s infinite alternate;
+            filter: brightness(0.6);
+        }
+
+        @keyframes zoomPan {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 40px;
+            max-width: 80%;
+        }
+
+        h1 {
+            font-size: 80px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 0.8s forwards 0.5s;
+        }
+
+        p {
+            font-size: 40px;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s forwards 1s;
+        }
+
+        .highlight {
+            color: #FFD700;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0 10px;
+            border-radius: 10px;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 10px;
+            background: #FFD700;
+            width: 0%;
+            z-index: 10;
+        }
+
+        #controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            background: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="video-container">
+        <!-- Scene 1: The Problem -->
+        <div class="slide active" id="slide1">
+            <img src="/screenshots/promo_scene_1_transformation_1764216810178.png" class="bg-image" alt="Boring to Fun">
+            <div class="content">
+                <h1>Studying is <span class="highlight">BORING?</span> 😴</h1>
+                <p>Textbooks. PDFs. Endless reading.<br>We've all been there.</p>
+            </div>
+        </div>
+
+        <!-- Scene 2: The Solution (Home Page) -->
+        <div class="slide" id="slide2">
+            <img src="/screenshots/home-light.png" class="bg-image" alt="App Interface">
+            <div class="content">
+                <h1>Meet Your <span class="highlight">AI Superpower</span> ⚡</h1>
+                <p>Turn ANY text into<br><strong>Fun Quizzes</strong> & <strong>Viral Memes</strong><br>in seconds!</p>
+            </div>
+        </div>
+
+        <!-- Scene 3: Features (Quiz Mode) -->
+        <div class="slide" id="slide3">
+            <img src="/screenshots/quiz-mode.png" class="bg-image" alt="Quiz Mode">
+            <div class="content">
+                <h1>Gamify Your <span class="highlight">Learning</span> 🎮</h1>
+                <p>Challenge yourself.<br>Master any topic.<br>Level up your skills!</p>
+            </div>
+        </div>
+
+        <!-- Scene 4: Fun (Meme Generation) -->
+        <div class="slide" id="slide4">
+            <img src="/screenshots/mcq-generated.png" class="bg-image" alt="Meme Generation">
+            <div class="content">
+                <h1>Learn & <span class="highlight">Laugh</span> 😂</h1>
+                <p>Generate hilarious memes<br>from your study notes.<br>Share with friends!</p>
+            </div>
+        </div>
+
+        <!-- Scene 5: Community (Feed) -->
+        <div class="slide" id="slide5">
+            <img src="/screenshots/community-feed.png" class="bg-image" alt="Community Feed">
+            <div class="content">
+                <h1>Explore the <span class="highlight">Feed</span> 🌍</h1>
+                <p>Discover what others are creating.<br>Like, Share, and Get Inspired!</p>
+            </div>
+        </div>
+
+        <!-- Scene 6: Analytics -->
+        <div class="slide" id="slide6">
+            <img src="/screenshots/analytics-personal.png" class="bg-image" alt="Analytics">
+            <div class="content">
+                <h1>Track Your <span class="highlight">Growth</span> 📈</h1>
+                <p>Visualize your progress.<br>See your strengths.<br>Improve every day!</p>
+            </div>
+        </div>
+
+        <!-- Scene 7: Leaderboard -->
+        <div class="slide" id="slide7">
+            <img src="/screenshots/leaderboard.png" class="bg-image" alt="Leaderboard">
+            <div class="content">
+                <h1>Climb the <span class="highlight">Ranks</span> 🏆</h1>
+                <p>Compete globally.<br>Become a Legend.<br>Win bragging rights!</p>
+            </div>
+        </div>
+
+        <!-- Scene 8: CTA -->
+        <div class="slide" id="slide8">
+            <img src="/screenshots/home-light.png" class="bg-image" style="filter: brightness(0.4);" alt="Try Now">
+            <div class="content">
+                <h1>Try It <span class="highlight">NOW!</span> 🚀</h1>
+                <p>Free & Unlimited AI Generation.<br><strong>quiz-meme.onrender.com</strong></p>
+            </div>
+        </div>
+
+        <div class="progress-bar" id="progress"></div>
+    </div>
+
+    <div id="controls">
+        <button onclick="playVideo()">▶ Play</button>
+        <button onclick="resetVideo()">↺ Reset</button>
+        <button onclick="recordAndDownload()" style="background: #ff4444; color: white;">🔴 Download Video</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const slideDuration = 4000; // 4 seconds per slide
+        let interval;
+        let progressInterval;
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[index].classList.add('active');
+
+            // Reset animations
+            const h1 = slides[index].querySelector('h1');
+            const p = slides[index].querySelector('p');
+            if (h1) {
+                h1.style.animation = 'none';
+                h1.offsetHeight; /* trigger reflow */
+                h1.style.animation = 'slideUp 0.8s forwards 0.5s';
+            }
+            if (p) {
+                p.style.animation = 'none';
+                p.offsetHeight; /* trigger reflow */
+                p.style.animation = 'slideUp 0.8s forwards 1s';
+            }
+        }
+
+        function playVideo(onComplete) {
+            if (interval) clearInterval(interval);
+            if (progressInterval) clearInterval(progressInterval);
+
+            currentSlide = 0;
+            showSlide(0);
+
+            let startTime = Date.now();
+
+            progressInterval = setInterval(() => {
+                const elapsed = Date.now() - startTime;
+                const totalDuration = totalSlides * slideDuration;
+                const progress = Math.min((elapsed / totalDuration) * 100, 100);
+                document.getElementById('progress').style.width = progress + '%';
+            }, 50);
+
+            interval = setInterval(() => {
+                currentSlide++;
+                if (currentSlide >= totalSlides) {
+                    clearInterval(interval);
+                    clearInterval(progressInterval);
+                    if (onComplete) onComplete();
+                    return;
+                }
+                showSlide(currentSlide);
+            }, slideDuration);
+        }
+
+        function resetVideo() {
+            clearInterval(interval);
+            clearInterval(progressInterval);
+            currentSlide = 0;
+            showSlide(0);
+            document.getElementById('progress').style.width = '0%';
+        }
+
+        function resizePlayer() {
+            const container = document.getElementById('video-container');
+            const windowHeight = window.innerHeight;
+            const windowWidth = window.innerWidth;
+
+            // Calculate scale to fit 98% of screen height (maximized)
+            const targetHeight = windowHeight * 0.98;
+            const scaleH = targetHeight / 1920;
+
+            // Also check width constraint (for mobile screens)
+            const targetWidth = windowWidth * 0.98;
+            const scaleW = targetWidth / 1080;
+
+            // Use the smaller scale to ensure it fits perfectly without scrolling
+            const finalScale = Math.min(scaleH, scaleW);
+
+            container.style.transform = `scale(${finalScale})`;
+        }
+
+        window.addEventListener('resize', resizePlayer);
+        // Initial resize
+        resizePlayer();
+
+        async function recordAndDownload() {
+            // Check if mobile device
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                alert("📱 On mobile? \n\nPlease use your phone's built-in Screen Recorder to capture this video in high quality!");
+                return;
+            }
+
+            try {
+                alert("Please select 'This Tab' or 'Chrome Tab' -> 'App Promo Video' to record properly.");
+
+                const stream = await navigator.mediaDevices.getDisplayMedia({
+                    video: {
+                        displaySurface: "browser",
+                    },
+                    audio: false,
+                    preferCurrentTab: true // Experimental flag to auto-select current tab
+                });
+
+                // Hide controls during recording
+                document.getElementById('controls').style.display = 'none';
+
+                recordedChunks = [];
+                mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm; codecs=vp9' });
+
+                mediaRecorder.ondataavailable = (event) => {
+                    if (event.data.size > 0) {
+                        recordedChunks.push(event.data);
+                    }
+                };
+
+                mediaRecorder.onstop = () => {
+                    const blob = new Blob(recordedChunks, { type: 'video/webm' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'quiz-meme-promo.webm';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+
+                    // Show controls again
+                    document.getElementById('controls').style.display = 'flex';
+
+                    // Stop all tracks
+                    stream.getTracks().forEach(track => track.stop());
+                };
+
+                mediaRecorder.start();
+
+                // Start playing the video
+                playVideo(() => {
+                    // Stop recording when video ends
+                    mediaRecorder.stop();
+                });
+
+            } catch (err) {
+                console.error("Error: " + err);
+                document.getElementById('controls').style.display = 'flex';
+            }
+        }
+    </script>
+</body>
+
+</html>

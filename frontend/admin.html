@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Database Manager</title>
+    <link rel="stylesheet" href="style.css?v=2.1">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .admin-title {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .table-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .table-item {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            background: var(--bg-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .table-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: #6366f1;
+            transform: translateX(5px);
+        }
+
+        .table-item.active {
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            color: white;
+            font-weight: 600;
+        }
+
+        .main-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .query-section {
+            margin-bottom: 2rem;
+        }
+
+        .query-input {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1.5px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            resize: vertical;
+        }
+
+        .query-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .btn-execute {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn-execute:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .results-table th {
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .results-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .results-table tr:hover {
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            padding: 1.5rem;
+            background: var(--bg-color);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+
+        .login-box {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1.5px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            box-sizing: border-box;
+        }
+
+        .login-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function AdminPanel() {
+            const [authenticated, setAuthenticated] = useState(false);
+            const [password, setPassword] = useState('');
+            const [tables, setTables] = useState([]);
+            const [selectedTable, setSelectedTable] = useState(null);
+            const [tableData, setTableData] = useState([]);
+            const [customQuery, setCustomQuery] = useState('');
+            const [queryResults, setQueryResults] = useState(null);
+            const [error, setError] = useState('');
+            const [success, setSuccess] = useState('');
+            const [stats, setStats] = useState({});
+            const [databaseName, setDatabaseName] = useState('');
+            const [columnInfo, setColumnInfo] = useState([]);
+            const [selectedColumns, setSelectedColumns] = useState([]);
+            const [showColumnSelector, setShowColumnSelector] = useState(false);
+
+            const ADMIN_PASSWORD = 'admin123'; // Change this to your secure password
+
+            // Check if user is superuser on mount
+            useEffect(() => {
+                const checkSuperuser = async () => {
+                    const token = localStorage.getItem('token');
+                    if (token) {
+                        try {
+                            const response = await fetch('/api/is-superuser', {
+                                headers: {
+                                    'Authorization': `Bearer ${token}`
+                                }
+                            });
+                            if (response.ok) {
+                                const data = await response.json();
+                                if (data.is_superuser) {
+                                    setAuthenticated(true);
+                                    loadTables();
+                                }
+                            }
+                        } catch (err) {
+                            console.log('Not a superuser or not logged in');
+                        }
+                    }
+                };
+                checkSuperuser();
+            }, []);
+
+            const handleLogin = () => {
+                if (password === ADMIN_PASSWORD) {
+                    setAuthenticated(true);
+                    loadTables();
+                } else {
+                    setError('Invalid password');
+                }
+            };
+
+            const loadTables = async () => {
+                try {
+                    const response = await fetch('/api/admin/tables');
+                    const data = await response.json();
+                    setTables(data.tables || []);
+                    setStats(data.stats || {});
+                    setDatabaseName(data.database || 'Unknown');
+                } catch (err) {
+                    setError('Failed to load tables: ' + err.message);
+                }
+            };
+
+            const loadTableData = async (tableName) => {
+                setSelectedTable(tableName);
+                setError('');
+                setSuccess('');
+                const token = localStorage.getItem('token');
+                try {
+                    const response = await fetch(`/api/admin/table/${tableName}`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+                    const data = await response.json();
+                    if (!response.ok) {
+                        throw new Error(data.detail || 'Failed to fetch data');
+                    }
+                    setTableData(data.data || []);
+                    setColumnInfo(data.column_info || []);
+                    // Select all columns by default
+                    if (data.data && data.data.length > 0) {
+                        setSelectedColumns(Object.keys(data.data[0]));
+                    }
+                } catch (err) {
+                    if (err.message.includes('validate credentials') || err.message.includes('401')) {
+                        setError('Session expired. Please go to the main page and log in again.');
+                    } else {
+                        setError('Failed to load table data: ' + err.message);
+                    }
+                }
+            };
+
+            const executeQuery = async () => {
+                setError('');
+                setSuccess('');
+                setQueryResults(null);
+                const token = localStorage.getItem('token');
+
+                try {
+                    const response = await fetch('/api/admin/query', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({ query: customQuery })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        setQueryResults(data.results || []);
+                        setSuccess(`Query executed successfully! ${data.results?.length || 0} rows returned.`);
+                    } else {
+                        setError(data.detail || 'Query failed');
+                    }
+                } catch (err) {
+                    setError('Failed to execute query: ' + err.message);
+                }
+            };
+
+            if (!authenticated) {
+                return (
+                    <div className="login-overlay">
+                        <div className="login-box">
+                            <h2>🔐 Admin Access</h2>
+                            <input
+                                type="password"
+                                className="login-input"
+                                placeholder="Enter admin password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
+                            />
+                            <button className="btn-login" onClick={handleLogin}>
+                                Login
+                            </button>
+                            {error && <div className="error-message" style={{ marginTop: '1rem' }}>{error}</div>}
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                <div className="admin-container">
+                    <div className="admin-header">
+                        <h1 className="admin-title">🛠️ Admin Panel</h1>
+                        <button
+                            className="btn-execute"
+                            onClick={() => setAuthenticated(false)}
+                            style={{ background: 'rgba(239, 68, 68, 0.8)' }}
+                        >
+                            Logout
+                        </button>
+                    </div>
+
+                    {Object.keys(stats).length > 0 && (
+                        <div className="stats-grid">
+                            {Object.entries(stats).map(([key, value]) => (
+                                <div className="stat-card" key={key}>
+                                    <div className="stat-value">{value}</div>
+                                    <div className="stat-label">{key}</div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    <div className="admin-grid">
+                        <div className="sidebar">
+                            <h3>📊 Database Tables</h3>
+                            <ul className="table-list">
+                                {tables.map(table => (
+                                    <li
+                                        key={table}
+                                        className={`table-item ${selectedTable === table ? 'active' : ''}`}
+                                        onClick={() => loadTableData(table)}
+                                    >
+                                        <span className="material-icons" style={{ fontSize: '1.2rem' }}>table_chart</span>
+                                        {table}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <div className="main-content">
+                            {databaseName && (
+                                <div style={{
+                                    padding: '0.75rem 1rem',
+                                    background: 'rgba(99, 102, 241, 0.1)',
+                                    borderRadius: '8px',
+                                    marginBottom: '1.5rem',
+                                    border: '1px solid rgba(99, 102, 241, 0.3)'
+                                }}>
+                                    <strong>📁 Database:</strong> {databaseName}
+                                </div>
+                            )}
+
+                            {selectedTable && columnInfo.length > 0 && (
+                                <div style={{ marginBottom: '1.5rem' }}>
+                                    <h3>📋 {selectedTable} - Columns</h3>
+                                    <div style={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        gap: '0.5rem',
+                                        marginTop: '0.75rem'
+                                    }}>
+                                        {columnInfo.map((col, idx) => (
+                                            <div key={idx} style={{
+                                                padding: '0.5rem 1rem',
+                                                background: 'var(--bg-color)',
+                                                borderRadius: '6px',
+                                                border: '1px solid var(--border-color)',
+                                                fontSize: '0.85rem'
+                                            }}>
+                                                <strong>{col.name}</strong>
+                                                <span style={{ color: 'var(--text-secondary)', marginLeft: '0.5rem' }}>
+                                                    {col.type}
+                                                </span>
+                                                {!col.nullable && (
+                                                    <span style={{
+                                                        marginLeft: '0.5rem',
+                                                        color: '#ef4444',
+                                                        fontSize: '0.75rem'
+                                                    }}>
+                                                        *
+                                                    </span>
+                                                )}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            <div className="query-section">
+                                <h3>🔍 Custom SQL Query</h3>
+                                <textarea
+                                    className="query-input"
+                                    placeholder="SELECT * FROM users LIMIT 10;"
+                                    value={customQuery}
+                                    onChange={(e) => setCustomQuery(e.target.value)}
+                                />
+                                <button className="btn-execute" onClick={executeQuery}>
+                                    Execute Query
+                                </button>
+                            </div>
+
+                            {error && <div className="error-message">{error}</div>}
+                            {success && <div className="success-message">{success}</div>}
+
+                            {(queryResults || tableData.length > 0) && (
+                                <div>
+                                    <div style={{ marginBottom: '1rem', position: 'relative' }}>
+                                        <button
+                                            onClick={() => setShowColumnSelector(!showColumnSelector)}
+                                            style={{
+                                                padding: '0.75rem 1.5rem',
+                                                borderRadius: '8px',
+                                                border: '1.5px solid var(--border-color)',
+                                                background: 'var(--input-bg)',
+                                                color: 'var(--text-primary)',
+                                                fontSize: '0.95rem',
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '0.5rem',
+                                                fontWeight: '600'
+                                            }}
+                                        >
+                                            <span className="material-icons" style={{ fontSize: '1.2rem' }}>view_column</span>
+                                            Select Columns ({selectedColumns.length}/{Object.keys((queryResults || tableData)[0] || {}).length})
+                                            <span className="material-icons" style={{ fontSize: '1.2rem' }}>
+                                                {showColumnSelector ? 'expand_less' : 'expand_more'}
+                                            </span>
+                                        </button>
+
+                                        {showColumnSelector && (
+                                            <div style={{
+                                                position: 'absolute',
+                                                top: '100%',
+                                                left: 0,
+                                                marginTop: '0.5rem',
+                                                background: 'var(--card-bg)',
+                                                border: '1.5px solid var(--border-color)',
+                                                borderRadius: '10px',
+                                                padding: '1rem',
+                                                boxShadow: '0 10px 40px rgba(0,0,0,0.2)',
+                                                zIndex: 1000,
+                                                maxHeight: '400px',
+                                                overflowY: 'auto',
+                                                minWidth: '300px'
+                                            }}>
+                                                <div style={{
+                                                    display: 'flex',
+                                                    justifyContent: 'space-between',
+                                                    marginBottom: '1rem',
+                                                    paddingBottom: '0.75rem',
+                                                    borderBottom: '1px solid var(--border-color)'
+                                                }}>
+                                                    <button
+                                                        onClick={() => setSelectedColumns(Object.keys((queryResults || tableData)[0] || {}))}
+                                                        style={{
+                                                            padding: '0.5rem 1rem',
+                                                            background: 'rgba(99, 102, 241, 0.1)',
+                                                            border: '1px solid #6366f1',
+                                                            borderRadius: '6px',
+                                                            color: '#6366f1',
+                                                            cursor: 'pointer',
+                                                            fontSize: '0.85rem',
+                                                            fontWeight: '600'
+                                                        }}
+                                                    >
+                                                        ✓ Select All
+                                                    </button>
+                                                    <button
+                                                        onClick={() => setSelectedColumns([])}
+                                                        style={{
+                                                            padding: '0.5rem 1rem',
+                                                            background: 'rgba(239, 68, 68, 0.1)',
+                                                            border: '1px solid #ef4444',
+                                                            borderRadius: '6px',
+                                                            color: '#ef4444',
+                                                            cursor: 'pointer',
+                                                            fontSize: '0.85rem',
+                                                            fontWeight: '600'
+                                                        }}
+                                                    >
+                                                        ✗ Clear All
+                                                    </button>
+                                                </div>
+                                                {Object.keys((queryResults || tableData)[0] || {}).map(col => (
+                                                    <label
+                                                        key={col}
+                                                        style={{
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            padding: '0.75rem',
+                                                            cursor: 'pointer',
+                                                            borderRadius: '6px',
+                                                            marginBottom: '0.25rem',
+                                                            background: selectedColumns.includes(col) ? 'rgba(99, 102, 241, 0.1)' : 'transparent',
+                                                            transition: 'all 0.2s'
+                                                        }}
+                                                        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(99, 102, 241, 0.1)'}
+                                                        onMouseLeave={(e) => e.currentTarget.style.background = selectedColumns.includes(col) ? 'rgba(99, 102, 241, 0.1)' : 'transparent'}
+                                                    >
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={selectedColumns.includes(col)}
+                                                            onChange={(e) => {
+                                                                if (e.target.checked) {
+                                                                    setSelectedColumns([...selectedColumns, col]);
+                                                                } else {
+                                                                    setSelectedColumns(selectedColumns.filter(c => c !== col));
+                                                                }
+                                                            }}
+                                                            style={{
+                                                                marginRight: '0.75rem',
+                                                                width: '18px',
+                                                                height: '18px',
+                                                                cursor: 'pointer'
+                                                            }}
+                                                        />
+                                                        <span style={{
+                                                            fontWeight: selectedColumns.includes(col) ? '600' : '400',
+                                                            color: 'var(--text-primary)'
+                                                        }}>
+                                                            {col}
+                                                        </span>
+                                                    </label>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div style={{ overflowX: 'auto' }}>
+                                        <table className="results-table">
+                                            <thead>
+                                                <tr>
+                                                    {Object.keys((queryResults || tableData)[0] || {})
+                                                        .filter(key => selectedColumns.includes(key))
+                                                        .map(key => (
+                                                            <th key={key}>{key}</th>
+                                                        ))
+                                                    }
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {(queryResults || tableData).map((row, idx) => (
+                                                    <tr key={idx}>
+                                                        {Object.entries(row)
+                                                            .filter(([key]) => selectedColumns.includes(key))
+                                                            .map(([key, val], i) => (
+                                                                <td key={i}>{String(val)}</td>
+                                                            ))
+                                                        }
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('app'));
+        root.render(<AdminPanel />);
+    </script>
+</body>
+
+</html>
