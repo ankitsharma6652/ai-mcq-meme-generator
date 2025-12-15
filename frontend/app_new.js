@@ -438,15 +438,15 @@ function SocialFeed({ token, onClose, onLoginReq }) {
                                                     />
                                                     <button
                                                         onClick={() => handleCommentSubmit(item)}
-                                                        disabled={!commentText[item.id]?.trim()}
+                                                        disabled={!(commentText[item.id] && commentText[item.id].trim())}
                                                         style={{
                                                             padding: '0.75rem 1.5rem',
                                                             borderRadius: '20px',
                                                             border: 'none',
-                                                            background: commentText[item.id]?.trim() ? 'linear-gradient(135deg, #8b5cf6, #ec4899)' : 'var(--border-color)',
+                                                            background: (commentText[item.id] && commentText[item.id].trim()) ? 'linear-gradient(135deg, #8b5cf6, #ec4899)' : 'var(--border-color)',
                                                             color: 'white',
                                                             fontWeight: '600',
-                                                            cursor: commentText[item.id]?.trim() ? 'pointer' : 'not-allowed',
+                                                            cursor: (commentText[item.id] && commentText[item.id].trim()) ? 'pointer' : 'not-allowed',
                                                             transition: 'all 0.2s'
                                                         }}
                                                     >
