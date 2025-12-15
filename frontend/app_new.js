@@ -625,7 +625,7 @@ function Dashboard({ token, isSuperuser, onClose }) {
                 data: {
                     labels: ['Quizzes Taken', 'Memes Created', 'MCQs Generated'],
                     datasets: [{
-                        data: [data.kpis.total_quizzes, data.kpis.total_memes, data.mcq_analytics?.total_mcqs || 0],
+                        data: [data.kpis.total_quizzes, data.kpis.total_memes, (data.mcq_analytics && data.mcq_analytics.total_mcqs) || 0],
                         backgroundColor: ['#8b5cf6', '#ec4899', '#3b82f6'],
                         borderWidth: 0
                     }]
@@ -735,11 +735,11 @@ function Dashboard({ token, isSuperuser, onClose }) {
             {/* KPIs (Always Visible) */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
                 {[
-                    { label: 'Total Quizzes', value: data?.kpis?.total_quizzes, icon: 'quiz', color: '#8b5cf6' },
-                    { label: 'Avg Score', value: `${data?.kpis?.avg_score}%`, icon: 'analytics', color: '#10b981' },
-                    { label: 'Memes Generated', value: data?.kpis?.total_memes, icon: 'sentiment_very_satisfied', color: '#ec4899' },
-                    { label: 'MCQs Generated', value: data?.mcq_analytics?.total_mcqs, icon: 'psychology', color: '#3b82f6' },
-                    { label: 'Time Spent', value: `${data?.kpis?.total_time_minutes}m`, icon: 'schedule', color: '#f59e0b' }
+                    { label: 'Total Quizzes', value: data && data.kpis && data.kpis.total_quizzes, icon: 'quiz', color: '#8b5cf6' },
+                    { label: 'Avg Score', value: `${data && data.kpis && data.kpis.avg_score}%`, icon: 'analytics', color: '#10b981' },
+                    { label: 'Memes Generated', value: data && data.kpis && data.kpis.total_memes, icon: 'sentiment_very_satisfied', color: '#ec4899' },
+                    { label: 'MCQs Generated', value: data && data.mcq_analytics && data.mcq_analytics.total_mcqs, icon: 'psychology', color: '#3b82f6' },
+                    { label: 'Time Spent', value: `${data && data.kpis && data.kpis.total_time_minutes}m`, icon: 'schedule', color: '#f59e0b' }
                 ].map((kpi, i) => (
                     <div key={i} style={{
                         background: 'var(--card-bg)', padding: '1.5rem', borderRadius: '16px',
@@ -769,7 +769,7 @@ function Dashboard({ token, isSuperuser, onClose }) {
                             <span className="material-icons">emoji_events</span> Quiz Champions
                         </h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1.5rem' }}>
-                            {data?.leaderboard?.map((user, i) => (
+                            {data && data.leaderboard && data.leaderboard.map((user, i) => (
                                 <div key={i} style={{
                                     display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem',
                                     background: i === 0 ? 'rgba(255, 215, 0, 0.1)' : 'var(--bg-color)',
@@ -792,7 +792,7 @@ function Dashboard({ token, isSuperuser, onClose }) {
                             <span className="material-icons">whatshot</span> Meme Lords
                         </h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1.5rem' }}>
-                            {data?.memeboard?.map((user, i) => (
+                            {data && data.memeboard && data.memeboard.map((user, i) => (
                                 <div key={i} style={{
                                     display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem',
                                     background: i === 0 ? 'rgba(236, 72, 153, 0.1)' : 'var(--bg-color)',
@@ -815,7 +815,7 @@ function Dashboard({ token, isSuperuser, onClose }) {
                             <span className="material-icons">psychology</span> MCQ Masters
                         </h2>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1.5rem' }}>
-                            {data?.mcqboard?.map((user, i) => (
+                            {data && data.mcqboard && data.mcqboard.map((user, i) => (
                                 <div key={i} style={{
                                     display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem',
                                     background: i === 0 ? 'rgba(59, 130, 246, 0.1)' : 'var(--bg-color)',
@@ -1923,7 +1923,7 @@ function App() {
                                 }}
                             >
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                                    {userProfile?.profile_picture ? (
+                                    {userProfile && userProfile.profile_picture ? (
                                         <img
                                             src={userProfile.profile_picture}
                                             alt="Profile"
@@ -1950,7 +1950,7 @@ function App() {
                                             fontWeight: 'bold',
                                             fontSize: '1.2rem'
                                         }}>
-                                            {(userProfile?.full_name || userEmail || 'U').charAt(0).toUpperCase()}
+                                            {(userProfile && userProfile.full_name || userEmail || 'U').charAt(0).toUpperCase()}
                                         </div>
                                     )}
                                     <span style={{
@@ -1962,7 +1962,7 @@ function App() {
                                         letterSpacing: '0.5px',
                                         fontFamily: "'Inter', sans-serif"
                                     }}>
-                                        {userProfile?.full_name || userEmail?.split('@')[0] || 'User'}
+                                        {userProfile && userProfile.full_name || (userEmail && userEmail.split('@')[0]) || 'User'}
                                     </span>
                                 </div>
                                 <span className="material-icons" style={{ fontSize: '1.4rem', color: '#6366f1' }}>expand_more</span>
@@ -1997,7 +1997,7 @@ function App() {
                                             alignItems: 'center',
                                             gap: '0.8rem'
                                         }}>
-                                            {userProfile?.profile_picture ? (
+                                            {userProfile && userProfile.profile_picture ? (
                                                 <img
                                                     src={userProfile.profile_picture}
                                                     alt="Profile"
@@ -2033,12 +2033,12 @@ function App() {
                                                     fontSize: '1.8rem',
                                                     boxShadow: '0 4px 10px rgba(99, 102, 241, 0.3)'
                                                 }}>
-                                                    {(userProfile?.full_name || userEmail || 'U').charAt(0).toUpperCase()}
+                                                    {(userProfile && userProfile.full_name || userEmail || 'U').charAt(0).toUpperCase()}
                                                 </div>
                                             )}
                                             <div style={{ textAlign: 'center' }}>
                                                 <div style={{ fontWeight: '700', fontSize: '1.1rem', color: 'var(--text-primary)' }}>
-                                                    {userProfile?.full_name || 'User'}
+                                                    {userProfile && userProfile.full_name || 'User'}
                                                 </div>
                                                 <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                                                     {userEmail}
@@ -2696,7 +2696,7 @@ function App() {
                     <div style={{ display: 'flex', gap: '1rem' }}>
                         <button
                             className="btn btn-primary"
-                            onClick={genLoading ? () => abortControllerRef.current?.abort() : handleGenerate}
+                            onClick={genLoading ? () => abortControllerRef.current && abortControllerRef.current.abort() : handleGenerate}
                             style={{
                                 flex: 1,
                                 display: 'flex',
@@ -2722,7 +2722,7 @@ function App() {
                                 justifyContent: 'center',
                                 height: '3rem'
                             }}
-                            onClick={quizLoading ? () => abortControllerRef.current?.abort() : async () => {
+                            onClick={quizLoading ? () => abortControllerRef.current && abortControllerRef.current.abort() : async () => {
                                 // Validate
                                 if (inputType === 'url' && !urlInput) {
                                     setError("Please provide a URL first.");
@@ -2800,7 +2800,7 @@ function App() {
                 ) : (
                     <button
                         className="btn btn-primary"
-                        onClick={memeLoading ? () => abortControllerRef.current?.abort() : handleGenerateMeme}
+                        onClick={memeLoading ? () => abortControllerRef.current && abortControllerRef.current.abort() : handleGenerateMeme}
                         style={{
                             marginTop: 0,
                             display: 'flex',
@@ -3094,7 +3094,7 @@ function App() {
             </div>
 
             {/* Image Modal */}
-            {showImageModal && userProfile?.profile_picture && (
+            {showImageModal && userProfile && userProfile.profile_picture && (
                 <div
                     style={{
                         position: 'fixed',
@@ -3231,7 +3231,7 @@ function App() {
                                 </h2>
                                 <div style={{ display: 'flex', gap: '1rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                                        ⚡ {selectedTrendingMCQ.difficulty?.toUpperCase()}
+                                        ⚡ {selectedTrendingMCQ.difficulty && selectedTrendingMCQ.difficulty.toUpperCase()}
                                     </span>
                                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                                         ❓ {selectedTrendingMCQ.num_questions} Questions
@@ -3303,14 +3303,6 @@ function App() {
                             background: 'var(--bg-secondary)'
                         }}>
                             <button
-                                onClick={() => {
-                                    // Load into main view to play
-                                    setMcqs(selectedTrendingMCQ.questions_data);
-                                    setMcqId(selectedTrendingMCQ.id);
-                                    setTopic(selectedTrendingMCQ.category || 'Trending Quiz');
-                                    setShowTrendingModal(false);
-                                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                                }}
                                 className="primary-btn"
                                 style={{
                                     background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
@@ -3320,6 +3312,14 @@ function App() {
                                     borderRadius: '8px',
                                     fontWeight: '600',
                                     cursor: 'pointer'
+                                }}
+                                onClick={() => {
+                                    // Load into main view to play
+                                    setMcqs(selectedTrendingMCQ.questions_data);
+                                    setMcqId(selectedTrendingMCQ.id);
+                                    setTopic(selectedTrendingMCQ.category || 'Trending Quiz');
+                                    setShowTrendingModal(false);
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
                                 }}
                             >
                                 Play This Quiz
@@ -3571,7 +3571,7 @@ function App() {
                                             <div>
                                                 <h3 style={{ marginBottom: '0.5rem' }}>{item.content.topic}</h3>
                                                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                                                    {item.content.memes?.length || 0} memes - Saved on {new Date(item.created_at).toLocaleDateString()}
+                                                    {(item.content.memes && item.content.memes.length) || 0} memes - Saved on {new Date(item.saved_at).toLocaleString()}
                                                 </p>
                                                 {item.content.memes && item.content.memes.length > 0 && (
                                                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
